@@ -1,9 +1,9 @@
 {
   "name": "Nariko",
   "version": "0.1.0",
-  "summary": "A short description of Nariko.",
+  "summary": "Nariko.io is the first visual feedback tool for mobile apps, which will allow users to give feedback about application designs and mobile user experience.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/Nariko",
+  "homepage": "https://github.com/inoity/Nariko",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,21 @@
     "Zsolt Papp": "pappzsolt100@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/Nariko.git",
+    "git": "https://github.com/inoity/Nariko.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "Nariko/Classes/**/*"
+  "source_files": "Nariko/Classes/**/*",
+  "resource_bundles": {
+    "Nariko": [
+      "Nariko/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "SwiftHTTP": [
+      "~> 1.0.5"
+    ]
+  }
 }

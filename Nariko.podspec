@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Nariko'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Nariko.'
+s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which will allow users to give feedback about application designs and mobile user experience.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,22 +21,22 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Nariko'
+  s.homepage         = 'https://github.com/inoity/Nariko'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Zsolt Papp' => 'pappzsolt100@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Nariko.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/inoity/Nariko.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'Nariko/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'Nariko' => ['Nariko/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'Nariko' => ['Nariko/Assets/*.png']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'SwiftHTTP', '~> 1.0.5'
 end

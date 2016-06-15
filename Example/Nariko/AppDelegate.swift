@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nariko
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        NarikoTool.sharedInstance.checkAuth()
+        self.window!.rootViewController!.view.addGestureRecognizer(BoubleTapGestureRecognizer())
+        self.window!.rootViewController!.view.addGestureRecognizer(BubbleLongPressGestureRecognizer())
+        
         return true
     }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AF3273A1D11A503003C2DB7 /* Nariko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF327391D11A503003C2DB7 /* Nariko.framework */; };
+		4AF3273B1D11A503003C2DB7 /* Nariko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF327391D11A503003C2DB7 /* Nariko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5894720261CFD22EE32395C2 /* Pods_Nariko_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA681EA81A5B35F998714060 /* Pods_Nariko_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -27,11 +29,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4AF3273C1D11A504003C2DB7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4AF3273B1D11A503003C2DB7 /* Nariko.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1C5021C5A1C693F740C60278 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		1F4EDA3A933202EA710142C0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		383AB7E268C982FDAC07D317 /* Pods-Nariko_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nariko_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nariko_Tests/Pods-Nariko_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3C24E67A0FF58B77F1F208CC /* Nariko.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Nariko.podspec; path = ../Nariko.podspec; sourceTree = "<group>"; };
+		4AF327391D11A503003C2DB7 /* Nariko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Nariko.framework; path = "/Users/daishi/Library/Developer/Xcode/DerivedData/Nariko-ghrvzpethzovzgacuslgafsujphv/Build/Products/Debug-iphoneos/Nariko/Nariko.framework"; sourceTree = "<absolute>"; };
 		5D5EFF57BBB70E362709E774 /* Pods-Nariko_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nariko_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nariko_Example/Pods-Nariko_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Nariko_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nariko_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF3273A1D11A503003C2DB7 /* Nariko.framework in Frameworks */,
 				A1A943BDC4687C296E04279B /* Pods_Nariko_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +101,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				4AF327391D11A503003C2DB7 /* Nariko.framework */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Nariko */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -172,6 +191,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				DAC7726A81EA3096E09FD6E1 /* [CP] Embed Pods Frameworks */,
 				A6581F28D50FE8D5D1013820 /* [CP] Copy Pods Resources */,
+				4AF3273C1D11A504003C2DB7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -492,7 +512,7 @@
 				INFOPLIST_FILE = Nariko/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inoity.Nariko-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -505,7 +525,7 @@
 				INFOPLIST_FILE = Nariko/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inoity.Nariko-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

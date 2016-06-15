@@ -1,5 +1,7 @@
 PODS:
-  - Nariko (0.1.0)
+  - Nariko (0.1.0):
+    - SwiftHTTP (~> 1.0.5)
+  - SwiftHTTP (1.0.5)
 
 DEPENDENCIES:
   - Nariko (from `../`)
@@ -9,7 +11,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Nariko: e5e8f7ce602192225dd6b8c289ba0a9e85708bef
+  Nariko: 01cb27a3133650fa0885f19c390a3b233c297239
+  SwiftHTTP: edb45e72f27d1d95d328d2b2c16a61aa94f1e9f7
 
 PODFILE CHECKSUM: 73917942308d485af4a4e9c98aaf0fe46f475d7d
 
