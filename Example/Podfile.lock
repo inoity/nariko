@@ -1,0 +1,16 @@
+PODS:
+  - Nariko (0.1.0)
+
+DEPENDENCIES:
+  - Nariko (from `../`)
+
+EXTERNAL SOURCES:
+  Nariko:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Nariko: e5e8f7ce602192225dd6b8c289ba0a9e85708bef
+
+PODFILE CHECKSUM: 73917942308d485af4a4e9c98aaf0fe46f475d7d
+
+COCOAPODS: 1.0.1

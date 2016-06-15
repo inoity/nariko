@@ -1,0 +1,6 @@
+framework module Nariko {
+  umbrella header "Nariko-umbrella.h"
+
+  export *
+  module * { export * }
+}
