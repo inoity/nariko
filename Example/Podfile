@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Nariko_Example' do
+  pod 'Nariko', :path => '../'
+
+  target 'Nariko_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
