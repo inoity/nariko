@@ -40,14 +40,14 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
     
     public func checkAuth(){
         let defaults = NSUserDefaults.standardUserDefaults()
-        print(defaults.stringForKey("nar_user"))
+        print(defaults.stringForKey("nar_email"))
         print(defaults.stringForKey("nar_pass"))
         
         print(NSBundle.mainBundle().bundleIdentifier)
         
-        if defaults.stringForKey("nar_user") != nil && defaults.stringForKey("nar_pass") != nil{
+        if defaults.stringForKey("nar_email") != nil && defaults.stringForKey("nar_pass") != nil{
             print("check auth")
-            CallApi().authRequest(["Email": "teszt", "Password": "alma"], callCompletion: { (success, errorCode, msg) in
+            CallApi().authRequest(["Email": defaults.stringForKey("nar_email")!, "Password": defaults.stringForKey("nar_pass")!], callCompletion: { (success, errorCode, msg) in
                 if success{
                     self.apiKey = msg
                     print("OOOKKK")
@@ -57,13 +57,13 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
             
         } else {
             print("Not logged in!")
-            CallApi().authRequest(["Email": "teszt", "Password": "alma"], callCompletion: { (success, errorCode, msg) in
+           /* CallApi().authRequest(["Email": "teszt", "Password": "alma"], callCompletion: { (success, errorCode, msg) in
                 if success{
                     self.apiKey = msg
                     print("OOOKKK2222")
                     self.isAuth = true
                 }
-            })
+            }) */
             
         }
     }

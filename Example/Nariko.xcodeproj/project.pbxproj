@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A112D7E1D11FE0A00ACA734 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A112D7D1D11FE0A00ACA734 /* Settings.bundle */; };
 		4AF3273A1D11A503003C2DB7 /* Nariko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF327391D11A503003C2DB7 /* Nariko.framework */; };
 		4AF3273B1D11A503003C2DB7 /* Nariko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF327391D11A503003C2DB7 /* Nariko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5894720261CFD22EE32395C2 /* Pods_Nariko_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA681EA81A5B35F998714060 /* Pods_Nariko_Tests.framework */; };
@@ -48,6 +49,7 @@
 		1F4EDA3A933202EA710142C0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		383AB7E268C982FDAC07D317 /* Pods-Nariko_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nariko_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nariko_Tests/Pods-Nariko_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3C24E67A0FF58B77F1F208CC /* Nariko.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Nariko.podspec; path = ../Nariko.podspec; sourceTree = "<group>"; };
+		4A112D7D1D11FE0A00ACA734 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4AF327391D11A503003C2DB7 /* Nariko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Nariko.framework; path = "/Users/daishi/Library/Developer/Xcode/DerivedData/Nariko-ghrvzpethzovzgacuslgafsujphv/Build/Products/Debug-iphoneos/Nariko/Nariko.framework"; sourceTree = "<absolute>"; };
 		5D5EFF57BBB70E362709E774 /* Pods-Nariko_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nariko_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nariko_Example/Pods-Nariko_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Nariko_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nariko_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				4A112D7D1D11FE0A00ACA734 /* Settings.bundle */,
 			);
 			name = "Example for Nariko";
 			path = Nariko;
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A112D7E1D11FE0A00ACA734 /* Settings.bundle in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,

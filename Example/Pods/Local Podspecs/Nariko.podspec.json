@@ -19,6 +19,15 @@
     "ios": "8.0"
   },
   "source_files": "Nariko/Classes/**/*",
+  "ios": {
+    "resource_bundles": {
+      "Settings": [
+        "Nariko/*.lproj",
+        "Nariko/Root.plist"
+      ]
+    }
+  },
+  "prepare_command": "chmod u+x $(pwd)/Nariko/settings-script.sh",
   "resource_bundles": {
     "Nariko": [
       "Nariko/Assets/*.png"

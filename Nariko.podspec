@@ -31,7 +31,10 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'Nariko/Classes/**/*'
-  
+
+  # s.ios.resource_bundle = { 'Settings' => ['Nariko/*.lproj','Nariko/Root.plist'] }
+  # s.prepare_command = 'chmod u+x $(pwd)/Nariko/settings-script.sh'
+
   s.resource_bundles = {
     'Nariko' => ['Nariko/Assets/*.png']
   }
