@@ -126,12 +126,12 @@ extension UIView {
     
     func spring (animations: ()->Void, completion:((Bool)->Void)?) {
         UIView.animateWithDuration(BubbleControlMoveAnimationDuration,
-            delay: 0,
-            usingSpringWithDamping: BubbleControlSpringDamping,
-            initialSpringVelocity: BubbleControlSpringVelocity,
-            options: UIViewAnimationOptions.CurveEaseInOut,
-            animations: animations,
-            completion: completion)
+                                   delay: 0,
+                                   usingSpringWithDamping: BubbleControlSpringDamping,
+                                   initialSpringVelocity: BubbleControlSpringVelocity,
+                                   options: UIViewAnimationOptions.CurveEaseInOut,
+                                   animations: animations,
+                                   completion: completion)
     }
     
     
@@ -183,8 +183,8 @@ extension UIView {
     
     func alphaTo (to: CGFloat) {
         UIView.animateWithDuration(BubbleControlMoveAnimationDuration,
-            animations: {
-                self.alpha = to
+                                   animations: {
+                                    self.alpha = to
         })
     }
     
@@ -208,45 +208,28 @@ class BubbleControl: UIControl {
     
     // MARK: Constants
     
-    let popTriggerDuration: NSTimeInterval = 0.5
-    let popAnimationDuration: NSTimeInterval = 1
-    let popAnimationShakeDuration: NSTimeInterval = 0.10
-    let popAnimationShakeRotations: (CGFloat, CGFloat) = (-30, 30)
-    let popAnimationScale: CGFloat = 1.2
-    
     let snapOffsetMin: CGFloat = 10
     let snapOffsetMax: CGFloat = 50
-    
-    
     
     // MARK: Optionals
     
     var contentView: UIView?
-    
     var snapsInside: Bool = false
- //   var popsToNavBar: Bool = true
     var movesBottom: Bool = false
-    
-    
     
     // MARK: Actions
     
     var didToggle: ((Bool) -> ())?
     var didNavigationBarButtonPressed: (() -> ())?
-   // var didPop: (()->())?
     
     var setOpenAnimation: ((contentView: UIView, backgroundView: UIView?)->())?
     var setCloseAnimation: ((contentView: UIView, backgroundView: UIView?) -> ())?
-    
-    
     
     // MARK: Bubble State
     
     enum BubbleControlState {
         case Snap       // snapped to edge
         case Drag       // dragging around
-      //  case Pop        // long pressed and popping
-      //  case NavBar     // popped and went to nav bar
     }
     
     var bubbleState: BubbleControlState = .Snap {
@@ -259,16 +242,11 @@ class BubbleControl: UIControl {
         }
     }
     
-    
-    
     // MARK: Snap
     
     private var snapOffset: CGFloat!
-    
     private var snapInTimer: NSTimer?
     private var snapInInterval: NSTimeInterval = 2
-    
-    
     
     // MARK: Toggle
     
@@ -285,36 +263,6 @@ class BubbleControl: UIControl {
         }
     }
     
-    
-    
-    // MARK: Navigation Button
-    
-    private var barButtonItem: UIBarButtonItem?
-    
-    
-    
-    // MARK: Badge
-    
-   /* private var badgeLabel: UILabel?
-    
-    var badgeCount: Int = 0 {
-        didSet {
-            if badgeCount < 0 {
-                badgeCount = 0
-            } else if badgeCount > 0 {
-                badgeLabel?.hidden = false
-                badgeLabel?.text = "\(badgeCount)"
-                badgeLabel?.bubble()
-            } else {
-                badgeLabel?.hidden = true
-            }
-            
-            barButtonItem?.setBadgeValue(badgeCount)
-        }
-    }*/
-    
-    
-    
     // MARK: Image
     
     var imageView: UIImageView?
@@ -323,8 +271,6 @@ class BubbleControl: UIControl {
             imageView?.image = image
         }
     }
-    
-    
     
     // MARK: Init
     
@@ -354,7 +300,6 @@ class BubbleControl: UIControl {
         snapOffset = snapOffsetMin
         layer.cornerRadius = w/2
         
-        
         // image view
         imageView = UIImageView (frame: CGRectInset(frame, 0, 0))
         imageView?.clipsToBounds = true
@@ -370,33 +315,12 @@ class BubbleControl: UIControl {
         
         borderView.addSubview(imageView!)
         
-        
         addSubview(borderView)
-        
-        
-        // badge label
-   /*     badgeLabel = UILabel (frame: CGRectInset(frame, 25, 25))
-        badgeLabel?.center = CGPointMake(left + badgeLabel!.w/2, top + badgeLabel!.h/2)
-        badgeLabel?.backgroundColor = UIColor.redColor()
-        badgeLabel?.textAlignment = NSTextAlignment.Center
-        badgeLabel?.textColor = UIColor.whiteColor()
-        badgeLabel?.text = "\(badgeCount)"
-        badgeLabel?.layer.cornerRadius = badgeLabel!.w/2
-        badgeLabel?.layer.masksToBounds = true
-        addSubview(badgeLabel!)
-        
-        badgeCount = 0*/
-        
         
         // events
         addTarget(self, action: #selector(BubbleControl.touchDown), forControlEvents: UIControlEvents.TouchDown)
         addTarget(self, action: #selector(BubbleControl.touchUp), forControlEvents: UIControlEvents.TouchUpInside)
         addTarget(self, action: #selector(BubbleControl.touchDrag(_:event:)), forControlEvents: UIControlEvents.TouchDragInside)
-        
-    //    var longPress = UILongPressGestureRecognizer (target: self, action: "longPressHandler:")
-    //    longPress.minimumPressDuration = 0.75
-    //    addGestureRecognizer(longPress)
-        
         
         // place
         center.x = WINDOW!.w - w/2 + snapOffset
@@ -409,22 +333,15 @@ class BubbleControl: UIControl {
     // MARK: Snap To Edge
     
     func snap () {
-       
         
-        // if control on left side
         var targetX = WINDOW!.leftWithOffset(snapOffset)
-       // var badgeTargetX = w - badgeLabel!.w
         
-        
-        // if control on right side
         if center.x > WINDOW!.w/2 {
             targetX = WINDOW!.rightWithOffset(snapOffset) - w
-           // badgeTargetX = 0
         }
         
         // move to snap position
         moveX(targetX)
-       // badgeLabel!.moveX(badgeTargetX)
     }
     
     func snapInside () {
@@ -447,15 +364,15 @@ class BubbleControl: UIControl {
         }
         
         snapInTimer = NSTimer.scheduledTimerWithTimeInterval(snapInInterval,
-            target: self,
-            selector: #selector(BubbleControl.snapInside),
-            userInfo: nil,
-            repeats: false)
+                                                             target: self,
+                                                             selector: #selector(BubbleControl.snapInside),
+                                                             userInfo: nil,
+                                                             repeats: false)
     }
     
     
     func lockInWindowBounds () {
-       
+        
         if top < 64 {
             var rect = frame
             rect.origin.y = 64
@@ -467,7 +384,6 @@ class BubbleControl: UIControl {
             rect.origin.x = 0
             frame = rect
         }
-        
         
         if bottom > WINDOW!.h {
             var rect = frame
@@ -481,8 +397,6 @@ class BubbleControl: UIControl {
             frame = rect
         }
     }
-    
-    
     
     // MARK: Events
     
@@ -506,7 +420,7 @@ class BubbleControl: UIControl {
             toggle = false
         }
         
-        let touch = event.allTouches()!.first! 
+        let touch = event.allTouches()!.first!
         let location = touch.locationInView(WINDOW!)
         
         center = location
@@ -521,40 +435,6 @@ class BubbleControl: UIControl {
     func degreesToRadians (angle: CGFloat) -> CGFloat {
         return (CGFloat (M_PI) * angle) / 180.0
     }
-    
-    
-    
-    // MARK: Pop
-    
-  /*  func pop () {
-        bubbleState = .Pop
-        snap()
-        
-        let shake = CABasicAnimation(keyPath: "transform.rotation")
-        shake.fromValue = degreesToRadians(popAnimationShakeRotations.0)
-        shake.toValue = degreesToRadians(popAnimationShakeRotations.1)
-        shake.duration = popAnimationShakeDuration
-        shake.repeatCount = Float.infinity
-        shake.autoreverses = true
-        
-        let grow = CABasicAnimation (keyPath: "transform.scale")
-        grow.fromValue = 1
-        grow.toValue = popAnimationScale
-        grow.duration = popAnimationDuration
-        
-        let anims = CAAnimationGroup ()
-        anims.animations = [shake, grow]
-        anims.duration = popAnimationDuration
-        anims.delegate = self
-        anims.removedOnCompletion = false
-        
-        layer.addAnimation(anims, forKey: "pop")
-    }
-    
-    func cancelPop () {
-        snap()
-        layer.removeAnimationForKey("pop")
-    }*/
     
     
     // MARK: Toggle
@@ -595,7 +475,7 @@ class BubbleControl: UIControl {
         print(image)
         screenShot = image
         //Save it to the camera roll
-      //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         self.hidden = false
     }
     
@@ -619,51 +499,4 @@ class BubbleControl: UIControl {
     }
 }
 
-// MARK: - UIBarButtonItem Badge Extension
-/*
-private var barButtonAssociatedObjectBadge: UInt8 = 0
-extension UIBarButtonItem {
-    
-    private var badgeLabel: UILabel? {
-        get {
-            return objc_getAssociatedObject(self, &barButtonAssociatedObjectBadge) as! UILabel?
-        } set (value) {
-            objc_setAssociatedObject(self, &barButtonAssociatedObjectBadge, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    func setBadgeValue (value: Int) {
-        print("value \(value)")
-        if let label = badgeLabel {
-            if value > 0 {
-                label.hidden = false
-                label.text = "\(value)"
-                label.bubble()
-            } else {
-                label.hidden = true
-            }
-        } else {
-            let view = valueForKey("view") as? UIView
-            
-            badgeLabel = UILabel (frame: CGRect (x: 0, y: 0, width: 20, height: 20))
-            badgeLabel?.center = CGPoint (x: view!.right, y: view!.top)
-            badgeLabel?.backgroundColor = UIColor.redColor()
-            
-            badgeLabel?.layer.cornerRadius = badgeLabel!.h/2
-            badgeLabel?.layer.masksToBounds = true
-            
-            badgeLabel?.textAlignment = NSTextAlignment.Center
-            badgeLabel?.textColor = UIColor.whiteColor()
-            badgeLabel?.font = UIFont.systemFontOfSize(15)
-            badgeLabel?.text = "\(value)"
-            
-            
-            if value == 0 {
-                badgeLabel?.hidden = true
-            }
-            
-            view?.addSubview(badgeLabel!)
-        }
-    }
-}*/
 

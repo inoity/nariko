@@ -58,14 +58,6 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
             
         } else {
             print("Not logged in!")
-            /* CallApi().authRequest(["Email": "teszt", "Password": "alma"], callCompletion: { (success, errorCode, msg) in
-             if success{
-             self.apiKey = msg
-             print("OOOKKK2222")
-             self.isAuth = true
-             }
-             }) */
-            
         }
     }
     

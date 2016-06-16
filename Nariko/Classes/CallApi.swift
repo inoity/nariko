@@ -17,10 +17,6 @@ class CallApi {
             let opt = try HTTP.POST("http://nariko.io/api/application/login", parameters: paremeters, headers: nil, requestSerializer: JSONParameterSerializer())
             
             opt.start { response in
-                print(response.error)
-                print(response.text)
-                print(response.text?.parseJSONString)
-                
                 if let jsonObject: AnyObject = response.text?.parseJSONString {
                     
                     if jsonObject["Status"]! as! Int == 200{
@@ -46,8 +42,6 @@ class CallApi {
     
     func sendData(image: UIImage, comment: String, callCompletion: ((success: Bool, errorCode: Int, msg: String) -> Void)!) {
         
-        //  println(guid)
-        
         do {
             let base64Str = UIImageJPEGRepresentation(image, 1.0)!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
             
@@ -56,8 +50,7 @@ class CallApi {
          //   let opt = try HTTP.POST("http://nariko.io/api/task", parameters: ["ApiKey": "", "modelName": UIDevice().modelName, "systemVersion":UIDevice.currentDevice().systemVersion, "orientation": UIDevice.currentDevice().orientation.rawValue, "name":UIDevice.currentDevice().name, "systemName": UIDevice.currentDevice().systemName, "file": Upload(data: UIImageJPEGRepresentation(image, 1.0)!, fileName: "teszt", mimeType: "image/jpeg")], headers: nil, requestSerializer: JSONParameterSerializer())
             
             opt.start { response in
-                //do things...
-                print(response.error)
+                
                 print(response.text)
                 dispatch_async(dispatch_get_main_queue()){
                     callCompletion(success: true, errorCode: -1, msg: "")

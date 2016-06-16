@@ -58,10 +58,8 @@ extension String {
         let data = self.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         
         if let jsonData = data {
-            // Will return an object or nil if JSON decoding fails
             return try? NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
         } else {
-            // Lossless conversion of the string was not possible
             return nil
         }
     }
