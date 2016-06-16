@@ -14,7 +14,7 @@ class CallApi {
     func authRequest(paremeters: [String: AnyObject], callCompletion: ((success: Bool, errorCode: Int, msg: String) -> Void)!) {
         
         do {
-            let opt = try HTTP.POST("http://nariko.io/api/login", parameters: paremeters, headers: nil, requestSerializer: JSONParameterSerializer())
+            let opt = try HTTP.POST("http://nariko.io/api/application/login", parameters: paremeters, headers: nil, requestSerializer: JSONParameterSerializer())
             
             opt.start { response in
                 print(response.error)
@@ -48,11 +48,10 @@ class CallApi {
         
         //  println(guid)
         
-        
         do {
             let base64Str = UIImageJPEGRepresentation(image, 1.0)!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
             
-            let opt = try HTTP.POST("http://nariko.io/api/task", parameters: ["ApiKey": NarikoTool.sharedInstance.apiKey!, "modelName": UIDevice().modelName, "systemVersion":UIDevice.currentDevice().systemVersion, "orientation": UIDevice.currentDevice().orientation.rawValue.description, "name": UIDevice.currentDevice().name, "systemName": UIDevice.currentDevice().systemName, "image": base64Str, "comment": comment], headers: nil, requestSerializer: JSONParameterSerializer())
+            let opt = try HTTP.POST("http://nariko.io/api/application/task", parameters: ["ApiKey": NarikoTool.sharedInstance.apiKey!, "modelName": UIDevice().modelName, "systemVersion":UIDevice.currentDevice().systemVersion, "orientation": UIDevice.currentDevice().orientation.rawValue.description, "name": UIDevice.currentDevice().name, "systemName": UIDevice.currentDevice().systemName, "image": base64Str, "comment": comment], headers: nil, requestSerializer: JSONParameterSerializer())
             
          //   let opt = try HTTP.POST("http://nariko.io/api/task", parameters: ["ApiKey": "", "modelName": UIDevice().modelName, "systemVersion":UIDevice.currentDevice().systemVersion, "orientation": UIDevice.currentDevice().orientation.rawValue, "name":UIDevice.currentDevice().name, "systemName": UIDevice.currentDevice().systemName, "file": Upload(data: UIImageJPEGRepresentation(image, 1.0)!, fileName: "teszt", mimeType: "image/jpeg")], headers: nil, requestSerializer: JSONParameterSerializer())
             

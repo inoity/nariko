@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Nariko'
   s.version          = '0.1.0'
-s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which will allow users to give feedback about application designs and mobile user experience.'
+s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile UX'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ s.summary          = 'Nariko.io is the first visual feedback tool for mobile app
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile user experience. Users can simply draw or drop a pin while adding a comment anywhere where they’ve discovered a bug within the app or are looking to change a certain component. Nariko.io supports quick iterations, agile development, and front-end UI issue reporting in mobile apps.
                        DESC
 
   s.homepage         = 'https://github.com/inoity/Nariko'

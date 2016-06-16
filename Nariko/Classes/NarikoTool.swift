@@ -27,6 +27,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         registerSettingsBundle()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.checkAuth), name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.removeBubble), name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     deinit { //Not needed for iOS9 and above. ARC deals with the observer.
@@ -47,7 +48,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         
         if defaults.stringForKey("nar_email") != nil && defaults.stringForKey("nar_pass") != nil{
             print("check auth")
-            CallApi().authRequest(["Email": defaults.stringForKey("nar_email")!, "Password": defaults.stringForKey("nar_pass")!], callCompletion: { (success, errorCode, msg) in
+            CallApi().authRequest(["Email": defaults.stringForKey("nar_email")!, "Password": defaults.stringForKey("nar_pass")!, "BundleId": NSBundle.mainBundle().bundleIdentifier!], callCompletion: { (success, errorCode, msg) in
                 if success{
                     self.apiKey = msg
                     print("OOOKKK")
@@ -57,13 +58,13 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
             
         } else {
             print("Not logged in!")
-           /* CallApi().authRequest(["Email": "teszt", "Password": "alma"], callCompletion: { (success, errorCode, msg) in
-                if success{
-                    self.apiKey = msg
-                    print("OOOKKK2222")
-                    self.isAuth = true
-                }
-            }) */
+            /* CallApi().authRequest(["Email": "teszt", "Password": "alma"], callCompletion: { (success, errorCode, msg) in
+             if success{
+             self.apiKey = msg
+             print("OOOKKK2222")
+             self.isAuth = true
+             }
+             }) */
             
         }
     }
@@ -83,8 +84,6 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
             bubble.image = UIImage(named: "debugme_logo_rc", inBundle: bundle, compatibleWithTraitCollection: nil)
         }
         
-        
-        
         bubble.setOpenAnimation = { content, background in
             self.bubble.contentView!.bottom = win.bottom
             if (self.bubble.center.x > win.center.x) {
@@ -99,12 +98,15 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
                     }, completion: nil)
             }
         }
+        var max: CGFloat?
+        if UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation){
+            max = win.h - 350
+        } else {
+            max = win.h - 180
+            
+        }
         
-        //  let min: CGFloat = 50
-        let max: CGFloat = win.h - 350
-        // let randH = min + CGFloat(random()%Int(max-min))
-        
-        let v = UIView (frame: CGRect (x: 0, y: 0, width: win.w, height: max))
+        let v = UIView (frame: CGRect (x: 0, y: 0, width: win.w, height: max!))
         v.backgroundColor = UIColor.grayColor()
         
         let title = UILabel(frame: CGRectZero)
@@ -126,6 +128,15 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -15))
         v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 15))
         
+        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
+        closeButton.setTitle("Close", forState: .Normal)
+        closeButton.addTarget(self, action: #selector(removeBubble), forControlEvents: .TouchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        v.addSubview(closeButton)
+        
+        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 15))
+        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 15))
+        
         textView.text = ""
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -142,13 +153,16 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
     }
     
     public func textViewDidBeginEditing(textView: UITextView) {
-        print("text tap")
-        bubble.moveY(20.0)
-        bubble.contentView?.moveY(20.0+bubble.size.height)
+        if UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation){
+            bubble.moveY(20.0)
+            bubble.contentView?.moveY(20.0+bubble.size.height)
+        } else {
+            bubble.moveY(-bubble.size.height)
+            bubble.contentView?.moveY(0.0)
+        }
     }
     
     func send(){
-        print("send")
         if bubble.screenShot != nil{
             CallApi().sendData(bubble.screenShot!, comment: textView.text) { (success, errorCode, msg) in
                 if success {
@@ -157,23 +171,17 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
                 }
             }
         } else {
-            
-            let alert = UIAlertController(title: "Information", message: "No image to send!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Information", message: "The screenshot could not be taken!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
             APPDELEGATE.window!!.rootViewController!.presentViewController(alert, animated: true, completion: nil)
         }
-        
     }
     
     public func removeBubble(){
-        //     print("Start remove subview")
         if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
-            //  print("yes")
             bubble.closeContentView()
             viewWithTag.removeFromSuperview()
-        }/*else{
-         print("No!")
-         }*/
+        }
     }
 }
 

@@ -224,7 +224,7 @@ class BubbleControl: UIControl {
     var contentView: UIView?
     
     var snapsInside: Bool = false
-    var popsToNavBar: Bool = true
+ //   var popsToNavBar: Bool = true
     var movesBottom: Bool = false
     
     
@@ -233,7 +233,7 @@ class BubbleControl: UIControl {
     
     var didToggle: ((Bool) -> ())?
     var didNavigationBarButtonPressed: (() -> ())?
-    var didPop: (()->())?
+   // var didPop: (()->())?
     
     var setOpenAnimation: ((contentView: UIView, backgroundView: UIView?)->())?
     var setCloseAnimation: ((contentView: UIView, backgroundView: UIView?) -> ())?
@@ -245,8 +245,8 @@ class BubbleControl: UIControl {
     enum BubbleControlState {
         case Snap       // snapped to edge
         case Drag       // dragging around
-        case Pop        // long pressed and popping
-        case NavBar     // popped and went to nav bar
+      //  case Pop        // long pressed and popping
+      //  case NavBar     // popped and went to nav bar
     }
     
     var bubbleState: BubbleControlState = .Snap {
@@ -295,7 +295,7 @@ class BubbleControl: UIControl {
     
     // MARK: Badge
     
-    private var badgeLabel: UILabel?
+   /* private var badgeLabel: UILabel?
     
     var badgeCount: Int = 0 {
         didSet {
@@ -311,7 +311,7 @@ class BubbleControl: UIControl {
             
             barButtonItem?.setBadgeValue(badgeCount)
         }
-    }
+    }*/
     
     
     
@@ -356,10 +356,8 @@ class BubbleControl: UIControl {
         
         
         // image view
-        imageView = UIImageView (frame: CGRectInset(frame, 5, 5))
-        
-        addSubview(imageView!)
-        
+        imageView = UIImageView (frame: CGRectInset(frame, 0, 0))
+        imageView?.clipsToBounds = true
         
         // circle border
         let borderView = UIView (frame: frame)
@@ -368,11 +366,16 @@ class BubbleControl: UIControl {
         borderView.layer.cornerRadius = w/2
         borderView.layer.masksToBounds = true
         borderView.userInteractionEnabled = false
+        borderView.clipsToBounds = true
+        
+        borderView.addSubview(imageView!)
+        
+        
         addSubview(borderView)
         
         
         // badge label
-        badgeLabel = UILabel (frame: CGRectInset(frame, 25, 25))
+   /*     badgeLabel = UILabel (frame: CGRectInset(frame, 25, 25))
         badgeLabel?.center = CGPointMake(left + badgeLabel!.w/2, top + badgeLabel!.h/2)
         badgeLabel?.backgroundColor = UIColor.redColor()
         badgeLabel?.textAlignment = NSTextAlignment.Center
@@ -382,7 +385,7 @@ class BubbleControl: UIControl {
         badgeLabel?.layer.masksToBounds = true
         addSubview(badgeLabel!)
         
-        badgeCount = 0
+        badgeCount = 0*/
         
         
         // events
@@ -410,18 +413,18 @@ class BubbleControl: UIControl {
         
         // if control on left side
         var targetX = WINDOW!.leftWithOffset(snapOffset)
-        var badgeTargetX = w - badgeLabel!.w
+       // var badgeTargetX = w - badgeLabel!.w
         
         
         // if control on right side
         if center.x > WINDOW!.w/2 {
             targetX = WINDOW!.rightWithOffset(snapOffset) - w
-            badgeTargetX = 0
+           // badgeTargetX = 0
         }
         
         // move to snap position
         moveX(targetX)
-        badgeLabel!.moveX(badgeTargetX)
+       // badgeLabel!.moveX(badgeTargetX)
     }
     
     func snapInside () {
@@ -523,7 +526,7 @@ class BubbleControl: UIControl {
     
     // MARK: Pop
     
-    func pop () {
+  /*  func pop () {
         bubbleState = .Pop
         snap()
         
@@ -551,7 +554,7 @@ class BubbleControl: UIControl {
     func cancelPop () {
         snap()
         layer.removeAnimationForKey("pop")
-    }
+    }*/
     
     
     // MARK: Toggle
@@ -617,7 +620,7 @@ class BubbleControl: UIControl {
 }
 
 // MARK: - UIBarButtonItem Badge Extension
-
+/*
 private var barButtonAssociatedObjectBadge: UInt8 = 0
 extension UIBarButtonItem {
     
@@ -662,5 +665,5 @@ extension UIBarButtonItem {
             view?.addSubview(badgeLabel!)
         }
     }
-}
+}*/
 
