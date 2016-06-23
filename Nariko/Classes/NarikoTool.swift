@@ -66,7 +66,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         let win = APPDELEGATE.window!!
         
         win.endEditing(true)
-        
+        print(UIApplication.sharedApplication().statusBarOrientation.rawValue)
         bubble = BubbleControl (win: win, size: CGSizeMake(80, 80))
         bubble.tag = 3333
         
@@ -99,11 +99,11 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         }
         
         let v = UIView (frame: CGRect (x: 0, y: 0, width: win.w, height: max!))
-        v.backgroundColor = UIColor.grayColor()
+        v.backgroundColor = UIColor(red: 234/255, green: 237/255, blue: 242/255, alpha: 1.0)
         
         let title = UILabel(frame: CGRectZero)
         title.text = "Feedback"
-        title.textColor = UIColor.whiteColor()
+        title.textColor = UIColor.darkGrayColor()
         title.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
         title.translatesAutoresizingMaskIntoConstraints = false
         v.addSubview(title)
@@ -114,24 +114,38 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         let sendButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
         sendButton.setTitle("Send", forState: .Normal)
         sendButton.addTarget(self, action: #selector(send), forControlEvents: .TouchUpInside)
+        sendButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.layer.borderWidth = 0.7
+        sendButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+        sendButton.layer.cornerRadius = 3.0
         v.addSubview(sendButton)
         
+        v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 70))
         v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -15))
-        v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 15))
+        v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 10))
         
         let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
         closeButton.setTitle("Close", forState: .Normal)
         closeButton.addTarget(self, action: #selector(removeBubble), forControlEvents: .TouchUpInside)
+        closeButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.layer.borderWidth = 0.7
+        closeButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+        closeButton.layer.cornerRadius = 3.0
         v.addSubview(closeButton)
         
+
+        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 70))
         v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 15))
-        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 15))
+        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 10))
         
         textView.text = ""
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.layer.cornerRadius = 5.0
+        textView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        textView.layer.borderWidth = 0.7
         v.addSubview(textView)
         
         v.addConstraint(NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -15))
