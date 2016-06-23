@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nariko
 
 [![CI Status](http://img.shields.io/travis/Zsolt Papp/Nariko.svg?style=flat)](https://travis-ci.org/Zsolt Papp/Nariko)
@@ -27,3 +28,6 @@ Zsolt Papp, pappzsolt100@gmail.com
 ## License
 
 Nariko is available under the MIT license. See the LICENSE file for more info.
+=======
+# nariko
+>>>>>>> 4b06b4f15773a09d096a3273402139c77c2d9c6a
