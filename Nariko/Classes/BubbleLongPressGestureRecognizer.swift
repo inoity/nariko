@@ -13,7 +13,7 @@ public class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIG
     
     override init(target: AnyObject?, action: Selector) {
         super.init(target: target, action: action)
-    
+        
         self.addTarget(self, action: #selector(tap(_:)))
         self.minimumPressDuration = 1.5
         self.numberOfTouchesRequired = 3
@@ -30,7 +30,7 @@ extension BubbleLongPressGestureRecognizer {
     func tap(g:UILongPressGestureRecognizer) {
         
         print("long")
-    
+        
         switch g.state {
             
         case .Began:
@@ -57,5 +57,5 @@ extension BubbleLongPressGestureRecognizer {
         default: break
         }
     }
-
+    
 }

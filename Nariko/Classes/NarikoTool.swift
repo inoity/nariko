@@ -53,6 +53,8 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
                     self.apiKey = msg
                     print("OOOKKK")
                     self.isAuth = true
+                } else {
+                    print(errorCode)
                 }
             })
             
@@ -135,7 +137,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         closeButton.layer.cornerRadius = 3.0
         v.addSubview(closeButton)
         
-
+        
         v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 70))
         v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 15))
         v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: v, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 10))
