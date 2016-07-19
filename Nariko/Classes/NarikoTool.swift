@@ -22,12 +22,62 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
     var WINDOW: UIWindow?
     var textView: UITextView = UITextView(frame: CGRectZero)
     
+    
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    func showActivityIndicator() {
+        let screenSize: CGRect =  UIApplication.sharedApplication().keyWindow!.bounds
+        
+        container.frame = CGRectMake(0, 0, screenSize.width, screenSize.height)
+        container.center = CGPointMake(screenSize.width/2, screenSize.height/2)
+
+            container.backgroundColor = UIColor(red: 234.0/255.0, green: 237.0/255.0, blue: 242.0/255.0, alpha: 0.5)
+        
+            loadingView.frame = CGRectMake(0, 0, 60, 60)
+            loadingView.center = CGPointMake(screenSize.width/2, (screenSize.height-50)/2)
+            
+            loadingView.backgroundColor = UIColor.grayColor()
+            loadingView.clipsToBounds = true
+            loadingView.layer.cornerRadius = 10
+            
+            self.activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+            self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            self.activityIndicator.center = CGPointMake(loadingView.frame.size.width / 2, loadingView.frame.size.height / 2);
+            
+            loadingView.addSubview(self.activityIndicator)
+            
+            
+        container.addSubview(loadingView)
+        APPDELEGATE.window!!.addSubview(container)
+        self.activityIndicator.startAnimating()
+        
+    }
+    
+    /*
+     Hide activity indicator
+     Actually remove activity indicator from its super view
+     
+     @param uiView - remove activity indicator from this view
+     */
+    func hideActivityIndicator() {
+        for view in loadingView.subviews {
+            view.removeFromSuperview()
+        }
+        loadingView.removeFromSuperview()
+        container.removeFromSuperview()
+        self.activityIndicator.stopAnimating()
+        
+    }
+    
     public override init() {
         super.init()
         registerSettingsBundle()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.checkAuth), name: NSUserDefaultsDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.removeBubble), name: UIDeviceOrientationDidChangeNotification, object: nil)
+      
     }
     
     deinit { //Not needed for iOS9 and above. ARC deals with the observer.
@@ -38,6 +88,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         let appDefaults = [String:AnyObject]()
         NSUserDefaults.standardUserDefaults().registerDefaults(appDefaults)
     }
+    
     
     public func checkAuth(){
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -94,10 +145,18 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         }
         var max: CGFloat?
         if UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation){
-            max = win.h - 350
-        } else {
-            max = win.h - 180
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+               max = win.h - 500
+            } else {
+                max = win.h - 350
+            }
             
+        } else {
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+                max = win.h - 430
+            } else {
+                max = win.h - 180
+            }
         }
         
         let v = UIView (frame: CGRect (x: 0, y: 0, width: win.w, height: max!))
@@ -129,7 +188,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         
         let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
         closeButton.setTitle("Close", forState: .Normal)
-        closeButton.addTarget(self, action: #selector(removeBubble), forControlEvents: .TouchUpInside)
+        closeButton.addTarget(self, action: #selector(self.removeBubbleForce), forControlEvents: .TouchUpInside)
         closeButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.layer.borderWidth = 0.7
@@ -158,6 +217,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         bubble.contentView = v
         
         win.addSubview(bubble)
+        prevOrient = UIDeviceOrientation.FaceUp
     }
     
     public func textViewDidBeginEditing(textView: UITextView) {
@@ -165,30 +225,67 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
             bubble.moveY(20.0)
             bubble.contentView?.moveY(20.0+bubble.size.height)
         } else {
-            bubble.moveY(-bubble.size.height)
-            bubble.contentView?.moveY(0.0)
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+                bubble.moveY(-bubble.size.height)
+                bubble.contentView?.moveY(20.0)
+            } else {
+                bubble.moveY(-bubble.size.height)
+                bubble.contentView?.moveY(0.0)
+            }
         }
     }
     
     func send(){
         if bubble.screenShot != nil{
+            showActivityIndicator()
             CallApi().sendData(bubble.screenShot!, comment: textView.text) { (success, errorCode, msg) in
                 if success {
                     print("send success")
-                    self.removeBubble()
+                    self.removeBubble(true)
+                    self.hideActivityIndicator()
+                } else {
+                    self.hideActivityIndicator()
+                    let alert = UIAlertController(title: "Error", message: "The screenshot could not be sent!", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+                    self.APPDELEGATE.window!!.rootViewController!.presentViewController(alert, animated: true, completion: nil)
                 }
             }
         } else {
+            hideActivityIndicator()
             let alert = UIAlertController(title: "Information", message: "The screenshot could not be taken!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
             APPDELEGATE.window!!.rootViewController!.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
-    public func removeBubble(){
-        if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
-            bubble.closeContentView()
-            viewWithTag.removeFromSuperview()
+    var prevOrient: UIDeviceOrientation = UIDeviceOrientation.FaceUp
+    
+    @objc private func removeBubbleForce (){
+        removeBubble(true)
+    }
+    public func removeBubble(force: Bool = false){
+        
+        print(prevOrient.rawValue)
+        if force {
+            print("remove")
+            if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
+                bubble.closeContentView()
+                viewWithTag.removeFromSuperview()
+            }
+        } else {
+        if (prevOrient.isPortrait && UIDevice.currentDevice().orientation.isLandscape) || (prevOrient.isLandscape && UIDevice.currentDevice().orientation.isPortrait) {
+            
+            print("remove")
+            if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
+                bubble.closeContentView()
+                viewWithTag.removeFromSuperview()
+            }
+        }
+        if !UIDevice.currentDevice().orientation.isFlat{
+            if prevOrient != UIDevice.currentDevice().orientation {
+                prevOrient = UIDevice.currentDevice().orientation
+            }
+        }
         }
     }
 }
