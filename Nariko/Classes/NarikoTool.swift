@@ -141,7 +141,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         let podBundle = NSBundle(forClass: NarikoTool.self)
         if let url = podBundle.URLForResource("Nariko", withExtension: "bundle") {
             let bundle = NSBundle(URL: url)
-            bubble.image = UIImage(named: "debugme_logo_rc", inBundle: bundle, compatibleWithTraitCollection: nil)
+            bubble.image = UIImage(named: "nariko_logo", inBundle: bundle, compatibleWithTraitCollection: nil)
         }
         
         bubble.setOpenAnimation = { content, background in

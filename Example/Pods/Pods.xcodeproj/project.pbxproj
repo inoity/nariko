@@ -32,7 +32,7 @@
 		D7786CB8465F4498FB2BD5D8F78C6D35 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1830EAAE8525290328F1119A661D3D75 /* SwiftHTTP.framework */; };
 		D9BFA8D7D8BB9E1D8E5BF63CEAD6D7BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
 		DC27FEBBDBCE815E76EB21DCB9246AB5 /* SwiftHTTP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ECE8FA582F93A729C075B76191BE114F /* debugme_logo_rc.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD390A75D61E32599951F09D2925AB /* debugme_logo_rc.png */; };
+		ECE8FA582F93A729C075B76191BE114F /* nariko_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD390A75D61E32599951F09D2925AB /* nariko_logo.png */; };
 		F84CA00AF46AF224BDB6B028C96B601B /* SwiftHTTP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C72704C5184338526DF383D9C0BDF3B5 /* SwiftHTTP-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -102,7 +102,7 @@
 		64A09FB26E92AA9C6DAAFEC66A09AF53 /* Nariko-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nariko-umbrella.h"; sourceTree = "<group>"; };
 		67D65E27D7444DA52DA91F990AB66778 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		6A472011A86B3AC100530FBC74232D50 /* Nariko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nariko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FBD390A75D61E32599951F09D2925AB /* debugme_logo_rc.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = debugme_logo_rc.png; sourceTree = "<group>"; };
+		6FBD390A75D61E32599951F09D2925AB /* nariko_logo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = nariko_logo.png; sourceTree = "<group>"; };
 		71EBE8D91E23AC202FDF759A2952B44D /* Pods-Nariko_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Nariko_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		72409D00CE9CADC7968D8F8E2615D7D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7284384FB25B52CEF2DAFB36605BBCC8 /* BoubleTapGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BoubleTapGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		647FF0AF5C0B8C565338950BEA348486 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				6FBD390A75D61E32599951F09D2925AB /* debugme_logo_rc.png */,
+				6FBD390A75D61E32599951F09D2925AB /* nariko_logo.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -583,7 +583,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECE8FA582F93A729C075B76191BE114F /* debugme_logo_rc.png in Resources */,
+				ECE8FA582F93A729C075B76191BE114F /* nariko_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
