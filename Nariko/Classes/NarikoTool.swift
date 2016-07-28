@@ -106,6 +106,21 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
                     self.isAuth = true
                 } else {
                     print(errorCode)
+                    let alertController = UIAlertController (title: "Information", message: "Login faild, check your username and password!", preferredStyle: .Alert)
+                    
+                    let settingsAction = UIAlertAction(title: "Settings", style: .Default) { (_) -> Void in
+                        let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+                        if let url = settingsUrl {
+                            UIApplication.sharedApplication().openURL(url)
+                        }
+                    }
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                    alertController.addAction(settingsAction)
+                    alertController.addAction(cancelAction)
+                    
+                    self.APPDELEGATE.window!!.rootViewController!.presentViewController(alertController, animated: true, completion: nil);
+
                 }
             })
             
