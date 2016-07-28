@@ -258,6 +258,9 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
                     print("send success")
                     self.removeBubble(true)
                     self.hideActivityIndicator()
+                    let alert = UIAlertController(title: "Information", message: "Your ticket has been sent successfuly!", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+                    self.APPDELEGATE.window!!.rootViewController!.presentViewController(alert, animated: true, completion: nil)
                 } else {
                     self.hideActivityIndicator()
                     let alert = UIAlertController(title: "Error", message: "The screenshot could not be sent!", preferredStyle: UIAlertControllerStyle.Alert)

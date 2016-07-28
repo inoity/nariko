@@ -208,8 +208,8 @@ class BubbleControl: UIControl {
     
     // MARK: Constants
     
-    let snapOffsetMin: CGFloat = 10
-    let snapOffsetMax: CGFloat = 50
+    let snapOffsetMin: CGFloat = 0
+    let snapOffsetMax: CGFloat = 0
     
     // MARK: Optionals
     
