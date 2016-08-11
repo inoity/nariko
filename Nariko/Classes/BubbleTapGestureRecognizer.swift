@@ -1,5 +1,5 @@
 //
-//  BoubleTapGestureRecognizer.swift
+//  BubbleTapGestureRecognizer.swift
 //  Nariko
 //
 //  Created by Zsolt Papp on 13/06/16.
@@ -9,7 +9,7 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-public class BoubleTapGestureRecognizer: UITapGestureRecognizer {
+public class BubbleTapGestureRecognizer: UITapGestureRecognizer {
     
     override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
        NarikoTool.sharedInstance.removeBubble()
