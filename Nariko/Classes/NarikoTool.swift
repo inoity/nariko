@@ -9,6 +9,8 @@
 import UIKit
 import SwiftHTTP
 
+public let okButton = UIButton()
+
 public class NarikoTool: UIResponder, UITextViewDelegate {
     
     static public let sharedInstance = NarikoTool()
@@ -17,11 +19,13 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
     
     let APPDELEGATE: UIApplicationDelegate = UIApplication.sharedApplication().delegate!
     
+    let backgroundView = UIView()
+    let narikoAlertView = UIView()
+    
     var bubble: BubbleControl!
     var isAuth: Bool = false
     var WINDOW: UIWindow?
     var textView: UITextView = UITextView(frame: CGRectZero)
-    
     
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
@@ -77,7 +81,166 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.checkAuth), name: NSUserDefaultsDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.removeBubble), name: UIDeviceOrientationDidChangeNotification, object: nil)
-      
+        
+        if NSUserDefaults.standardUserDefaults().stringForKey("appAlreadyLaunched") == nil {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "appAlreadyLaunched")
+            
+            let view = self.APPDELEGATE.window!!.rootViewController!.view
+            
+            backgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+            backgroundView.frame = view.frame
+            view.addSubview(backgroundView)
+            
+            narikoAlertView.backgroundColor = UIColor.whiteColor()
+            narikoAlertView.layer.cornerRadius = 20
+            narikoAlertView.layer.shadowColor = UIColor.blackColor().CGColor
+            narikoAlertView.layer.shadowOpacity = 1
+            narikoAlertView.layer.shadowOffset = CGSizeZero
+            narikoAlertView.layer.shadowRadius = 30
+            
+            let headline = UILabel()
+            headline.text = "This app uses Nariko"
+            headline.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
+            headline.numberOfLines = 0
+            headline.textColor = UIColorFromHex(0xEF4438)
+            headline.textAlignment = .Center
+            narikoAlertView.addSubview(headline)
+            
+            let spacer1 = UIView()
+            narikoAlertView.addSubview(spacer1)
+            
+            let topDescription = UILabel()
+            topDescription.text = "Hold 3 fingers for 3 seconds to activate Nariko."
+            topDescription.font = UIFont(name: "HelveticaNeue", size: 16)
+            topDescription.numberOfLines = 0
+            topDescription.textColor = UIColorFromHex(0xEF4438)
+            topDescription.textAlignment = .Center
+            narikoAlertView.addSubview(topDescription)
+            
+            let spacer2 = UIView()
+            narikoAlertView.addSubview(spacer2)
+            
+            let instructions = UIImageView()
+            
+            let podBundle = NSBundle(forClass: NarikoTool.self)
+            
+            if let url = podBundle.URLForResource("Nariko", withExtension: "bundle") {
+                let bundle = NSBundle(URL: url)
+                
+                instructions.image = UIImage(named: "nariko_pic", inBundle: bundle, compatibleWithTraitCollection: nil)
+            }
+            
+            narikoAlertView.addSubview(instructions)
+            
+            let spacer3 = UIView()
+            narikoAlertView.addSubview(spacer3)
+            
+            let bottomDescription = UILabel()
+            bottomDescription.text = "Tap the bubble to give feedback about the actual screen."
+            bottomDescription.font = UIFont(name: "HelveticaNeue", size: 16)
+            bottomDescription.numberOfLines = 0
+            bottomDescription.textColor = UIColorFromHex(0xEF4438)
+            bottomDescription.textAlignment = .Center
+            narikoAlertView.addSubview(bottomDescription)
+            
+            let spacer4 = UIView()
+            narikoAlertView.addSubview(spacer4)
+            
+            let okButtonInsets: CGFloat = 18
+            
+            okButton.setTitle("OK", forState: .Normal)
+            okButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+            okButton.setTitleColor(UIColorFromHex(0xEF4438), forState: .Normal)
+            okButton.contentEdgeInsets = UIEdgeInsetsMake(okButtonInsets, okButtonInsets, okButtonInsets, okButtonInsets)
+            narikoAlertView.addSubview(okButton)
+            
+            let spacers = [spacer1, spacer2, spacer3, spacer4]
+            
+            narikoAlertView.translatesAutoresizingMaskIntoConstraints = false
+            headline.translatesAutoresizingMaskIntoConstraints = false
+            spacer1.translatesAutoresizingMaskIntoConstraints = false
+            topDescription.translatesAutoresizingMaskIntoConstraints = false
+            spacer2.translatesAutoresizingMaskIntoConstraints = false
+            instructions.translatesAutoresizingMaskIntoConstraints = false
+            spacer3.translatesAutoresizingMaskIntoConstraints = false
+            bottomDescription.translatesAutoresizingMaskIntoConstraints = false
+            spacer4.translatesAutoresizingMaskIntoConstraints = false
+            okButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            view.addSubview(narikoAlertView)
+            
+            let outsideHorizontalMargin: CGFloat = 24
+            let outsideVerticalMargin: CGFloat = 48
+            
+            view.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: outsideHorizontalMargin))
+            view.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: -outsideHorizontalMargin))
+            view.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: outsideVerticalMargin))
+            view.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: -outsideVerticalMargin))
+            
+            let insideMargin: CGFloat = 24
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .Top, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Top, multiplier: 1, constant: insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .Leading, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Leading, multiplier: 1, constant: insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .Trailing, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Trailing, multiplier: 1, constant: -insideMargin))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .Bottom, relatedBy: .Equal, toItem: spacer1, attribute: .Top, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer1, attribute: .Bottom, relatedBy: .Equal, toItem: topDescription, attribute: .Top, multiplier: 1, constant: 0))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: topDescription, attribute: .Leading, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Leading, multiplier: 1, constant: insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: topDescription, attribute: .Trailing, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Trailing, multiplier: 1, constant: -insideMargin))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: topDescription, attribute: .Bottom, relatedBy: .Equal, toItem: spacer2, attribute: .Top, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer2, attribute: .Bottom, relatedBy: .Equal, toItem: instructions, attribute: .Top, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer2, attribute: .Height, relatedBy: .Equal, toItem: spacer1, attribute: .Height, multiplier: 1, constant: 0))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 262))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .Height, relatedBy: .Equal, toItem: instructions, attribute: .Width, multiplier: 72/262, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .Leading, relatedBy: .GreaterThanOrEqual, toItem: narikoAlertView, attribute: .Leading, multiplier: 1, constant: insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .Trailing, relatedBy: .GreaterThanOrEqual, toItem: narikoAlertView, attribute: .Trailing, multiplier: 1, constant: -insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .CenterX, relatedBy: .Equal, toItem: narikoAlertView, attribute: .CenterX, multiplier: 1, constant: 0))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .Bottom, relatedBy: .Equal, toItem: spacer3, attribute: .Top, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer3, attribute: .Bottom, relatedBy: .Equal, toItem: bottomDescription, attribute: .Top, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer3, attribute: .Height, relatedBy: .Equal, toItem: spacer1, attribute: .Height, multiplier: 1, constant: 0))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: bottomDescription, attribute: .Leading, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Leading, multiplier: 1, constant: insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: bottomDescription, attribute: .Trailing, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Trailing, multiplier: 1, constant: -insideMargin))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: bottomDescription, attribute: .Bottom, relatedBy: .Equal, toItem: spacer4, attribute: .Top, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer4, attribute: .Bottom, relatedBy: .Equal, toItem: okButton, attribute: .Top, multiplier: 1, constant: -insideMargin))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer4, attribute: .Height, relatedBy: .Equal, toItem: spacer1, attribute: .Height, multiplier: 1, constant: 0))
+            
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: okButton, attribute: .CenterX, relatedBy: .Equal, toItem: narikoAlertView, attribute: .CenterX, multiplier: 1, constant: 0))
+            narikoAlertView.addConstraint(NSLayoutConstraint(item: okButton, attribute: .Bottom, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Bottom, multiplier: 1, constant: -insideMargin / 2))
+            
+            for spacer in spacers {
+                narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer, attribute: .Leading, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Leading, multiplier: 1, constant: 0))
+                narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer, attribute: .Trailing, relatedBy: .Equal, toItem: narikoAlertView, attribute: .Trailing, multiplier: 1, constant: 0))
+            }
+            
+            narikoAlertView.layoutIfNeeded()
+            
+            backgroundView.alpha = 0
+            narikoAlertView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            
+            UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseOut, animations: {() -> Void in
+                self.backgroundView.alpha = 1
+                self.narikoAlertView.transform = CGAffineTransformIdentity
+                }, completion: {(finished: Bool) -> Void in
+            })
+        }
+    }
+    
+    public func closeNarikoAlertView() {
+        narikoAlertView.transform = CGAffineTransformIdentity
+        
+        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseOut, animations: {() -> Void in
+            self.backgroundView.alpha = 0
+            self.narikoAlertView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            }, completion: {(finished: Bool) -> Void in
+                self.backgroundView.removeFromSuperview()
+                self.narikoAlertView.removeFromSuperview()
+        })
     }
     
     deinit { //Not needed for iOS9 and above. ARC deals with the observer.
@@ -106,7 +269,7 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
                     self.isAuth = true
                 } else {
                     print(errorCode)
-                    let alertController = UIAlertController (title: "Information", message: "Login faild, check your username and password!", preferredStyle: .Alert)
+                    let alertController = UIAlertController (title: "Information", message: "Login failed, check your username and password!", preferredStyle: .Alert)
                     
                     let settingsAction = UIAlertAction(title: "Settings", style: .Default) { (_) -> Void in
                         let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
@@ -307,5 +470,3 @@ public class NarikoTool: UIResponder, UITextViewDelegate {
         }
     }
 }
-
-

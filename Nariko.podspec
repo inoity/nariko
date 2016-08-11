@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Nariko'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
 s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile UX'
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ s.summary          = 'Nariko.io is the first visual feedback tool for mobile app
   # s.prepare_command = 'chmod u+x $(pwd)/Nariko/settings-script.sh'
 
   s.resource_bundles = {
-    'Nariko' => ['Nariko/Assets/*.png']
+    'Nariko' => ['Nariko/Assets/*.{png,xcassets}']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

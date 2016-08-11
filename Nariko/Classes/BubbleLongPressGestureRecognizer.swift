@@ -24,17 +24,26 @@ public class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIG
         return true
     }
     
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        
+        if touch.view == okButton {
+            NarikoTool.sharedInstance.closeNarikoAlertView()
+        }
+        
+        return true
+    }
+    
 }
 
 extension BubbleLongPressGestureRecognizer {
-    func tap(g:UILongPressGestureRecognizer) {
+    func tap(g: UILongPressGestureRecognizer) {
         
         print("long")
         
         switch g.state {
             
         case .Began:
-            if NarikoTool.sharedInstance.isAuth{
+            if NarikoTool.sharedInstance.isAuth {
                 NarikoTool.sharedInstance.setupBubble()
             } else {
                 let alertController = UIAlertController (title: "Information", message: "Please login in the settings", preferredStyle: .Alert)
@@ -55,7 +64,7 @@ extension BubbleLongPressGestureRecognizer {
             }
             
         default: break
+            
         }
     }
-    
 }

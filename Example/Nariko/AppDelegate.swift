@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         NarikoTool.sharedInstance.checkAuth()
-        self.window!.rootViewController!.view.addGestureRecognizer(BoubleTapGestureRecognizer())
+        self.window!.rootViewController!.view.addGestureRecognizer(BubbleTapGestureRecognizer())
         self.window!.rootViewController!.view.addGestureRecognizer(BubbleLongPressGestureRecognizer())
         
         return true

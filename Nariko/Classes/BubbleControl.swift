@@ -498,5 +498,3 @@ class BubbleControl: UIControl {
         }
     }
 }
-
-
