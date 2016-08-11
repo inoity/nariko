@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Nariko
 
 [![CI Status](http://img.shields.io/travis/Zsolt Papp/Nariko.svg?style=flat)](https://travis-ci.org/Zsolt Papp/Nariko)
