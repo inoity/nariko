@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Nariko'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
 s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile UX'
 
 # This description is used to generate tags and improve search results.
