@@ -22,11 +22,11 @@ pod "Nariko"
 
 ## Author
 
-Zsolt Papp, pappzsolt100@gmail.com
+Zednet Informatika Kft., info@nariko.io
 
 ## License
 
 Nariko is available under the MIT license. See the LICENSE file for more info.
 =======
 # nariko
->>>>>>> 4b06b4f15773a09d096a3273402139c77c2d9c6a
+

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Nariko'
-  s.version          = '0.1.5'
+  s.version          = '1.0.0'
 s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile UX'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ s.summary          = 'Nariko.io is the first visual feedback tool for mobile app
   s.homepage         = 'https://github.com/inoity/Nariko'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Zsolt Papp' => 'pappzsolt100@gmail.com' }
+s.author           = { 'Zednet Informatika Kft.' => 'info@nariko.io' }
   s.source           = { :git => 'https://github.com/inoity/Nariko.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
