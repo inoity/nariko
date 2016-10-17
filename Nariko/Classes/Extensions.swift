@@ -17,7 +17,7 @@ public extension UIDevice {
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 where value != 0 else { return identifier }
+            guard let value = element.value as? Int8 , value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
@@ -55,10 +55,15 @@ extension String {
     
     var parseJSONString: AnyObject? {
         
-        let data = self.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let data = self.data(using: String.Encoding.utf8, allowLossyConversion: false)
         
         if let jsonData = data {
-            return try? NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
+            do{
+                return try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject?
+            } catch {
+                print("error")
+                return nil
+            }
         } else {
             return nil
         }

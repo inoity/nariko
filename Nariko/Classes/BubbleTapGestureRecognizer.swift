@@ -9,9 +9,9 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-public class BubbleTapGestureRecognizer: UITapGestureRecognizer {
+open class BubbleTapGestureRecognizer: UITapGestureRecognizer {
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
        NarikoTool.sharedInstance.removeBubble()
     }
 }

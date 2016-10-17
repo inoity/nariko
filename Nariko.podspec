@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Nariko'
-  s.version          = '1.0.5'
+  s.version          = '2.0.0'
 s.summary          = 'Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile UX'
 
 # This description is used to generate tags and improve search results.
@@ -41,5 +41,5 @@ s.author           = { 'Zednet Informatika Kft.' => 'info@nariko.io' }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'SwiftHTTP', '~> 1.0.5'
+  s.dependency 'SwiftHTTP', '~> 2.0.0'
 end

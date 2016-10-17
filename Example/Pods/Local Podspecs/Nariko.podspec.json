@@ -1,6 +1,6 @@
 {
   "name": "Nariko",
-  "version": "0.1.4",
+  "version": "2.0.0",
   "summary": "Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile UX",
   "description": "Nariko.io is the first visual feedback tool for mobile apps, which allows users to give feedback about application designs and mobile user experience. Users can simply draw or drop a pin while adding a comment anywhere where they’ve discovered a bug within the app or are looking to change a certain component. Nariko.io supports quick iterations, agile development, and front-end UI issue reporting in mobile apps.",
   "homepage": "https://github.com/inoity/Nariko",
@@ -9,11 +9,11 @@
     "file": "LICENSE"
   },
   "authors": {
-    "Zsolt Papp": "pappzsolt100@gmail.com"
+    "Zednet Informatika Kft.": "info@nariko.io"
   },
   "source": {
     "git": "https://github.com/inoity/Nariko.git",
-    "tag": "0.1.4"
+    "tag": "2.0.0"
   },
   "platforms": {
     "ios": "8.0"
@@ -21,12 +21,12 @@
   "source_files": "Nariko/Classes/**/*",
   "resource_bundles": {
     "Nariko": [
-      "Nariko/Assets/*.{png,xcassets,xib,ttf}"
+      "Nariko/Assets/*.{png,xcassets}"
     ]
   },
   "dependencies": {
     "SwiftHTTP": [
-      "~> 1.0.5"
+      "~> 2.0.0"
     ]
   }
 }

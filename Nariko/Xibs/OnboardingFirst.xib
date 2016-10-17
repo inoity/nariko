@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OnboardingFirst" customModule="Nariko" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NARIKO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCu-wW-xJJ">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="B85-go-Ewf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="NdP-1O-gJo">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="4dt-6t-KKf"/>
+                        <constraint firstAttribute="width" constant="45" id="iI9-bD-7ui"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="r7W-Rn-FnP">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="tJq-JJ-jae"/>
+                        <constraint firstAttribute="width" constant="45" id="v25-ns-xow"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="dlP-H3-ImM">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="jRU-kL-nUT"/>
+                        <constraint firstAttribute="height" constant="45" id="nhv-lw-xCW"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-gb-ddi">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="HLT-1S-m1o"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="UlD-gb-Dkf">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="1Ub-pd-SSp"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Upq-kj-3Dm">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="M7d-jZ-4Zv"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="dkk-de-L8h">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="Npk-ld-JNq"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_empty" translatesAutoresizingMaskIntoConstraints="NO" id="WZr-IP-LdZ">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="2cL-8G-H8k"/>
+                        <constraint firstAttribute="width" constant="50" id="nHc-6h-ly7"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ru7-N0-nFe">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app uses NARIKO™" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK2-hF-Y4Y">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14.5" id="TNg-28-RFX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLy-XS-8in">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="58" id="fBG-nI-Fba"/>
+                            </constraints>
+                            <string key="text">NARIKO™ App Feedback allows you 
+– at any given moment while using the app – to press three fingers for three seconds to bring up the ”N”-icon. Then press the icon to submit a report. </string>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKh-kb-Uhe">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="43.5" id="kWA-iD-1Ll"/>
+                            </constraints>
+                            <string key="text">Your feedback is submitted to the developer along with a screen shot, OS info, and the rendered browser code for error correction.</string>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-HM-46Y">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="laO-VU-HNs"/>
+                            </constraints>
+                            <string key="text">3 fingers, 3 seconds.
+Anytime.</string>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="wLy-XS-8in" firstAttribute="centerX" secondItem="ru7-N0-nFe" secondAttribute="centerX" id="AuT-nm-MGg"/>
+                        <constraint firstItem="iK2-hF-Y4Y" firstAttribute="centerX" secondItem="ru7-N0-nFe" secondAttribute="centerX" id="M9l-Ho-kZ4"/>
+                        <constraint firstItem="wLy-XS-8in" firstAttribute="top" secondItem="iK2-hF-Y4Y" secondAttribute="bottom" constant="15" id="REs-E9-YpW"/>
+                        <constraint firstItem="iK2-hF-Y4Y" firstAttribute="width" secondItem="ru7-N0-nFe" secondAttribute="width" id="Rbc-a3-Yxx"/>
+                        <constraint firstItem="wLy-XS-8in" firstAttribute="width" secondItem="ru7-N0-nFe" secondAttribute="width" id="WcA-fL-Fvx"/>
+                        <constraint firstItem="d6S-HM-46Y" firstAttribute="centerX" secondItem="ru7-N0-nFe" secondAttribute="centerX" id="X2t-ry-gYb"/>
+                        <constraint firstItem="IKh-kb-Uhe" firstAttribute="width" secondItem="ru7-N0-nFe" secondAttribute="width" id="dUG-iv-4xs"/>
+                        <constraint firstItem="iK2-hF-Y4Y" firstAttribute="top" secondItem="ru7-N0-nFe" secondAttribute="top" id="k9c-WN-lom"/>
+                        <constraint firstAttribute="height" constant="220" id="lbl-jU-nFW"/>
+                        <constraint firstItem="d6S-HM-46Y" firstAttribute="width" secondItem="ru7-N0-nFe" secondAttribute="width" id="nu9-va-xGj"/>
+                        <constraint firstItem="d6S-HM-46Y" firstAttribute="top" secondItem="IKh-kb-Uhe" secondAttribute="bottom" constant="25" id="uSE-qQ-QBu"/>
+                        <constraint firstItem="IKh-kb-Uhe" firstAttribute="centerX" secondItem="ru7-N0-nFe" secondAttribute="centerX" id="vWn-HU-wW1"/>
+                        <constraint firstItem="IKh-kb-Uhe" firstAttribute="top" secondItem="wLy-XS-8in" secondAttribute="bottom" constant="19" id="wRc-fo-eHv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.12941176469999999" green="0.43921568630000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="dkk-de-L8h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="0Cb-JJ-Zis"/>
+                <constraint firstItem="wLy-XS-8in" firstAttribute="top" secondItem="Upq-kj-3Dm" secondAttribute="bottom" constant="30" id="39o-C6-kZR"/>
+                <constraint firstItem="dlP-H3-ImM" firstAttribute="top" secondItem="NdP-1O-gJo" secondAttribute="top" id="4I1-OF-Gu3"/>
+                <constraint firstItem="dkk-de-L8h" firstAttribute="height" secondItem="Upq-kj-3Dm" secondAttribute="height" id="4iu-gG-hRk"/>
+                <constraint firstItem="NdP-1O-gJo" firstAttribute="leading" secondItem="dlP-H3-ImM" secondAttribute="trailing" constant="47" id="9Lg-vn-xiI"/>
+                <constraint firstItem="r7W-Rn-FnP" firstAttribute="leading" secondItem="NdP-1O-gJo" secondAttribute="trailing" constant="43" id="9j3-lD-hoN"/>
+                <constraint firstAttribute="bottom" secondItem="S4y-gb-ddi" secondAttribute="bottom" constant="5" id="CHB-ki-Do1"/>
+                <constraint firstItem="nCu-wW-xJJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CQX-Z6-nij"/>
+                <constraint firstItem="UlD-gb-Dkf" firstAttribute="top" secondItem="ru7-N0-nFe" secondAttribute="bottom" id="DCG-ou-2Or"/>
+                <constraint firstAttribute="trailing" secondItem="ru7-N0-nFe" secondAttribute="trailing" constant="30" id="E6N-GU-clC"/>
+                <constraint firstItem="ru7-N0-nFe" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EU3-YD-IXa"/>
+                <constraint firstItem="dkk-de-L8h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JUe-8H-Rmm"/>
+                <constraint firstItem="S4y-gb-ddi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Kb7-RG-fBE"/>
+                <constraint firstItem="WZr-IP-LdZ" firstAttribute="top" secondItem="dkk-de-L8h" secondAttribute="bottom" constant="8" id="N79-IP-5hC"/>
+                <constraint firstItem="UlD-gb-Dkf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Pd5-A2-hN9"/>
+                <constraint firstItem="nCu-wW-xJJ" firstAttribute="top" secondItem="WZr-IP-LdZ" secondAttribute="bottom" constant="15" id="QYZ-Cf-9i8"/>
+                <constraint firstItem="NdP-1O-gJo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tbl-T4-xGm"/>
+                <constraint firstItem="NdP-1O-gJo" firstAttribute="top" secondItem="UlD-gb-Dkf" secondAttribute="bottom" constant="5" id="aaT-lE-8oa"/>
+                <constraint firstItem="S4y-gb-ddi" firstAttribute="top" secondItem="NdP-1O-gJo" secondAttribute="bottom" constant="5" id="bX6-Np-BPt"/>
+                <constraint firstItem="ru7-N0-nFe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="feF-V9-nJS"/>
+                <constraint firstItem="UlD-gb-Dkf" firstAttribute="height" secondItem="S4y-gb-ddi" secondAttribute="height" id="nMS-Ig-oAM"/>
+                <constraint firstItem="Upq-kj-3Dm" firstAttribute="top" secondItem="nCu-wW-xJJ" secondAttribute="bottom" constant="8" id="r3z-FT-3Gk"/>
+                <constraint firstItem="WZr-IP-LdZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rER-9g-bd9"/>
+                <constraint firstItem="Upq-kj-3Dm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rPE-A8-VhY"/>
+                <constraint firstItem="ru7-N0-nFe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="sij-ON-P5L"/>
+                <constraint firstItem="r7W-Rn-FnP" firstAttribute="top" secondItem="NdP-1O-gJo" secondAttribute="top" id="tNZ-c1-7zF"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="color1">
+                    <color key="value" red="0.0039215686274509803" green="0.21568627450980393" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="color2">
+                    <color key="value" red="0.32941176470588235" green="0.79607843137254897" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="q8k-32-Kcs" appends="YES" id="phl-7Y-Txa"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="62.5"/>
+        </view>
+        <tapGestureRecognizer numberOfTapsRequired="3" id="q8k-32-Kcs">
+            <connections>
+                <action selector="tapRecognized:" destination="iN0-l3-epB" id="m5T-7T-SGJ"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="circle" width="250" height="250"/>
+        <image name="logo_empty" width="100" height="93"/>
+    </resources>
+</document>

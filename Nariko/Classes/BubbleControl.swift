@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Animation Constants
 
-private let BubbleControlMoveAnimationDuration: NSTimeInterval = 0.5
+private let BubbleControlMoveAnimationDuration: TimeInterval = 0.5
 private let BubbleControlSpringDamping: CGFloat = 0.6
 private let BubbleControlSpringVelocity: CGFloat = 0.6
 
@@ -106,36 +106,36 @@ extension UIView {
     
     
     
-    func leftWithOffset (offset: CGFloat) -> CGFloat {
+    func leftWithOffset (_ offset: CGFloat) -> CGFloat {
         return self.left - offset
     }
     
-    func rightWithOffset (offset: CGFloat) -> CGFloat {
+    func rightWithOffset (_ offset: CGFloat) -> CGFloat {
         return self.right + offset
     }
     
-    func topWithOffset (offset: CGFloat) -> CGFloat {
+    func topWithOffset (_ offset: CGFloat) -> CGFloat {
         return self.top - offset
     }
     
-    func botttomWithOffset (offset: CGFloat) -> CGFloat {
+    func botttomWithOffset (_ offset: CGFloat) -> CGFloat {
         return self.bottom + offset
     }
     
     
     
-    func spring (animations: ()->Void, completion:((Bool)->Void)?) {
-        UIView.animateWithDuration(BubbleControlMoveAnimationDuration,
+    func spring (_ animations: @escaping ()->Void, completion:((Bool)->Void)?) {
+        UIView.animate(withDuration: BubbleControlMoveAnimationDuration,
                                    delay: 0,
                                    usingSpringWithDamping: BubbleControlSpringDamping,
                                    initialSpringVelocity: BubbleControlSpringVelocity,
-                                   options: UIViewAnimationOptions.CurveEaseInOut,
+                                   options: UIViewAnimationOptions(),
                                    animations: animations,
                                    completion: completion)
     }
     
     
-    func moveY (y: CGFloat) {
+    func moveY (_ y: CGFloat) {
         var moveRect = self.frame
         moveRect.origin.y = y
         
@@ -144,7 +144,7 @@ extension UIView {
             }, completion: nil)
     }
     
-    func moveX (x: CGFloat) {
+    func moveX (_ x: CGFloat) {
         var moveRect = self.frame
         moveRect.origin.x = x
         
@@ -153,7 +153,7 @@ extension UIView {
             }, completion: nil)
     }
     
-    func movePoint (x: CGFloat, y: CGFloat) {
+    func movePoint (_ x: CGFloat, y: CGFloat) {
         var moveRect = self.frame
         moveRect.origin.x = x
         moveRect.origin.y = y
@@ -163,7 +163,7 @@ extension UIView {
             }, completion: nil)
     }
     
-    func movePoint (point: CGPoint) {
+    func movePoint (_ point: CGPoint) {
         var moveRect = self.frame
         moveRect.origin = point
         
@@ -173,7 +173,7 @@ extension UIView {
     }
     
     
-    func setScale (s: CGFloat) {
+    func setScale (_ s: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
         transform = CATransform3DScale(transform, s, s, s)
@@ -181,8 +181,8 @@ extension UIView {
         self.layer.transform = transform
     }
     
-    func alphaTo (to: CGFloat) {
-        UIView.animateWithDuration(BubbleControlMoveAnimationDuration,
+    func alphaTo (_ to: CGFloat) {
+        UIView.animate(withDuration: BubbleControlMoveAnimationDuration,
                                    animations: {
                                     self.alpha = to
         })
@@ -222,19 +222,19 @@ class BubbleControl: UIControl {
     var didToggle: ((Bool) -> ())?
     var didNavigationBarButtonPressed: (() -> ())?
     
-    var setOpenAnimation: ((contentView: UIView, backgroundView: UIView?)->())?
-    var setCloseAnimation: ((contentView: UIView, backgroundView: UIView?) -> ())?
+    var setOpenAnimation: ((_ contentView: UIView, _ backgroundView: UIView?)->())?
+    var setCloseAnimation: ((_ contentView: UIView, _ backgroundView: UIView?) -> ())?
     
     // MARK: Bubble State
     
     enum BubbleControlState {
-        case Snap       // snapped to edge
-        case Drag       // dragging around
+        case snap       // snapped to edge
+        case drag       // dragging around
     }
     
-    var bubbleState: BubbleControlState = .Snap {
+    var bubbleState: BubbleControlState = .snap {
         didSet {
-            if bubbleState == .Snap {
+            if bubbleState == .snap {
                 setupSnapInsideTimer()
             } else {
                 snapOffset = snapOffsetMin
@@ -244,13 +244,13 @@ class BubbleControl: UIControl {
     
     // MARK: Snap
     
-    private var snapOffset: CGFloat!
-    private var snapInTimer: NSTimer?
-    private var snapInInterval: NSTimeInterval = 2
+    fileprivate var snapOffset: CGFloat!
+    fileprivate var snapInTimer: Timer?
+    fileprivate var snapInInterval: TimeInterval = 2
     
     // MARK: Toggle
     
-    private var positionBeforeToggle: CGPoint?
+    fileprivate var positionBeforeToggle: CGPoint?
     
     var toggle: Bool = false {
         didSet {
@@ -275,13 +275,13 @@ class BubbleControl: UIControl {
     // MARK: Init
     
     init (win: UIWindow, size: CGSize) {
-        super.init(frame: CGRect (origin: CGPointZero, size: size))
+        super.init(frame: CGRect (origin: CGPoint.zero, size: size))
         defaultInit(win)
     }
     
     init (win: UIWindow, image: UIImage) {
         let size = image.size
-        super.init(frame: CGRect (origin: CGPointZero, size: size))
+        super.init(frame: CGRect (origin: CGPoint.zero, size: size))
         self.image = image
         
         defaultInit(win)
@@ -292,7 +292,7 @@ class BubbleControl: UIControl {
     }
     
     
-    func defaultInit (win: UIWindow) {
+    func defaultInit (_ win: UIWindow) {
         
         self.WINDOW = win
         
@@ -301,16 +301,16 @@ class BubbleControl: UIControl {
         layer.cornerRadius = w/2
         
         // image view
-        imageView = UIImageView (frame: CGRectInset(frame, 0, 0))
+        imageView = UIImageView (frame: frame.insetBy(dx: 0, dy: 0))
         imageView?.clipsToBounds = true
         
         // circle border
         let borderView = UIView (frame: frame)
-        borderView.layer.borderColor = UIColor.blackColor().CGColor
-        borderView.layer.borderWidth = 2
-        borderView.layer.cornerRadius = w/2
-        borderView.layer.masksToBounds = true
-        borderView.userInteractionEnabled = false
+      //  borderView.layer.borderColor = UIColor.black.cgColor
+       // borderView.layer.borderWidth = 2
+        //borderView.layer.cornerRadius = w/2
+        //borderView.layer.masksToBounds = true
+        borderView.isUserInteractionEnabled = false
         borderView.clipsToBounds = true
         
         borderView.addSubview(imageView!)
@@ -318,9 +318,9 @@ class BubbleControl: UIControl {
         addSubview(borderView)
         
         // events
-        addTarget(self, action: #selector(BubbleControl.touchDown), forControlEvents: UIControlEvents.TouchDown)
-        addTarget(self, action: #selector(BubbleControl.touchUp), forControlEvents: UIControlEvents.TouchUpInside)
-        addTarget(self, action: #selector(BubbleControl.touchDrag(_:event:)), forControlEvents: UIControlEvents.TouchDragInside)
+        addTarget(self, action: #selector(BubbleControl.touchDown), for: UIControlEvents.touchDown)
+        addTarget(self, action: #selector(BubbleControl.touchUp), for: UIControlEvents.touchUpInside)
+        addTarget(self, action: #selector(BubbleControl.touchDrag(_:event:)), for: UIControlEvents.touchDragInside)
         
         // place
         center.x = WINDOW!.w - w/2 + snapOffset
@@ -346,7 +346,7 @@ class BubbleControl: UIControl {
     
     func snapInside () {
         print("snap inside !")
-        if !toggle && bubbleState == .Snap {
+        if !toggle && bubbleState == .snap {
             snapOffset = snapOffsetMax
             snap()
         }
@@ -358,12 +358,12 @@ class BubbleControl: UIControl {
         }
         
         if let timer = snapInTimer {
-            if timer.valid {
+            if timer.isValid {
                 timer.invalidate()
             }
         }
         
-        snapInTimer = NSTimer.scheduledTimerWithTimeInterval(snapInInterval,
+        snapInTimer = Timer.scheduledTimer(timeInterval: snapInInterval,
                                                              target: self,
                                                              selector: #selector(BubbleControl.snapInside),
                                                              userInfo: nil,
@@ -405,34 +405,34 @@ class BubbleControl: UIControl {
     }
     
     func touchUp () {
-        if bubbleState == .Snap {
+        if bubbleState == .snap {
             toggle = !toggle
         } else {
-            bubbleState = .Snap
+            bubbleState = .snap
             snap()
         }
     }
     
-    func touchDrag (sender: BubbleControl, event: UIEvent) {
-        bubbleState = .Drag
+    func touchDrag (_ sender: BubbleControl, event: UIEvent) {
+        bubbleState = .drag
         
         if toggle {
             toggle = false
         }
         
-        let touch = event.allTouches()!.first!
-        let location = touch.locationInView(WINDOW!)
+        let touch = event.allTouches!.first!
+        let location = touch.location(in: WINDOW!)
         
         center = location
         lockInWindowBounds()
     }
     
     
-    func navButtonPressed (sender: AnyObject) {
+    func navButtonPressed (_ sender: AnyObject) {
         didNavigationBarButtonPressed? ()
     }
     
-    func degreesToRadians (angle: CGFloat) -> CGFloat {
+    func degreesToRadians (_ angle: CGFloat) -> CGFloat {
         return (CGFloat (M_PI) * angle) / 180.0
     }
     
@@ -444,14 +444,14 @@ class BubbleControl: UIControl {
             screenShotMethod()
             let win = WINDOW!
             win.addSubview(v)
-            win.bringSubviewToFront(self)
+            win.bringSubview(toFront: self)
             
             snapOffset = snapOffsetMin
             snap()
             positionBeforeToggle = frame.origin
             
             if let anim = setOpenAnimation {
-                anim (contentView: v, backgroundView: win.subviews[0])
+                anim (v, win.subviews[0])
             } else {
                 v.bottom = win.bottom
             }
@@ -467,28 +467,28 @@ class BubbleControl: UIControl {
     func screenShotMethod() {
         //Create the UIImage
         print("shot")
-        self.hidden = true
+        self.isHidden = true
         UIGraphicsBeginImageContext(WINDOW!.frame.size)
-        WINDOW!.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        WINDOW!.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         print(image)
         screenShot = image
         //Save it to the camera roll
         //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        self.hidden = false
+        self.isHidden = false
     }
     
     func closeContentView () {
         if let v = contentView {
             
             if let anim = setCloseAnimation {
-                anim (contentView: v, backgroundView: (WINDOW?.subviews[0])! as UIView)
+                anim (v, (WINDOW?.subviews[0])! as UIView)
             } else {
                 v.removeFromSuperview()
             }
             
-            if (bubbleState == .Snap) {
+            if (bubbleState == .snap) {
                 setupSnapInsideTimer()
                 if positionBeforeToggle != nil {
                     movePoint(positionBeforeToggle!)
