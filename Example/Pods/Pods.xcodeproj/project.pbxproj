@@ -11,6 +11,7 @@
 		0200EE0A755091C94EA9AC932EF57C13 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		080EF2531949A7995D64F392ACBF9C9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
 		16957DA0CD3CBA634495B1782BFDA96C /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F6C0DAC1DB50CB700DFB2F9 /* OnboardingFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */; };
 		220F45B4A3AE7D278520DB6E1EA825B3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D7F91FC0AF459AEC0CC7D6369FBBD /* Global.swift */; };
 		2AAC3066F754AF2B212CDD2EC318DD1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
 		32A7CCE6AE52F3006C062EE160A8D585 /* BubbleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325D1323F5BC1F420DA8AA31621420F8 /* BubbleControl.swift */; };
@@ -604,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				412C8D6CE50F706F750F2573C2F2DD73 /* Images.xcassets in Resources */,
+				1F6C0DAC1DB50CB700DFB2F9 /* OnboardingFirst.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -91,10 +91,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
             backgroundView.frame = (view?.frame)!
             view?.addSubview(backgroundView)
             
-            
-            //narikoAlertView = OnboardingFirst()
-            
-            
             narikoAlertView = OnboardingFirst.instanceFromNib() as! OnboardingFirst
             
             //    OnboardingFirst(frame: CGRect(x: 20, y: 40, width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 80))
@@ -316,7 +312,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
     }
     
     
-    open func setupBubble () {
+    open func setupBubble() {
         let win = APPDELEGATE.window!!
         
         win.endEditing(true)
