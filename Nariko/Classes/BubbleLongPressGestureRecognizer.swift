@@ -37,34 +37,35 @@ open class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIGes
 
 extension BubbleLongPressGestureRecognizer {
     func tap(_ g: UILongPressGestureRecognizer) {
-        
-        print("long")
-        
-        switch g.state {
+        if !isOnboarding{
+            print("long")
             
-        case .began:
-            if NarikoTool.sharedInstance.isAuth {
-                NarikoTool.sharedInstance.setupBubble()
-            } else {
-                let alertController = UIAlertController (title: "Information", message: "Please login in the settings", preferredStyle: .alert)
+            switch g.state {
                 
-                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                    let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
-                    if let url = settingsUrl {
-                        UIApplication.shared.openURL(url)
+            case .began:
+                if NarikoTool.sharedInstance.isAuth {
+                    NarikoTool.sharedInstance.setupBubble()
+                } else {
+                    let alertController = UIAlertController (title: "Information", message: "Please login in the settings", preferredStyle: .alert)
+                    
+                    let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                        let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
+                        if let url = settingsUrl {
+                            UIApplication.shared.openURL(url)
+                        }
                     }
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                    alertController.addAction(settingsAction)
+                    alertController.addAction(cancelAction)
+                    
+                    NarikoTool.sharedInstance.APPDELEGATE.window!!.rootViewController!.present(alertController, animated: true, completion: nil);
+                    
                 }
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                alertController.addAction(settingsAction)
-                alertController.addAction(cancelAction)
-                
-                NarikoTool.sharedInstance.APPDELEGATE.window!!.rootViewController!.present(alertController, animated: true, completion: nil);
+            default: break
                 
             }
-            
-        default: break
-            
         }
     }
 }

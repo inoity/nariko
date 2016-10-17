@@ -14,12 +14,15 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingSecond" customModule="Nariko" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="wso-YP-iSh">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view contentMode="scaleToFill" id="wso-YP-iSh" customClass="OnboardingSecond" customModule="Nariko" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDS-E4-nwZ">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="iAe-p2-arx">
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -93,11 +96,14 @@ ANYTIME.</string>
             <color key="backgroundColor" red="0.12941176469999999" green="0.43921568630000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="iAe-p2-arx" firstAttribute="top" secondItem="He3-Ec-rJn" secondAttribute="bottom" constant="8" id="0v5-aC-iiw"/>
+                <constraint firstItem="TDS-E4-nwZ" firstAttribute="height" secondItem="wso-YP-iSh" secondAttribute="height" id="1DH-yL-gHu"/>
                 <constraint firstItem="cg7-kC-mR7" firstAttribute="leading" secondItem="wso-YP-iSh" secondAttribute="leading" constant="30" id="HiJ-fN-2nE"/>
                 <constraint firstItem="cg7-kC-mR7" firstAttribute="centerX" secondItem="wso-YP-iSh" secondAttribute="centerX" id="Knc-RM-zbe"/>
                 <constraint firstAttribute="trailing" secondItem="cg7-kC-mR7" secondAttribute="trailing" constant="30" id="TRG-KU-gWF"/>
+                <constraint firstItem="TDS-E4-nwZ" firstAttribute="centerY" secondItem="wso-YP-iSh" secondAttribute="centerY" id="Uhf-KF-G4A"/>
                 <constraint firstItem="Tdl-Vd-NfP" firstAttribute="height" secondItem="iAe-p2-arx" secondAttribute="height" id="UuM-3e-Vk8"/>
                 <constraint firstAttribute="bottom" secondItem="cg7-kC-mR7" secondAttribute="bottom" constant="60" id="VRE-OS-9Iv"/>
+                <constraint firstItem="TDS-E4-nwZ" firstAttribute="width" secondItem="wso-YP-iSh" secondAttribute="width" id="WlI-vS-c8d"/>
                 <constraint firstItem="He3-Ec-rJn" firstAttribute="top" secondItem="W5G-37-ZQy" secondAttribute="bottom" constant="15" id="bCi-LJ-xmk"/>
                 <constraint firstItem="Tdl-Vd-NfP" firstAttribute="centerX" secondItem="wso-YP-iSh" secondAttribute="centerX" id="di3-8D-758"/>
                 <constraint firstItem="iAe-p2-arx" firstAttribute="centerX" secondItem="wso-YP-iSh" secondAttribute="centerX" id="eUt-Md-ZMn"/>
@@ -105,17 +111,14 @@ ANYTIME.</string>
                 <constraint firstItem="W5G-37-ZQy" firstAttribute="centerX" secondItem="wso-YP-iSh" secondAttribute="centerX" id="iyL-14-6Yt"/>
                 <constraint firstItem="W5G-37-ZQy" firstAttribute="top" secondItem="Tdl-Vd-NfP" secondAttribute="bottom" constant="8" id="maD-4i-qEZ"/>
                 <constraint firstItem="He3-Ec-rJn" firstAttribute="centerX" secondItem="wso-YP-iSh" secondAttribute="centerX" id="naN-Kn-g9j"/>
+                <constraint firstItem="TDS-E4-nwZ" firstAttribute="centerX" secondItem="wso-YP-iSh" secondAttribute="centerX" id="s2b-ks-j6V"/>
                 <constraint firstItem="Tdl-Vd-NfP" firstAttribute="top" secondItem="wso-YP-iSh" secondAttribute="top" constant="20" id="uWh-7X-vgT"/>
             </constraints>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="color" keyPath="color1">
-                    <color key="value" red="0.0039215686269999999" green="0.2156862745" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="color2">
-                    <color key="value" red="0.3294117647" green="0.79607843140000001" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="136" y="37"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgView" destination="TDS-E4-nwZ" id="qLY-lm-SLh"/>
+            </connections>
+            <point key="canvasLocation" x="135.5" y="-97"/>
         </view>
     </objects>
     <resources>

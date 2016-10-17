@@ -11,7 +11,7 @@ import SwiftHTTP
 
 public let okButton = UIButton()
 
-open class NarikoTool: UIResponder, UITextViewDelegate {
+open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDelegate {
     
     static open let sharedInstance = NarikoTool()
     
@@ -21,6 +21,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
     
     let backgroundView = UIView()
     var narikoAlertView = UIView()
+    var alertView = AlertView()
     
     var bubble: BubbleControl!
     var isAuth: Bool = false
@@ -36,23 +37,22 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
         
         container.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
         container.center = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
-
-            container.backgroundColor = UIColor(red: 234.0/255.0, green: 237.0/255.0, blue: 242.0/255.0, alpha: 0.5)
         
-            loadingView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-            loadingView.center = CGPoint(x: screenSize.width/2, y: (screenSize.height-50)/2)
-            
-            loadingView.backgroundColor = UIColor.gray
-            loadingView.clipsToBounds = true
-            loadingView.layer.cornerRadius = 10
-            
-            self.activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
-            self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            self.activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2);
-            
-            loadingView.addSubview(self.activityIndicator)
-            
-            
+        container.backgroundColor = UIColor(red: 234.0/255.0, green: 237.0/255.0, blue: 242.0/255.0, alpha: 0.5)
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        loadingView.center = CGPoint(x: screenSize.width/2, y: (screenSize.height-50)/2)
+        
+        loadingView.backgroundColor = UIColor.gray
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        self.activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2);
+        
+        loadingView.addSubview(self.activityIndicator)
+        
         container.addSubview(loadingView)
         APPDELEGATE.window!!.addSubview(container)
         self.activityIndicator.startAnimating()
@@ -82,157 +82,31 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.checkAuth), name: UserDefaults.didChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removeBubble), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        if UserDefaults.standard.string(forKey: "appAlreadyLaunched") != nil {
-            UserDefaults.standard.set(true, forKey: "appAlreadyLaunched")
-            
+        if UserDefaults.standard.string(forKey: "appAlreadyLaunched") == nil {
+           
+            isOnboarding = true
             let view = self.APPDELEGATE.window!!.rootViewController!.view
+            
+            print("recog")
+            print(view?.gestureRecognizers)
             
             backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
             backgroundView.frame = (view?.frame)!
             view?.addSubview(backgroundView)
             
             narikoAlertView = OnboardingFirst.instanceFromNib() as! OnboardingFirst
+            narikoAlertView.frame = CGRect(x: 20, y: 40, width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 80)
+            narikoAlertView.clipsToBounds = true
             
-            //    OnboardingFirst(frame: CGRect(x: 20, y: 40, width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 80))
+            let longPressRecog = UILongPressGestureRecognizer()
             
-          /*   narikoAlertView.translatesAutoresizingMaskIntoConstraints = false
-            let outsideHorizontalMargin: CGFloat = 24
-            let outsideVerticalMargin: CGFloat = 48
+            longPressRecog.addTarget(self, action: #selector(tap(_:)))
+            longPressRecog.minimumPressDuration = 1.5
+            longPressRecog.numberOfTouchesRequired = 3
+            longPressRecog.delegate = self
             
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: outsideHorizontalMargin))
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -outsideHorizontalMargin))
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: outsideVerticalMargin))
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -outsideVerticalMargin))*/
             
-            /*
-            
-            narikoAlertView.backgroundColor = UIColor.white
-            narikoAlertView.layer.cornerRadius = 20
-            narikoAlertView.layer.shadowColor = UIColor.black.cgColor
-            narikoAlertView.layer.shadowOpacity = 1
-            narikoAlertView.layer.shadowOffset = CGSize.zero
-            narikoAlertView.layer.shadowRadius = 30
-            
-            let headline = UILabel()
-            headline.text = "This app uses Nariko"
-            headline.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
-            headline.numberOfLines = 0
-            headline.textColor = UIColorFromHex(0xEF4438)
-            headline.textAlignment = .center
-            narikoAlertView.addSubview(headline)
-            
-            let spacer1 = UIView()
-            narikoAlertView.addSubview(spacer1)
-            
-            let topDescription = UILabel()
-            topDescription.text = "Hold 3 fingers for 3 seconds to activate Nariko."
-            topDescription.font = UIFont(name: "HelveticaNeue", size: 16)
-            topDescription.numberOfLines = 0
-            topDescription.textColor = UIColorFromHex(0xEF4438)
-            topDescription.textAlignment = .center
-            narikoAlertView.addSubview(topDescription)
-            
-            let spacer2 = UIView()
-            narikoAlertView.addSubview(spacer2)
-            
-            let instructions = UIImageView()
-            
-            let podBundle = Bundle(for: NarikoTool.self)
-            
-            if let url = podBundle.url(forResource: "Nariko", withExtension: "bundle") {
-                let bundle = Bundle(url: url)
-                
-                instructions.image = UIImage(named: "nariko_pic", in: bundle, compatibleWith: nil)
-            }
-            
-            narikoAlertView.addSubview(instructions)
-            
-            let spacer3 = UIView()
-            narikoAlertView.addSubview(spacer3)
-            
-            let bottomDescription = UILabel()
-            bottomDescription.text = "Tap the bubble to give feedback about the actual screen."
-            bottomDescription.font = UIFont(name: "HelveticaNeue", size: 16)
-            bottomDescription.numberOfLines = 0
-            bottomDescription.textColor = UIColorFromHex(0xEF4438)
-            bottomDescription.textAlignment = .center
-            narikoAlertView.addSubview(bottomDescription)
-            
-            let spacer4 = UIView()
-            narikoAlertView.addSubview(spacer4)
-            
-            let okButtonInsets: CGFloat = 18
-            
-            okButton.setTitle("OK", for: UIControlState())
-            okButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-            okButton.setTitleColor(UIColorFromHex(0xEF4438), for: UIControlState())
-            okButton.contentEdgeInsets = UIEdgeInsetsMake(okButtonInsets, okButtonInsets, okButtonInsets, okButtonInsets)
-            narikoAlertView.addSubview(okButton)
-            
-            let spacers = [spacer1, spacer2, spacer3, spacer4]
-            
-            narikoAlertView.translatesAutoresizingMaskIntoConstraints = false
-            headline.translatesAutoresizingMaskIntoConstraints = false
-            spacer1.translatesAutoresizingMaskIntoConstraints = false
-            topDescription.translatesAutoresizingMaskIntoConstraints = false
-            spacer2.translatesAutoresizingMaskIntoConstraints = false
-            instructions.translatesAutoresizingMaskIntoConstraints = false
-            spacer3.translatesAutoresizingMaskIntoConstraints = false
-            bottomDescription.translatesAutoresizingMaskIntoConstraints = false
-            spacer4.translatesAutoresizingMaskIntoConstraints = false
-            okButton.translatesAutoresizingMaskIntoConstraints = false
-            
-            view?.addSubview(narikoAlertView)
-            
-            let outsideHorizontalMargin: CGFloat = 24
-            let outsideVerticalMargin: CGFloat = 48
-            
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: outsideHorizontalMargin))
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -outsideHorizontalMargin))
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: outsideVerticalMargin))
-            view?.addConstraint(NSLayoutConstraint(item: narikoAlertView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -outsideVerticalMargin))
-            
-            let insideMargin: CGFloat = 24
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .top, relatedBy: .equal, toItem: narikoAlertView, attribute: .top, multiplier: 1, constant: insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .leading, relatedBy: .equal, toItem: narikoAlertView, attribute: .leading, multiplier: 1, constant: insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .trailing, relatedBy: .equal, toItem: narikoAlertView, attribute: .trailing, multiplier: 1, constant: -insideMargin))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: headline, attribute: .bottom, relatedBy: .equal, toItem: spacer1, attribute: .top, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer1, attribute: .bottom, relatedBy: .equal, toItem: topDescription, attribute: .top, multiplier: 1, constant: 0))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: topDescription, attribute: .leading, relatedBy: .equal, toItem: narikoAlertView, attribute: .leading, multiplier: 1, constant: insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: topDescription, attribute: .trailing, relatedBy: .equal, toItem: narikoAlertView, attribute: .trailing, multiplier: 1, constant: -insideMargin))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: topDescription, attribute: .bottom, relatedBy: .equal, toItem: spacer2, attribute: .top, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer2, attribute: .bottom, relatedBy: .equal, toItem: instructions, attribute: .top, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer2, attribute: .height, relatedBy: .equal, toItem: spacer1, attribute: .height, multiplier: 1, constant: 0))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 262))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .height, relatedBy: .equal, toItem: instructions, attribute: .width, multiplier: 72/262, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: narikoAlertView, attribute: .leading, multiplier: 1, constant: insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .trailing, relatedBy: .greaterThanOrEqual, toItem: narikoAlertView, attribute: .trailing, multiplier: 1, constant: -insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .centerX, relatedBy: .equal, toItem: narikoAlertView, attribute: .centerX, multiplier: 1, constant: 0))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: instructions, attribute: .bottom, relatedBy: .equal, toItem: spacer3, attribute: .top, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer3, attribute: .bottom, relatedBy: .equal, toItem: bottomDescription, attribute: .top, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer3, attribute: .height, relatedBy: .equal, toItem: spacer1, attribute: .height, multiplier: 1, constant: 0))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: bottomDescription, attribute: .leading, relatedBy: .equal, toItem: narikoAlertView, attribute: .leading, multiplier: 1, constant: insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: bottomDescription, attribute: .trailing, relatedBy: .equal, toItem: narikoAlertView, attribute: .trailing, multiplier: 1, constant: -insideMargin))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: bottomDescription, attribute: .bottom, relatedBy: .equal, toItem: spacer4, attribute: .top, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer4, attribute: .bottom, relatedBy: .equal, toItem: okButton, attribute: .top, multiplier: 1, constant: -insideMargin))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer4, attribute: .height, relatedBy: .equal, toItem: spacer1, attribute: .height, multiplier: 1, constant: 0))
-            
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: okButton, attribute: .centerX, relatedBy: .equal, toItem: narikoAlertView, attribute: .centerX, multiplier: 1, constant: 0))
-            narikoAlertView.addConstraint(NSLayoutConstraint(item: okButton, attribute: .bottom, relatedBy: .equal, toItem: narikoAlertView, attribute: .bottom, multiplier: 1, constant: -insideMargin / 2))
-            
-            for spacer in spacers {
-                narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer, attribute: .leading, relatedBy: .equal, toItem: narikoAlertView, attribute: .leading, multiplier: 1, constant: 0))
-                narikoAlertView.addConstraint(NSLayoutConstraint(item: spacer, attribute: .trailing, relatedBy: .equal, toItem: narikoAlertView, attribute: .trailing, multiplier: 1, constant: 0))
-            }
-            */
+            narikoAlertView.addGestureRecognizer(longPressRecog)
             
             view?.addSubview(narikoAlertView)
             
@@ -248,6 +122,64 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
                 }, completion: {(finished: Bool) -> Void in
             })
         }
+    }
+    
+    @objc fileprivate func tap(_ g: UILongPressGestureRecognizer) {
+        
+        
+        switch g.state {
+            
+        case .began:
+            let view = self.APPDELEGATE.window!!.rootViewController!.view
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                self.narikoAlertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                
+                }, completion: { (finished) in
+                    
+                    if finished{
+                        self.narikoAlertView.removeFromSuperview()
+                      
+                        UserDefaults.standard.set(true, forKey: "appAlreadyLaunched")
+                        self.narikoAlertView = OnboardingSecond.instanceFromNib() as! OnboardingSecond
+                        self.narikoAlertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: (view?.frame.height)! / 2 - 200, width: (view?.frame.width)! - 40, height: 400)
+                      
+                        self.narikoAlertView.clipsToBounds = true
+                        
+                        view?.addSubview(self.narikoAlertView)
+                        
+                        self.narikoAlertView.layoutIfNeeded()
+                        
+                        self.narikoAlertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                        
+                        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {() -> Void in
+                            self.backgroundView.alpha = 1
+                            self.narikoAlertView.transform = CGAffineTransform.identity
+                            }, completion: { (finished) in
+                                if finished{
+                                    self.perform(#selector(self.close), with: nil, afterDelay: 3)
+                                }
+                        })
+                    }
+            })
+            
+        default: break
+            
+        }
+    }
+    
+   @objc fileprivate func close(){
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {() -> Void in
+            self.narikoAlertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            self.alertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            }, completion: { (finished) in
+                if finished{
+                    isOnboarding = false
+                    self.backgroundView.removeFromSuperview()
+                    self.narikoAlertView.removeFromSuperview()
+                    self.alertView.removeFromSuperview()
+                    
+                }
+        })
     }
     
     open func closeNarikoAlertView() {
@@ -302,7 +234,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
                     alertController.addAction(cancelAction)
                     
                     self.APPDELEGATE.window!!.rootViewController!.present(alertController, animated: true, completion: nil);
-
+                    
                 }
             })
             
@@ -310,7 +242,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
             print("Not logged in!")
         }
     }
-    
     
     open func setupBubble() {
         let win = APPDELEGATE.window!!
@@ -343,7 +274,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
         var max: CGFloat?
         if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation){
             if UIDevice.current.userInterfaceIdiom == .pad{
-               max = win.h - 500
+                max = win.h - 500
             } else {
                 max = win.h - 350
             }
@@ -440,9 +371,26 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
                     print("send success")
                     self.removeBubble(true)
                     self.hideActivityIndicator()
-                    let alert = UIAlertController(title: "Information", message: "Your ticket has been sent successfuly!", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
-                    self.APPDELEGATE.window!!.rootViewController!.present(alert, animated: true, completion: nil)
+                    let view = self.APPDELEGATE.window!!.rootViewController!.view
+                    self.alertView = AlertView.instanceFromNib() as! AlertView
+                    self.alertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: (view?.frame.height)! / 2 - 150, width: (view?.frame.width)! - 40, height: 300)
+                    self.alertView.clipsToBounds = true
+                    self.alertView.updateUI(text1: "Your feedback has been submitted.", text2: "Thank you.")
+                    
+                    self.APPDELEGATE.window!!.rootViewController!.view?.addSubview(self.alertView)
+                    self.alertView.layoutIfNeeded()
+                    self.alertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                    
+                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {() -> Void in
+                        self.alertView.transform = CGAffineTransform.identity
+                        
+                        }, completion: { (finished) in
+                            if finished{
+                                self.perform(#selector(self.close), with: nil, afterDelay: 3)
+                            
+                            }
+                    })
+
                 } else {
                     self.hideActivityIndicator()
                     let alert = UIAlertController(title: "Error", message: "The screenshot could not be sent!", preferredStyle: UIAlertControllerStyle.alert)
@@ -473,19 +421,19 @@ open class NarikoTool: UIResponder, UITextViewDelegate {
                 viewWithTag.removeFromSuperview()
             }
         } else {
-        if (prevOrient.isPortrait && UIDevice.current.orientation.isLandscape) || (prevOrient.isLandscape && UIDevice.current.orientation.isPortrait) {
-            
-            print("remove")
-            if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
-                bubble.closeContentView()
-                viewWithTag.removeFromSuperview()
+            if (prevOrient.isPortrait && UIDevice.current.orientation.isLandscape) || (prevOrient.isLandscape && UIDevice.current.orientation.isPortrait) {
+                
+                print("remove")
+                if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
+                    bubble.closeContentView()
+                    viewWithTag.removeFromSuperview()
+                }
             }
-        }
-        if !UIDevice.current.orientation.isFlat{
-            if prevOrient != UIDevice.current.orientation {
-                prevOrient = UIDevice.current.orientation
+            if !UIDevice.current.orientation.isFlat{
+                if prevOrient != UIDevice.current.orientation {
+                    prevOrient = UIDevice.current.orientation
+                }
             }
-        }
         }
     }
 }

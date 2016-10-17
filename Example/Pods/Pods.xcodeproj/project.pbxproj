@@ -22,8 +22,9 @@
 		4A3729F21DB4E418000D284B /* OnboardingFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F11DB4E418000D284B /* OnboardingFirst.swift */; };
 		4A3729F41DB4E42A000D284B /* OnboardingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */; };
 		4A3729F61DB4E445000D284B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F51DB4E445000D284B /* AlertView.swift */; };
-		4A3729F81DB4E584000D284B /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F71DB4E584000D284B /* InspectableView.swift */; };
 		4A3729FA1DB4F282000D284B /* DynamicSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F91DB4F282000D284B /* DynamicSizeView.swift */; };
+		4A3729FB1DB53515000D284B /* OnboardingSecond.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3729EC1DB4DCF3000D284B /* OnboardingSecond.xib */; };
+		4A3729FC1DB53518000D284B /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3729EE1DB4E226000D284B /* AlertView.xib */; };
 		4A6D386A1DB0EC8B007B7B77 /* OnboardingFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */; };
 		4A6D386F1DB0EEB9007B7B77 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */; };
 		4A6D38701DB0EEB9007B7B77 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */; };
@@ -102,7 +103,6 @@
 		4A3729F11DB4E418000D284B /* OnboardingFirst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingFirst.swift; path = Views/OnboardingFirst.swift; sourceTree = "<group>"; };
 		4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingSecond.swift; path = Views/OnboardingSecond.swift; sourceTree = "<group>"; };
 		4A3729F51DB4E445000D284B /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertView.swift; path = Views/AlertView.swift; sourceTree = "<group>"; };
-		4A3729F71DB4E584000D284B /* InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectableView.swift; sourceTree = "<group>"; };
 		4A3729F91DB4F282000D284B /* DynamicSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeView.swift; sourceTree = "<group>"; };
 		4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnboardingFirst.xib; path = Xibs/OnboardingFirst.xib; sourceTree = "<group>"; };
 		4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
@@ -272,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				4A3729F91DB4F282000D284B /* DynamicSizeView.swift */,
-				4A3729F71DB4E584000D284B /* InspectableView.swift */,
 				4A3729F11DB4E418000D284B /* OnboardingFirst.swift */,
 				4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */,
 				4A3729F51DB4E445000D284B /* AlertView.swift */,
@@ -605,7 +604,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				412C8D6CE50F706F750F2573C2F2DD73 /* Images.xcassets in Resources */,
+				4A3729FC1DB53518000D284B /* AlertView.xib in Resources */,
 				1F6C0DAC1DB50CB700DFB2F9 /* OnboardingFirst.xib in Resources */,
+				4A3729FB1DB53515000D284B /* OnboardingSecond.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +618,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A7CCE6AE52F3006C062EE160A8D585 /* BubbleControl.swift in Sources */,
-				4A3729F81DB4E584000D284B /* InspectableView.swift in Sources */,
 				4293BD793D67565990C166ED66301DC5 /* BubbleLongPressGestureRecognizer.swift in Sources */,
 				4A3729F21DB4E418000D284B /* OnboardingFirst.swift in Sources */,
 				4A3729F61DB4E445000D284B /* AlertView.swift in Sources */,

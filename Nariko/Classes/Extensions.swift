@@ -10,6 +10,17 @@
 import Foundation
 import UIKit
 
+extension UIColor{
+    class var gradTop: UIColor{
+        return UIColor(red: 1.0/255.0, green: 54.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+    }
+    class var gradBottom: UIColor{
+        return UIColor(red: 84.0/255.0, green: 203.0/255.0, blue: 103.0/255.0, alpha: 1.0)
+    }
+
+}
+
+
 public extension UIDevice {
   
     var modelName: String {

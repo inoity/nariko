@@ -7,3 +7,7 @@ func UIColorFromHex(_ rgbValue: UInt32, alpha: Double=1.0) -> UIColor {
     
     return UIColor(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
 }
+
+var isOnboarding: Bool = false
+
+

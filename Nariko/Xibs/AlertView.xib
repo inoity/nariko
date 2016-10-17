@@ -14,12 +14,15 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertView" customModule="Nariko" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="yTa-Si-PZw">
+        <view contentMode="scaleToFill" id="yTa-Si-PZw" customClass="AlertView" customModule="Nariko" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taK-aX-SUK">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="eck-3X-BZ1">
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -83,12 +86,15 @@
             <color key="backgroundColor" red="0.12941176469999999" green="0.43921568630000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="u4z-7T-4LX" firstAttribute="top" secondItem="eI0-Sb-Cmb" secondAttribute="bottom" constant="15" id="4MC-GY-s8a"/>
+                <constraint firstItem="taK-aX-SUK" firstAttribute="centerX" secondItem="yTa-Si-PZw" secondAttribute="centerX" id="AUg-oY-JgG"/>
+                <constraint firstItem="taK-aX-SUK" firstAttribute="centerY" secondItem="yTa-Si-PZw" secondAttribute="centerY" id="EPH-A0-eZi"/>
                 <constraint firstItem="WEn-xy-jxx" firstAttribute="top" secondItem="eck-3X-BZ1" secondAttribute="bottom" constant="5" id="ErC-zL-K6w"/>
                 <constraint firstItem="6Qr-a3-ckV" firstAttribute="top" secondItem="yTa-Si-PZw" secondAttribute="top" constant="20" id="G0F-Yu-bQP"/>
                 <constraint firstItem="eck-3X-BZ1" firstAttribute="centerX" secondItem="yTa-Si-PZw" secondAttribute="centerX" id="H6M-xT-qBj"/>
                 <constraint firstAttribute="bottom" secondItem="WEn-xy-jxx" secondAttribute="bottom" constant="60" id="HHy-28-4v5"/>
                 <constraint firstItem="eI0-Sb-Cmb" firstAttribute="top" secondItem="6Qr-a3-ckV" secondAttribute="bottom" constant="8" id="KWn-iS-WWb"/>
                 <constraint firstItem="eI0-Sb-Cmb" firstAttribute="centerX" secondItem="yTa-Si-PZw" secondAttribute="centerX" id="Ty4-iC-Dpa"/>
+                <constraint firstItem="taK-aX-SUK" firstAttribute="height" secondItem="yTa-Si-PZw" secondAttribute="height" id="Usu-lX-MCX"/>
                 <constraint firstItem="6Qr-a3-ckV" firstAttribute="centerX" secondItem="yTa-Si-PZw" secondAttribute="centerX" id="WcQ-qG-Fp5"/>
                 <constraint firstItem="WEn-xy-jxx" firstAttribute="leading" secondItem="yTa-Si-PZw" secondAttribute="leading" constant="30" id="bHG-b4-86l"/>
                 <constraint firstItem="u4z-7T-4LX" firstAttribute="centerX" secondItem="yTa-Si-PZw" secondAttribute="centerX" id="cui-St-nvj"/>
@@ -96,17 +102,11 @@
                 <constraint firstItem="6Qr-a3-ckV" firstAttribute="height" secondItem="eck-3X-BZ1" secondAttribute="height" id="hkY-lL-KdZ"/>
                 <constraint firstAttribute="trailing" secondItem="WEn-xy-jxx" secondAttribute="trailing" constant="30" id="kFm-sT-Sv7"/>
                 <constraint firstItem="eck-3X-BZ1" firstAttribute="top" secondItem="u4z-7T-4LX" secondAttribute="bottom" constant="8" id="lBp-wO-3La"/>
+                <constraint firstItem="taK-aX-SUK" firstAttribute="width" secondItem="yTa-Si-PZw" secondAttribute="width" id="xeX-ww-k1e"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="color" keyPath="color1">
-                    <color key="value" red="0.0039215686269999999" green="0.2156862745" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="color2">
-                    <color key="value" red="0.3294117647" green="0.79607843140000001" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="bgView" destination="taK-aX-SUK" id="74t-DA-QvW"/>
                 <outlet property="firstTextBlock" destination="HZa-ZH-7Rj" id="NqY-Tc-fTQ"/>
                 <outlet property="secondTextBlock" destination="qbh-e8-06F" id="baQ-7W-FcU"/>
             </connections>

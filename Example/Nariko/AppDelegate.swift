@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NarikoTool.sharedInstance.checkAuth()
         self.window!.rootViewController!.view.addGestureRecognizer(BubbleTapGestureRecognizer())
         self.window!.rootViewController!.view.addGestureRecognizer(BubbleLongPressGestureRecognizer())
-        
+    
         return true
     }
 

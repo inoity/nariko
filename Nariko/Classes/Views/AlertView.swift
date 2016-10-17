@@ -8,15 +8,13 @@
 
 import UIKit
 
-@IBDesignable class AlertView: InspectableView {
+@IBDesignable class AlertView: DynamicSizeView {
 
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var firstTextBlock: UILabel!
     @IBOutlet weak var secondTextBlock: UILabel!
-    
-    @IBInspectable let color1: UIColor = UIColor.blue
-    @IBInspectable let color2: UIColor = UIColor.green
-    
-    override var nibName: String {
+
+    override class var nibName: String {
         get {
             return "AlertView"
         }
@@ -28,14 +26,18 @@ import UIKit
         super.awakeFromNib()
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
-        gradientLayer.colors = [color1.cgColor, color2.cgColor]
+        gradientLayer.frame = self.layer.frame
+        gradientLayer.colors = [UIColor.gradTop.cgColor, UIColor.gradBottom.cgColor]
         gradientLayer.locations = [0.0, 1.0]
-        self.layer.addSublayer(gradientLayer)
-    //    foreground.layer.cornerRadius = 12
+        bgView.layer.addSublayer(gradientLayer)
         
     }
     
+    func updateUI(text1: String, text2: String){
+        
+        firstTextBlock.text = text1
+        secondTextBlock.text = text2
+    }
     /*
      
     // Only override draw() if you perform custom drawing.

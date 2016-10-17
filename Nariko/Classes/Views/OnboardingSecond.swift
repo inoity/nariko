@@ -8,16 +8,15 @@
 
 import UIKit
 
-@IBDesignable class OnboardingSecond: InspectableView {
+@IBDesignable class OnboardingSecond: DynamicSizeView {
 
-    override var nibName: String {
+    @IBOutlet weak var bgView: UIView!
+    override class var nibName: String {
         get {
             return "OnboardingSecond"
         }
     }
     
-    @IBInspectable let color1: UIColor = UIColor.blue
-    @IBInspectable let color2: UIColor = UIColor.green
     
     var on = false
     
@@ -25,11 +24,10 @@ import UIKit
         super.awakeFromNib()
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
-        gradientLayer.colors = [color1.cgColor, color2.cgColor]
+        gradientLayer.frame = self.layer.frame
+        gradientLayer.colors = [UIColor.gradTop.cgColor, UIColor.gradBottom.cgColor]
         gradientLayer.locations = [0.0, 1.0]
-        self.layer.addSublayer(gradientLayer)
-       // foreground.layer.cornerRadius = 12
+        bgView.layer.addSublayer(gradientLayer)
         
     }
     
