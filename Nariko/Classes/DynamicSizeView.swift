@@ -8,15 +8,8 @@ class DynamicSizeView: UIView {
     }
     
     class func instanceFromNib() -> UIView {
-        
-        let podBundle = Bundle(for: DynamicSizeView.self)
-        
+        let podBundle = Bundle(for: self.classForCoder())
         let bundle = Bundle(url: podBundle.url(forResource: "Nariko", withExtension: "bundle")!)
-        
-    /*    let bundle = Bundle(for: type(of: self) as! AnyClass)
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        return view*/
         
         return UINib(nibName: nibName, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }

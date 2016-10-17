@@ -36,7 +36,7 @@ s.author           = { 'Zednet Informatika Kft.' => 'info@nariko.io' }
   # s.prepare_command = 'chmod u+x $(pwd)/Nariko/settings-script.sh'
 
   s.resource_bundles = {
-    'Nariko' => ['Nariko/Assets/*.{png,xcassets}']
+    'Nariko' => ['Nariko/Assets/*.{png,xcassets,xib}']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
