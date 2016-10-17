@@ -11,7 +11,7 @@ import SwiftHTTP
 
 class CallApi {
     
-    func authRequest(paremeters: [String: AnyObject], callCompletion: ((success: Bool, errorCode: Int, msg: String) -> Void)!) {
+    func authRequest(_ paremeters: [String: AnyObject], callCompletion: ((_ success: Bool, _ errorCode: Int, _ msg: String) -> Void)!) {
         
         do {
             let opt = try HTTP.POST("http://nariko.io/api/application/login", parameters: paremeters, headers: nil, requestSerializer: JSONParameterSerializer())
@@ -21,18 +21,18 @@ class CallApi {
                 if let jsonObject: AnyObject = response.text?.parseJSONString {
                     
                     if jsonObject["Status"]! as! Int == 200{
-                        dispatch_async(dispatch_get_main_queue()){
+                        DispatchQueue.main.async{
                             
-                            callCompletion(success: true, errorCode: -1, msg: jsonObject["ApiKey"]! as? String ?? "")
+                            callCompletion(true, -1, jsonObject["ApiKey"]! as? String ?? "")
                         }
                     } else {
-                        dispatch_async(dispatch_get_main_queue()){
-                            callCompletion(success: false, errorCode: jsonObject["Status"]! as? Int ?? 900, msg: "")
+                        DispatchQueue.main.async{
+                            callCompletion(false, jsonObject["Status"]! as? Int ?? 900, "")
                         }
                     }
                 } else {
-                    dispatch_async(dispatch_get_main_queue()){
-                        callCompletion(success: false, errorCode: 900, msg: "")
+                    DispatchQueue.main.async{
+                        callCompletion(false, 900, "")
                     }
                 }
             }
@@ -41,20 +41,20 @@ class CallApi {
         }
     }
     
-    func sendData(image: UIImage, comment: String, callCompletion: ((success: Bool, errorCode: Int, msg: String) -> Void)!) {
+    func sendData(_ image: UIImage, comment: String, callCompletion: ((_ success: Bool, _ errorCode: Int, _ msg: String) -> Void)!) {
         
         do {
-            let base64Str = UIImageJPEGRepresentation(image, 1.0)!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+            let base64Str = UIImageJPEGRepresentation(image, 1.0)!.base64EncodedString(options: .lineLength64Characters)
             
-            let opt = try HTTP.POST("http://nariko.io/api/application/task", parameters: ["ApiKey": NarikoTool.sharedInstance.apiKey!, "modelName": UIDevice().modelName, "systemVersion":UIDevice.currentDevice().systemVersion, "deviceOrientation": UIDevice.currentDevice().orientation.rawValue.description, "screenOrientation": UIApplication.sharedApplication().statusBarOrientation.rawValue.description, "name": UIDevice.currentDevice().name, "systemName": UIDevice.currentDevice().systemName, "image": base64Str, "comment": comment], headers: nil, requestSerializer: JSONParameterSerializer())
+            let opt = try HTTP.POST("http://nariko.io/api/application/task", parameters: ["ApiKey": NarikoTool.sharedInstance.apiKey!, "modelName": UIDevice().modelName, "systemVersion":UIDevice.current.systemVersion, "deviceOrientation": UIDevice.current.orientation.rawValue.description, "screenOrientation": UIApplication.shared.statusBarOrientation.rawValue.description, "name": UIDevice.current.name, "systemName": UIDevice.current.systemName, "image": base64Str, "comment": comment], headers: nil, requestSerializer: JSONParameterSerializer())
             
             //   let opt = try HTTP.POST("http://nariko.io/api/task", parameters: ["ApiKey": "", "modelName": UIDevice().modelName, "systemVersion":UIDevice.currentDevice().systemVersion, "orientation": UIDevice.currentDevice().orientation.rawValue, "name":UIDevice.currentDevice().name, "systemName": UIDevice.currentDevice().systemName, "file": Upload(data: UIImageJPEGRepresentation(image, 1.0)!, fileName: "teszt", mimeType: "image/jpeg")], headers: nil, requestSerializer: JSONParameterSerializer())
             
             opt.start { response in
                 
                 print(response.text)
-                dispatch_async(dispatch_get_main_queue()){
-                    callCompletion(success: true, errorCode: -1, msg: "")
+                DispatchQueue.main.async{
+                    callCompletion( true,  -1, "")
                 }
             }
         } catch let error {

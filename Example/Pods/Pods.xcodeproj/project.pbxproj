@@ -7,34 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014A4C1077096FB4865E00C805C1B781 /* NarikoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ACF2030A795DAC04FF0E9CF4C30ACE /* NarikoTool.swift */; };
+		0200EE0A755091C94EA9AC932EF57C13 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		080EF2531949A7995D64F392ACBF9C9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
-		1F7025AF1D5C71F50078C538 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7025AE1D5C71F50078C538 /* Global.swift */; };
-		376616994D33291D2ABF05358E19DBEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
-		3D2F89D226EFB3B4248111EE9E839F51 /* SwiftHTTP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		493BFF579751D32A234C99EB48BBA342 /* Nariko-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD02FC8471DF3CE1687AC401D41F346 /* Nariko-dummy.m */; };
-		4DDE5A84B69545E324BEDB905A80B9D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB8D104634FE2BF9430F328C2D873DB7 /* Images.xcassets */; };
-		5B82D79E48EF4FA261C9650111EFBD54 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		68814868176592EEBA2C54E0E0BD586D /* BubbleTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F70137A5FF9F9B5F121E872709BB9F /* BubbleTapGestureRecognizer.swift */; };
-		69E383D06C9880A25214E25876E06664 /* BubbleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742AF951F7BDE669DC0B130BD56F7BDC /* BubbleControl.swift */; };
-		6CF84B4A15491B63C21CC95072E46B07 /* BubbleLongPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC5EB3B118064D7FB4BC48F0FB47DA /* BubbleLongPressGestureRecognizer.swift */; };
-		6DEA15A69D7A378B80F95666C12B4268 /* Nariko.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */; };
+		16957DA0CD3CBA634495B1782BFDA96C /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		220F45B4A3AE7D278520DB6E1EA825B3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D7F91FC0AF459AEC0CC7D6369FBBD /* Global.swift */; };
+		2AAC3066F754AF2B212CDD2EC318DD1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
+		32A7CCE6AE52F3006C062EE160A8D585 /* BubbleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325D1323F5BC1F420DA8AA31621420F8 /* BubbleControl.swift */; };
+		412C8D6CE50F706F750F2573C2F2DD73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3255813236E6B1072D04E44C3759725C /* Images.xcassets */; };
+		4293BD793D67565990C166ED66301DC5 /* BubbleLongPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC002138444A15B1A2BF2B5E58C0F21 /* BubbleLongPressGestureRecognizer.swift */; };
+		4A3729ED1DB4DCF3000D284B /* OnboardingSecond.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3729EC1DB4DCF3000D284B /* OnboardingSecond.xib */; };
+		4A3729EF1DB4E226000D284B /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3729EE1DB4E226000D284B /* AlertView.xib */; };
+		4A3729F21DB4E418000D284B /* OnboardingFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F11DB4E418000D284B /* OnboardingFirst.swift */; };
+		4A3729F41DB4E42A000D284B /* OnboardingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */; };
+		4A3729F61DB4E445000D284B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F51DB4E445000D284B /* AlertView.swift */; };
+		4A3729F81DB4E584000D284B /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F71DB4E584000D284B /* InspectableView.swift */; };
+		4A3729FA1DB4F282000D284B /* DynamicSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3729F91DB4F282000D284B /* DynamicSizeView.swift */; };
+		4A6D386A1DB0EC8B007B7B77 /* OnboardingFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */; };
+		4A6D386F1DB0EEB9007B7B77 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */; };
+		4A6D38701DB0EEB9007B7B77 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */; };
+		4A6D38711DB0EEB9007B7B77 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */; };
+		4F6C3DA9F0AFA40453C8DCFE73BE4A82 /* CallApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD37D40944C18FE8F8EC42E7395F3DD /* CallApi.swift */; };
+		7636FB6E84B1A6BF83210EAB0E1C884D /* Nariko.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */; };
+		785EC2BB02CCF914DEF1147A8356F526 /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12E1F1F705E16A4FDCBEB80158B486 /* HTTPSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7913E2F883C983568EE03A4DCA04AAF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
+		81B1A46D121EF6E96F508B12652EF199 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F256E2AF445AD9D4BC403DAB9263834C /* Extensions.swift */; };
 		826F869852B68784E0A97A6066B44FF1 /* Pods-Nariko_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F224042874EAB67D6EE642430AE64451 /* Pods-Nariko_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86519798E64CF530B653D0630826ADE8 /* SwiftHTTP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C72704C5184338526DF383D9C0BDF3B5 /* SwiftHTTP-dummy.m */; };
-		874A58834BC7BF7E3B20F1C06E71F077 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1830EAAE8525290328F1119A661D3D75 /* SwiftHTTP.framework */; };
-		8F2A962F233EACE31A0453004DF20283 /* Nariko-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 983AFDD888366179F1542D7C8A6804E5 /* Nariko-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		919531325BFE9FBC36A5A52A8CB4A6A3 /* CallApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A43767E3AE5CDFD4E46D795FD1E76 /* CallApi.swift */; };
 		92210247B577201FC01C149649EFFCF2 /* Pods-Nariko_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B90325AD82A4438117A13E9F8FCBC /* Pods-Nariko_Tests-dummy.m */; };
+		92313B00DD029AF2B9571F230F86D473 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1830EAAE8525290328F1119A661D3D75 /* SwiftHTTP.framework */; };
 		9601F9DB5E038997A547149E3D3B9C76 /* Pods-Nariko_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59843889E7A747193B9EBE1CFFA5CF32 /* Pods-Nariko_Example-dummy.m */; };
-		ADAB4B3DAC7517D492767393B6DD899E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D65E27D7444DA52DA91F990AB66778 /* Request.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B14324C4600310992026F0C5F71BD134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
-		C887E10DAF06076A953764D5A4CF4235 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9666A5EF0D7D6A07AFF064EDB3054670 /* Nariko-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD02FC8471DF3CE1687AC401D41F346 /* Nariko-dummy.m */; };
+		AFD9B45682F3CB740B0906797BFAC864 /* Nariko-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 983AFDD888366179F1542D7C8A6804E5 /* Nariko-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5BEFB5B0076C1F30C85C7D878274FD9 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251CABA47D51B279A7314BA1154E913 /* StatusCode.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D06B5463F8C9B81D638267F596CA0F2E /* Pods-Nariko_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60A69322285483B25FEF82193A31F1C7 /* Pods-Nariko_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9BFA8D7D8BB9E1D8E5BF63CEAD6D7BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
-		DC056AC0307ECDD857FBAFCF9B7A5DF1 /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12E1F1F705E16A4FDCBEB80158B486 /* HTTPSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E8EFACD1D1F4853A6FD2B9BC87ACED9D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0136E17874CB4758A6091FC8BD6C22 /* Extensions.swift */; };
-		E9D63B8CF464DD93DD822757CFE03AA9 /* NarikoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50251E85BF1AF8F23AF3A386DCDD87FC /* NarikoTool.swift */; };
-		ED282943A0B05F19B1C6481746506821 /* nariko_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D375695F4AC1D53243F3447747798087 /* nariko_logo.png */; };
-		F19724E2CEBE611200EFBFE01A8A8008 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251CABA47D51B279A7314BA1154E913 /* StatusCode.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E81DE7EA302D9D57DBB9954303C98B43 /* SwiftHTTP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8DB690FED68CB529B712C35B9A20F6D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D65E27D7444DA52DA91F990AB66778 /* Request.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7ED6F22140EABE6898D152C04829749 /* SwiftHTTP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C72704C5184338526DF383D9C0BDF3B5 /* SwiftHTTP-dummy.m */; };
+		F91D75007489CB90DC313AD87E08EE33 /* BubbleTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F69E3E21DD748A258BEF419301F3D0F /* BubbleTapGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,74 +52,85 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2662D4DF50D865716E36C0C570551F21;
+			remoteGlobalIDString = 59CD25D495A8103A79CDE1BF23FAB189;
 			remoteInfo = Nariko;
 		};
-		3B35B445BF25FB7DD9D836AF37C05E45 /* PBXContainerItemProxy */ = {
+		6B4B627772317F5CF3718D3EADD5555A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 87F9BD4D280495C65D38C91C8F20F540;
-			remoteInfo = SwiftHTTP;
-		};
-		E4F17276CBB0414B2BA557601E44246F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E873E2675C07F62E4D11E3A8CF37374F;
+			remoteGlobalIDString = 419FEB80DB2B4FB32A7723CDB13F37AA;
 			remoteInfo = "Nariko-Nariko";
+		};
+		73E94C9969BE79239EFF13F0375A6C69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0498C97B3B229C5DF03CE3EB92910D8;
+			remoteInfo = SwiftHTTP;
 		};
 		EEA34CDB6C271A22CF1D557183DCB425 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 87F9BD4D280495C65D38C91C8F20F540;
+			remoteGlobalIDString = C0498C97B3B229C5DF03CE3EB92910D8;
 			remoteInfo = SwiftHTTP;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		0CC002138444A15B1A2BF2B5E58C0F21 /* BubbleLongPressGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BubbleLongPressGestureRecognizer.swift; sourceTree = "<group>"; };
 		0E210E767095E86AEA4392C4ADD14055 /* Pods-Nariko_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Nariko_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0F69E3E21DD748A258BEF419301F3D0F /* BubbleTapGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BubbleTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHTTP.xcconfig; sourceTree = "<group>"; };
 		1822309E612907CDB7CD7A275438FC89 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1830EAAE8525290328F1119A661D3D75 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D035FE42580EE264138659B408467B7 /* SwiftHTTP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-prefix.pch"; sourceTree = "<group>"; };
 		1E41052B8F158D91AED620C76E82A041 /* Pods-Nariko_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Nariko_Example-frameworks.sh"; sourceTree = "<group>"; };
-		1F7025AE1D5C71F50078C538 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		2BE84BEA23634C381FA0E1F00F09380B /* Pods-Nariko_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Nariko_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		2C0045C308FE3B0F9C019D3314809639 /* Pods-Nariko_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Nariko_Tests.modulemap"; sourceTree = "<group>"; };
+		3255813236E6B1072D04E44C3759725C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		325D1323F5BC1F420DA8AA31621420F8 /* BubbleControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BubbleControl.swift; sourceTree = "<group>"; };
 		35F8D35D2CD40430C49165298119C95B /* SwiftHTTP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHTTP.modulemap; sourceTree = "<group>"; };
 		3FDD4E5A075B1DDD63491898DDA38155 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4251CABA47D51B279A7314BA1154E913 /* StatusCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StatusCode.swift; path = Source/StatusCode.swift; sourceTree = "<group>"; };
 		4902B6DC6F2CFFB03FC6F7CB97BE91D3 /* Pods-Nariko_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Nariko_Example.modulemap"; sourceTree = "<group>"; };
+		4A3729EC1DB4DCF3000D284B /* OnboardingSecond.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnboardingSecond.xib; path = Xibs/OnboardingSecond.xib; sourceTree = "<group>"; };
+		4A3729EE1DB4E226000D284B /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlertView.xib; path = Xibs/AlertView.xib; sourceTree = "<group>"; };
+		4A3729F11DB4E418000D284B /* OnboardingFirst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingFirst.swift; path = Views/OnboardingFirst.swift; sourceTree = "<group>"; };
+		4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingSecond.swift; path = Views/OnboardingSecond.swift; sourceTree = "<group>"; };
+		4A3729F51DB4E445000D284B /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertView.swift; path = Views/AlertView.swift; sourceTree = "<group>"; };
+		4A3729F71DB4E584000D284B /* InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectableView.swift; sourceTree = "<group>"; };
+		4A3729F91DB4F282000D284B /* DynamicSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeView.swift; sourceTree = "<group>"; };
+		4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnboardingFirst.xib; path = Xibs/OnboardingFirst.xib; sourceTree = "<group>"; };
+		4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		4A8D9FAA47F61549A5125AA7CB2F72DC /* Pods-Nariko_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Nariko_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Nariko.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		50251E85BF1AF8F23AF3A386DCDD87FC /* NarikoTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NarikoTool.swift; sourceTree = "<group>"; };
-		56F70137A5FF9F9B5F121E872709BB9F /* BubbleTapGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BubbleTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		59843889E7A747193B9EBE1CFFA5CF32 /* Pods-Nariko_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Nariko_Example-dummy.m"; sourceTree = "<group>"; };
 		60A69322285483B25FEF82193A31F1C7 /* Pods-Nariko_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Nariko_Example-umbrella.h"; sourceTree = "<group>"; };
 		6286F9BB49F09564F275C2D8D1AD9351 /* Pods-Nariko_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Nariko_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		67D65E27D7444DA52DA91F990AB66778 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		71EBE8D91E23AC202FDF759A2952B44D /* Pods-Nariko_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Nariko_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		72409D00CE9CADC7968D8F8E2615D7D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		742AF951F7BDE669DC0B130BD56F7BDC /* BubbleControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BubbleControl.swift; sourceTree = "<group>"; };
 		7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-umbrella.h"; sourceTree = "<group>"; };
 		7ED6C124B29B5BEF78435948858DDBA3 /* Nariko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nariko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815FDD834F72523A1A4DF91A079DAF2C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nariko.xcconfig; sourceTree = "<group>"; };
 		8734A299C2537A786BF86F2AFAF57A3F /* Pods_Nariko_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nariko_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F93849E046E4092D1C3C851B7BFA44 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		890D7F91FC0AF459AEC0CC7D6369FBBD /* Global.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		8EE734575A246A026EE3CFC3392CAE80 /* Pods-Nariko_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Nariko_Example-resources.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		983AFDD888366179F1542D7C8A6804E5 /* Nariko-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nariko-umbrella.h"; sourceTree = "<group>"; };
 		984B90325AD82A4438117A13E9F8FCBC /* Pods-Nariko_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Nariko_Tests-dummy.m"; sourceTree = "<group>"; };
 		9B12E1F1F705E16A4FDCBEB80158B486 /* HTTPSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPSecurity.swift; path = Source/HTTPSecurity.swift; sourceTree = "<group>"; };
 		9E5C99BC296D69AF8521ACCBFCC9D20F /* Pods-Nariko_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Nariko_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		AF0136E17874CB4758A6091FC8BD6C22 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ADD37D40944C18FE8F8EC42E7395F3DD /* CallApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CallApi.swift; sourceTree = "<group>"; };
 		B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B7B39E1091DB44FC1A24F1345D921524 /* Pods-Nariko_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Nariko_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		BB8D104634FE2BF9430F328C2D873DB7 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C0361634EF957EB557BB2CBED124EF2A /* Pods-Nariko_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Nariko_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C4F1EDA2A3B5A444F1FE29CCE7C0692A /* Nariko-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nariko-prefix.pch"; sourceTree = "<group>"; };
 		C64985D268D14CB269333D52B46496FB /* Nariko.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Nariko.modulemap; sourceTree = "<group>"; };
@@ -117,21 +138,36 @@
 		C9AEFBE6B43D3B24514A12B2FF1A299E /* Pods_Nariko_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nariko_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08C68C83313E943FD1226F77BE33CF4 /* Pods-Nariko_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Nariko_Tests-resources.sh"; sourceTree = "<group>"; };
 		D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = Source/Operation.swift; sourceTree = "<group>"; };
-		D375695F4AC1D53243F3447747798087 /* nariko_logo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = nariko_logo.png; sourceTree = "<group>"; };
+		D1ACF2030A795DAC04FF0E9CF4C30ACE /* NarikoTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NarikoTool.swift; sourceTree = "<group>"; };
 		D4EBE15888C66E0085FF1AB10368E023 /* Pods-Nariko_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Nariko_Example.release.xcconfig"; sourceTree = "<group>"; };
-		D63A43767E3AE5CDFD4E46D795FD1E76 /* CallApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CallApi.swift; sourceTree = "<group>"; };
 		DDD02FC8471DF3CE1687AC401D41F346 /* Nariko-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nariko-dummy.m"; sourceTree = "<group>"; };
 		DEA75F7FB9771A5338B9CD0038BBF44E /* ResourceBundle-Nariko-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Nariko-Info.plist"; sourceTree = "<group>"; };
-		E0DC5EB3B118064D7FB4BC48F0FB47DA /* BubbleLongPressGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BubbleLongPressGestureRecognizer.swift; sourceTree = "<group>"; };
 		F224042874EAB67D6EE642430AE64451 /* Pods-Nariko_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Nariko_Tests-umbrella.h"; sourceTree = "<group>"; };
+		F256E2AF445AD9D4BC403DAB9263834C /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		34AD89DA5723DA14C9F543CBE699E31E /* Frameworks */ = {
+		0FD2A83C5253418AB0C2DE5AA5B7134E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				376616994D33291D2ABF05358E19DBEC /* Foundation.framework in Frameworks */,
+				7913E2F883C983568EE03A4DCA04AAF8 /* Foundation.framework in Frameworks */,
+				92313B00DD029AF2B9571F230F86D473 /* SwiftHTTP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208D2E0C3707B774D8148542023BDE2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AAC3066F754AF2B212CDD2EC318DD1B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82AFA702CF797798B35736D0DC96F64B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,22 +176,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9BFA8D7D8BB9E1D8E5BF63CEAD6D7BF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B30EAD69BCB80EE6B741E49403BAA7F9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B14324C4600310992026F0C5F71BD134 /* Foundation.framework in Frameworks */,
-				874A58834BC7BF7E3B20F1C06E71F077 /* SwiftHTTP.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDC3917AC363C7D4F09AE3EE68B541A3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,20 +196,6 @@
 				5CB8E69BE3A2B51DE831DDC1DAAFA1A6 /* Nariko */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		1AA5D4EBB4169B40BD79B6702DFF744D /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				742AF951F7BDE669DC0B130BD56F7BDC /* BubbleControl.swift */,
-				E0DC5EB3B118064D7FB4BC48F0FB47DA /* BubbleLongPressGestureRecognizer.swift */,
-				56F70137A5FF9F9B5F121E872709BB9F /* BubbleTapGestureRecognizer.swift */,
-				D63A43767E3AE5CDFD4E46D795FD1E76 /* CallApi.swift */,
-				50251E85BF1AF8F23AF3A386DCDD87FC /* NarikoTool.swift */,
-				AF0136E17874CB4758A6091FC8BD6C22 /* Extensions.swift */,
-				1F7025AE1D5C71F50078C538 /* Global.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		1F6EF9BDBFE3792E8F0E1CC3060B17E0 /* Support Files */ = {
@@ -214,11 +220,10 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		361A0E2866436196AEE899DC4AA5C59A /* Assets */ = {
+		363DF6DC2BFEAABD90063FB0A3457849 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				BB8D104634FE2BF9430F328C2D873DB7 /* Images.xcassets */,
-				D375695F4AC1D53243F3447747798087 /* nariko_logo.png */,
+				3255813236E6B1072D04E44C3759725C /* Images.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -262,18 +267,57 @@
 			path = "Target Support Files/Pods-Nariko_Tests";
 			sourceTree = "<group>";
 		};
-		50DE3851FCB70D496A7121EF7A5B21B6 /* Nariko */ = {
+		4A3729F01DB4E3F6000D284B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				361A0E2866436196AEE899DC4AA5C59A /* Assets */,
+				4A3729F91DB4F282000D284B /* DynamicSizeView.swift */,
+				4A3729F71DB4E584000D284B /* InspectableView.swift */,
+				4A3729F11DB4E418000D284B /* OnboardingFirst.swift */,
+				4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */,
+				4A3729F51DB4E445000D284B /* AlertView.swift */,
 			);
-			path = Nariko;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4A6D38681DB0EC45007B7B77 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */,
+				4A3729EC1DB4DCF3000D284B /* OnboardingSecond.xib */,
+				4A3729EE1DB4E226000D284B /* AlertView.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
+		4A6D386B1DB0EE7C007B7B77 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */,
+				4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */,
+				4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		54E8FD8B9F7E4A3A98518CA4996A2CFF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4A3729F01DB4E3F6000D284B /* Views */,
+				325D1323F5BC1F420DA8AA31621420F8 /* BubbleControl.swift */,
+				0CC002138444A15B1A2BF2B5E58C0F21 /* BubbleLongPressGestureRecognizer.swift */,
+				0F69E3E21DD748A258BEF419301F3D0F /* BubbleTapGestureRecognizer.swift */,
+				ADD37D40944C18FE8F8EC42E7395F3DD /* CallApi.swift */,
+				F256E2AF445AD9D4BC403DAB9263834C /* Extensions.swift */,
+				890D7F91FC0AF459AEC0CC7D6369FBBD /* Global.swift */,
+				D1ACF2030A795DAC04FF0E9CF4C30ACE /* NarikoTool.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		5CB8E69BE3A2B51DE831DDC1DAAFA1A6 /* Nariko */ = {
 			isa = PBXGroup;
 			children = (
-				CDEEF0014724C5BAF6E5CBAAD19DD8D0 /* Nariko */,
+				5FFFA23F22803F6BECC395ED0A99635D /* Nariko */,
 				BF8B57F8DF503B15F1E4BA3F07DB3B71 /* Resources */,
 				648F5DCAA57EA6F083944A627CABD674 /* Support Files */,
 			);
@@ -287,6 +331,14 @@
 				B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		5FFFA23F22803F6BECC395ED0A99635D /* Nariko */ = {
+			isa = PBXGroup;
+			children = (
+				54E8FD8B9F7E4A3A98518CA4996A2CFF /* Classes */,
+			);
+			path = Nariko;
 			sourceTree = "<group>";
 		};
 		648F5DCAA57EA6F083944A627CABD674 /* Support Files */ = {
@@ -316,6 +368,16 @@
 			);
 			sourceTree = "<group>";
 		};
+		9DF13BD25F34178A7DC47FCC1C69A816 /* Nariko */ = {
+			isa = PBXGroup;
+			children = (
+				4A6D386B1DB0EE7C007B7B77 /* Fonts */,
+				4A6D38681DB0EC45007B7B77 /* Xibs */,
+				363DF6DC2BFEAABD90063FB0A3457849 /* Assets */,
+			);
+			path = Nariko;
+			sourceTree = "<group>";
+		};
 		BC9E4E9B7A6FC11BCF20BA05E431ED58 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,17 +390,9 @@
 		BF8B57F8DF503B15F1E4BA3F07DB3B71 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				50DE3851FCB70D496A7121EF7A5B21B6 /* Nariko */,
+				9DF13BD25F34178A7DC47FCC1C69A816 /* Nariko */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		CDEEF0014724C5BAF6E5CBAAD19DD8D0 /* Nariko */ = {
-			isa = PBXGroup;
-			children = (
-				1AA5D4EBB4169B40BD79B6702DFF744D /* Classes */,
-			);
-			path = Nariko;
 			sourceTree = "<group>";
 		};
 		E482EC000F6F81999104742E649FF6EB /* SwiftHTTP */ = {
@@ -375,19 +429,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2DC69C4CB62A46FCBAAE071C53D13121 /* Headers */ = {
+		28AC5D5701D73E2F651B2D8827CEF2F3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2A962F233EACE31A0453004DF20283 /* Nariko-umbrella.h in Headers */,
+				E81DE7EA302D9D57DBB9954303C98B43 /* SwiftHTTP-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		749946DB94853FF14B47033269C51E87 /* Headers */ = {
+		B6057645BCF2A622AE8170B64AC0D8F5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D2F89D226EFB3B4248111EE9E839F51 /* SwiftHTTP-umbrella.h in Headers */,
+				AFD9B45682F3CB740B0906797BFAC864 /* Nariko-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,26 +464,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2662D4DF50D865716E36C0C570551F21 /* Nariko */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D07F69BEBFBFE6CCEE65AF109E2E2F81 /* Build configuration list for PBXNativeTarget "Nariko" */;
-			buildPhases = (
-				FBB4A24F2D17F6946C7AB8DB43B53143 /* Sources */,
-				B30EAD69BCB80EE6B741E49403BAA7F9 /* Frameworks */,
-				AF5FCA42F2FAB3E84539B508261D32E1 /* Resources */,
-				2DC69C4CB62A46FCBAAE071C53D13121 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F796DA8C3A5B8DCB0635318CDBA3B40B /* PBXTargetDependency */,
-				9F701D1B246AB93C8DF3ACD3D3E38583 /* PBXTargetDependency */,
-			);
-			name = Nariko;
-			productName = Nariko;
-			productReference = 7ED6C124B29B5BEF78435948858DDBA3 /* Nariko.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		333C2D74189C38EFDC183ACFF7D5964C /* Pods-Nariko_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68AF5502432FA6ABD65F97DFCD9BFB7F /* Build configuration list for PBXNativeTarget "Pods-Nariko_Example" */;
@@ -449,21 +483,41 @@
 			productReference = C9AEFBE6B43D3B24514A12B2FF1A299E /* Pods_Nariko_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		87F9BD4D280495C65D38C91C8F20F540 /* SwiftHTTP */ = {
+		419FEB80DB2B4FB32A7723CDB13F37AA /* Nariko-Nariko */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22B04008DE360C8F1FB49873CF0E2CCD /* Build configuration list for PBXNativeTarget "SwiftHTTP" */;
+			buildConfigurationList = F5F319E716A79C54D3A3B498C8186132 /* Build configuration list for PBXNativeTarget "Nariko-Nariko" */;
 			buildPhases = (
-				0424E672B8CF27C4E2926CE95FCE0EE7 /* Sources */,
-				34AD89DA5723DA14C9F543CBE699E31E /* Frameworks */,
-				749946DB94853FF14B47033269C51E87 /* Headers */,
+				5DB45625397FB45E413A376AEEA55630 /* Sources */,
+				82AFA702CF797798B35736D0DC96F64B /* Frameworks */,
+				EA1CFC5DBF9CE01E2F7EAB87BAAD3B60 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SwiftHTTP;
-			productName = SwiftHTTP;
-			productReference = 1822309E612907CDB7CD7A275438FC89 /* SwiftHTTP.framework */;
+			name = "Nariko-Nariko";
+			productName = "Nariko-Nariko";
+			productReference = 4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		59CD25D495A8103A79CDE1BF23FAB189 /* Nariko */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFAC78F042470CA199F90B3B90C65A51 /* Build configuration list for PBXNativeTarget "Nariko" */;
+			buildPhases = (
+				3BAC1CD2AF2D1075F06AC5BC755E9E3D /* Sources */,
+				0FD2A83C5253418AB0C2DE5AA5B7134E /* Frameworks */,
+				32E3327BE037DAB5213B0D17FF6F00E0 /* Resources */,
+				B6057645BCF2A622AE8170B64AC0D8F5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67AD05A02702202FE4A08D72E9C9E590 /* PBXTargetDependency */,
+				D45C6C234F12D8900AA7312E7BDB7242 /* PBXTargetDependency */,
+			);
+			name = Nariko;
+			productName = Nariko;
+			productReference = 7ED6C124B29B5BEF78435948858DDBA3 /* Nariko.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B084ABB0E3BA7C56F42C5E7EEF066708 /* Pods-Nariko_Tests */ = {
@@ -483,22 +537,22 @@
 			productReference = 8734A299C2537A786BF86F2AFAF57A3F /* Pods_Nariko_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E873E2675C07F62E4D11E3A8CF37374F /* Nariko-Nariko */ = {
+		C0498C97B3B229C5DF03CE3EB92910D8 /* SwiftHTTP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A02B7C4B2684A4D8068AEAC8429CF4BA /* Build configuration list for PBXNativeTarget "Nariko-Nariko" */;
+			buildConfigurationList = D221834D0B93BE925F654F09BB0105F9 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */;
 			buildPhases = (
-				A9EBB0C96F083189A2D46741BDAE67D9 /* Sources */,
-				CDC3917AC363C7D4F09AE3EE68B541A3 /* Frameworks */,
-				F6EBB823C8A374490A132ADD31AD2E98 /* Resources */,
+				B29F86131E0A25EA1E4991C0C24B08D9 /* Sources */,
+				208D2E0C3707B774D8148542023BDE2F /* Frameworks */,
+				28AC5D5701D73E2F651B2D8827CEF2F3 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Nariko-Nariko";
-			productName = "Nariko-Nariko";
-			productReference = 4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */;
-			productType = "com.apple.product-type.bundle";
+			name = SwiftHTTP;
+			productName = SwiftHTTP;
+			productReference = 1822309E612907CDB7CD7A275438FC89 /* SwiftHTTP.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -521,46 +575,65 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2662D4DF50D865716E36C0C570551F21 /* Nariko */,
-				E873E2675C07F62E4D11E3A8CF37374F /* Nariko-Nariko */,
+				59CD25D495A8103A79CDE1BF23FAB189 /* Nariko */,
+				419FEB80DB2B4FB32A7723CDB13F37AA /* Nariko-Nariko */,
 				333C2D74189C38EFDC183ACFF7D5964C /* Pods-Nariko_Example */,
 				B084ABB0E3BA7C56F42C5E7EEF066708 /* Pods-Nariko_Tests */,
-				87F9BD4D280495C65D38C91C8F20F540 /* SwiftHTTP */,
+				C0498C97B3B229C5DF03CE3EB92910D8 /* SwiftHTTP */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AF5FCA42F2FAB3E84539B508261D32E1 /* Resources */ = {
+		32E3327BE037DAB5213B0D17FF6F00E0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DEA15A69D7A378B80F95666C12B4268 /* Nariko.bundle in Resources */,
+				4A3729EF1DB4E226000D284B /* AlertView.xib in Resources */,
+				7636FB6E84B1A6BF83210EAB0E1C884D /* Nariko.bundle in Resources */,
+				4A6D386A1DB0EC8B007B7B77 /* OnboardingFirst.xib in Resources */,
+				4A3729ED1DB4DCF3000D284B /* OnboardingSecond.xib in Resources */,
+				4A6D386F1DB0EEB9007B7B77 /* Montserrat-Light.otf in Resources */,
+				4A6D38701DB0EEB9007B7B77 /* Montserrat-Regular.otf in Resources */,
+				4A6D38711DB0EEB9007B7B77 /* Montserrat-UltraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F6EBB823C8A374490A132ADD31AD2E98 /* Resources */ = {
+		EA1CFC5DBF9CE01E2F7EAB87BAAD3B60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDE5A84B69545E324BEDB905A80B9D3 /* Images.xcassets in Resources */,
-				ED282943A0B05F19B1C6481746506821 /* nariko_logo.png in Resources */,
+				412C8D6CE50F706F750F2573C2F2DD73 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0424E672B8CF27C4E2926CE95FCE0EE7 /* Sources */ = {
+		3BAC1CD2AF2D1075F06AC5BC755E9E3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC056AC0307ECDD857FBAFCF9B7A5DF1 /* HTTPSecurity.swift in Sources */,
-				5B82D79E48EF4FA261C9650111EFBD54 /* Operation.swift in Sources */,
-				ADAB4B3DAC7517D492767393B6DD899E /* Request.swift in Sources */,
-				F19724E2CEBE611200EFBFE01A8A8008 /* StatusCode.swift in Sources */,
-				86519798E64CF530B653D0630826ADE8 /* SwiftHTTP-dummy.m in Sources */,
-				C887E10DAF06076A953764D5A4CF4235 /* Upload.swift in Sources */,
+				32A7CCE6AE52F3006C062EE160A8D585 /* BubbleControl.swift in Sources */,
+				4A3729F81DB4E584000D284B /* InspectableView.swift in Sources */,
+				4293BD793D67565990C166ED66301DC5 /* BubbleLongPressGestureRecognizer.swift in Sources */,
+				4A3729F21DB4E418000D284B /* OnboardingFirst.swift in Sources */,
+				4A3729F61DB4E445000D284B /* AlertView.swift in Sources */,
+				F91D75007489CB90DC313AD87E08EE33 /* BubbleTapGestureRecognizer.swift in Sources */,
+				4F6C3DA9F0AFA40453C8DCFE73BE4A82 /* CallApi.swift in Sources */,
+				81B1A46D121EF6E96F508B12652EF199 /* Extensions.swift in Sources */,
+				4A3729F41DB4E42A000D284B /* OnboardingSecond.swift in Sources */,
+				220F45B4A3AE7D278520DB6E1EA825B3 /* Global.swift in Sources */,
+				9666A5EF0D7D6A07AFF064EDB3054670 /* Nariko-dummy.m in Sources */,
+				4A3729FA1DB4F282000D284B /* DynamicSizeView.swift in Sources */,
+				014A4C1077096FB4865E00C805C1B781 /* NarikoTool.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DB45625397FB45E413A376AEEA55630 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,10 +645,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9EBB0C96F083189A2D46741BDAE67D9 /* Sources */ = {
+		B29F86131E0A25EA1E4991C0C24B08D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785EC2BB02CCF914DEF1147A8356F526 /* HTTPSecurity.swift in Sources */,
+				0200EE0A755091C94EA9AC932EF57C13 /* Operation.swift in Sources */,
+				E8DB690FED68CB529B712C35B9A20F6D /* Request.swift in Sources */,
+				B5BEFB5B0076C1F30C85C7D878274FD9 /* StatusCode.swift in Sources */,
+				F7ED6F22140EABE6898D152C04829749 /* SwiftHTTP-dummy.m in Sources */,
+				16957DA0CD3CBA634495B1782BFDA96C /* Upload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,47 +666,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBB4A24F2D17F6946C7AB8DB43B53143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F7025AF1D5C71F50078C538 /* Global.swift in Sources */,
-				69E383D06C9880A25214E25876E06664 /* BubbleControl.swift in Sources */,
-				6CF84B4A15491B63C21CC95072E46B07 /* BubbleLongPressGestureRecognizer.swift in Sources */,
-				68814868176592EEBA2C54E0E0BD586D /* BubbleTapGestureRecognizer.swift in Sources */,
-				919531325BFE9FBC36A5A52A8CB4A6A3 /* CallApi.swift in Sources */,
-				E8EFACD1D1F4853A6FD2B9BC87ACED9D /* Extensions.swift in Sources */,
-				493BFF579751D32A234C99EB48BBA342 /* Nariko-dummy.m in Sources */,
-				E9D63B8CF464DD93DD822757CFE03AA9 /* NarikoTool.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		660167F00E6F816857240017E0106E18 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Nariko;
-			target = 2662D4DF50D865716E36C0C570551F21 /* Nariko */;
+			target = 59CD25D495A8103A79CDE1BF23FAB189 /* Nariko */;
 			targetProxy = 2E66F7C3689323E2D0E925501621C63B /* PBXContainerItemProxy */;
 		};
-		9F701D1B246AB93C8DF3ACD3D3E38583 /* PBXTargetDependency */ = {
+		67AD05A02702202FE4A08D72E9C9E590 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftHTTP;
-			target = 87F9BD4D280495C65D38C91C8F20F540 /* SwiftHTTP */;
-			targetProxy = 3B35B445BF25FB7DD9D836AF37C05E45 /* PBXContainerItemProxy */;
+			name = "Nariko-Nariko";
+			target = 419FEB80DB2B4FB32A7723CDB13F37AA /* Nariko-Nariko */;
+			targetProxy = 6B4B627772317F5CF3718D3EADD5555A /* PBXContainerItemProxy */;
 		};
 		B7513088F43307D6050733D3F4458770 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftHTTP;
-			target = 87F9BD4D280495C65D38C91C8F20F540 /* SwiftHTTP */;
+			target = C0498C97B3B229C5DF03CE3EB92910D8 /* SwiftHTTP */;
 			targetProxy = EEA34CDB6C271A22CF1D557183DCB425 /* PBXContainerItemProxy */;
 		};
-		F796DA8C3A5B8DCB0635318CDBA3B40B /* PBXTargetDependency */ = {
+		D45C6C234F12D8900AA7312E7BDB7242 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Nariko-Nariko";
-			target = E873E2675C07F62E4D11E3A8CF37374F /* Nariko-Nariko */;
-			targetProxy = E4F17276CBB0414B2BA557601E44246F /* PBXContainerItemProxy */;
+			name = SwiftHTTP;
+			target = C0498C97B3B229C5DF03CE3EB92910D8 /* SwiftHTTP */;
+			targetProxy = 73E94C9969BE79239EFF13F0375A6C69 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -669,6 +733,67 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		0C4985EEA393C58AF09980F1FA26C736 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Nariko/Nariko-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nariko/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Nariko/Nariko.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Nariko;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1E2020F083F0494E892D0AEA6FCF1C1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftHTTP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		42C1B1BF59BCEE85B3EDB92792072B42 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -737,63 +862,37 @@
 			};
 			name = Release;
 		};
-		5E414C3EF312CB003746859BD2F7F259 /* Debug */ = {
+		59D5AAB24308F1682A16A4760B6A5FAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Nariko";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nariko/Nariko-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nariko/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "Target Support Files/Nariko/ResourceBundle-Nariko-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nariko/Nariko.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Nariko;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
-			name = Debug;
+			name = Release;
 		};
-		61E0C5D390DF07424F148D9C89376B57 /* Debug */ = {
+		63C085CEDBEB85A0A8DDF3C7CD8B45F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */;
+			baseConfigurationReference = 863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Nariko";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "Target Support Files/Nariko/ResourceBundle-Nariko-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftHTTP;
+				PRODUCT_NAME = Nariko;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -830,6 +929,36 @@
 			};
 			name = Debug;
 		};
+		843FBE2BFD63C7A55588A7F1B0C5E895 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftHTTP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		AB0537A80C570F6E4CC1DE0A3B43C926 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4EBE15888C66E0085FF1AB10368E023 /* Pods-Nariko_Example.release.xcconfig */;
@@ -860,23 +989,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B48D71355FD5D00A141EC7EECFB6B1B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Nariko";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Nariko/ResourceBundle-Nariko-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Nariko;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -922,59 +1034,13 @@
 			};
 			name = Debug;
 		};
-		D4DF9B94D049E0B174B97DBDA886290B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftHTTP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		DAE57463A999D466272EFDDFE563B55C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Nariko";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Nariko/ResourceBundle-Nariko-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Nariko;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		F86A831E9D8547201FA3FB6655B68FF9 /* Release */ = {
+		D956FD1BC5EA80959351029979B63B43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 863E1C7CEA9E8C06A315230E919784A3 /* Nariko.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -987,28 +1053,21 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Nariko/Nariko.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Nariko;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22B04008DE360C8F1FB49873CF0E2CCD /* Build configuration list for PBXNativeTarget "SwiftHTTP" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				61E0C5D390DF07424F148D9C89376B57 /* Debug */,
-				D4DF9B94D049E0B174B97DBDA886290B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1036,20 +1095,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A02B7C4B2684A4D8068AEAC8429CF4BA /* Build configuration list for PBXNativeTarget "Nariko-Nariko" */ = {
+		D221834D0B93BE925F654F09BB0105F9 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DAE57463A999D466272EFDDFE563B55C /* Debug */,
-				B48D71355FD5D00A141EC7EECFB6B1B1 /* Release */,
+				1E2020F083F0494E892D0AEA6FCF1C1C /* Debug */,
+				843FBE2BFD63C7A55588A7F1B0C5E895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D07F69BEBFBFE6CCEE65AF109E2E2F81 /* Build configuration list for PBXNativeTarget "Nariko" */ = {
+		DFAC78F042470CA199F90B3B90C65A51 /* Build configuration list for PBXNativeTarget "Nariko" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5E414C3EF312CB003746859BD2F7F259 /* Debug */,
-				F86A831E9D8547201FA3FB6655B68FF9 /* Release */,
+				D956FD1BC5EA80959351029979B63B43 /* Debug */,
+				0C4985EEA393C58AF09980F1FA26C736 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5F319E716A79C54D3A3B498C8186132 /* Build configuration list for PBXNativeTarget "Nariko-Nariko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63C085CEDBEB85A0A8DDF3C7CD8B45F1 /* Debug */,
+				59D5AAB24308F1682A16A4760B6A5FAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

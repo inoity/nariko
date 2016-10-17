@@ -9,9 +9,9 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-public class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIGestureRecognizerDelegate {
+open class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIGestureRecognizerDelegate {
     
-    override init(target: AnyObject?, action: Selector) {
+    override init(target: Any?, action: Selector?) {
         super.init(target: target, action: action)
         
         self.addTarget(self, action: #selector(tap(_:)))
@@ -20,11 +20,11 @@ public class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIG
         delegate = self
     }
     
-    public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
         if touch.view == okButton {
             NarikoTool.sharedInstance.closeNarikoAlertView()
@@ -36,30 +36,30 @@ public class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIG
 }
 
 extension BubbleLongPressGestureRecognizer {
-    func tap(g: UILongPressGestureRecognizer) {
+    func tap(_ g: UILongPressGestureRecognizer) {
         
         print("long")
         
         switch g.state {
             
-        case .Began:
+        case .began:
             if NarikoTool.sharedInstance.isAuth {
                 NarikoTool.sharedInstance.setupBubble()
             } else {
-                let alertController = UIAlertController (title: "Information", message: "Please login in the settings", preferredStyle: .Alert)
+                let alertController = UIAlertController (title: "Information", message: "Please login in the settings", preferredStyle: .alert)
                 
-                let settingsAction = UIAlertAction(title: "Settings", style: .Default) { (_) -> Void in
-                    let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                    let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
                     if let url = settingsUrl {
-                        UIApplication.sharedApplication().openURL(url)
+                        UIApplication.shared.openURL(url)
                     }
                 }
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                 alertController.addAction(settingsAction)
                 alertController.addAction(cancelAction)
                 
-                NarikoTool.sharedInstance.APPDELEGATE.window!!.rootViewController!.presentViewController(alertController, animated: true, completion: nil);
+                NarikoTool.sharedInstance.APPDELEGATE.window!!.rootViewController!.present(alertController, animated: true, completion: nil);
                 
             }
             
