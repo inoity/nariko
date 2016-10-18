@@ -26,7 +26,11 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     var bubble: BubbleControl!
     var isAuth: Bool = false
     var WINDOW: UIWindow?
-    var textView: UITextView = UITextView(frame: CGRect.zero)
+    
+    var textView = CustomTextView(frame: CGRect.zero)
+    var textViewBackgroundView = UIView(frame: CGRect.zero)
+    let textPlaceholderString = "Write your feedback here..."
+    var firstKeyboardTime = true
     
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
@@ -79,6 +83,8 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         super.init()
         registerSettingsBundle()
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.checkAuth), name: UserDefaults.didChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removeBubble), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -104,7 +110,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             longPressRecog.minimumPressDuration = 1.5
             longPressRecog.numberOfTouchesRequired = 3
             longPressRecog.delegate = self
-            
             
             narikoAlertView.addGestureRecognizer(longPressRecog)
             
@@ -248,7 +253,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         
         win.endEditing(true)
         print(UIApplication.shared.statusBarOrientation.rawValue)
-        bubble = BubbleControl (win: win, size: CGSize(width: 80, height: 80))
+        bubble = BubbleControl(win: win, size: CGSize(width: 80, height: 80))
         bubble.tag = 3333
         
         let podBundle = Bundle(for: NarikoTool.self)
@@ -272,80 +277,65 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             }
         }
         var max: CGFloat?
-        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation){
-            if UIDevice.current.userInterfaceIdiom == .pad{
+        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) {
+            if UIDevice.current.userInterfaceIdiom == .pad {
                 max = win.h - 500
             } else {
                 max = win.h - 350
             }
             
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad{
+            if UIDevice.current.userInterfaceIdiom == .pad {
                 max = win.h - 430
             } else {
                 max = win.h - 180
             }
         }
         
-        let v = UIView (frame: CGRect (x: 0, y: 0, width: win.w, height: max!))
-        v.backgroundColor = UIColor(red: 234/255, green: 237/255, blue: 242/255, alpha: 1.0)
+        firstKeyboardTime = true
         
-        let title = UILabel(frame: CGRect.zero)
-        title.text = "Feedback"
-        title.textColor = UIColor.darkGray
-        title.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        v.addSubview(title)
-        
-        v.addConstraint(NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
-        v.addConstraint(NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 15))
-        
-        let sendButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
-        sendButton.setTitle("Send", for: UIControlState())
-        sendButton.addTarget(self, action: #selector(send), for: .touchUpInside)
-        sendButton.setTitleColor(UIColor.darkGray, for: UIControlState())
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.layer.borderWidth = 0.7
-        sendButton.layer.borderColor = UIColor.darkGray.cgColor
-        sendButton.layer.cornerRadius = 3.0
-        v.addSubview(sendButton)
-        
-        v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70))
-        v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: -15))
-        v.addConstraint(NSLayoutConstraint(item: sendButton, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 10))
-        
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
-        closeButton.setTitle("Close", for: UIControlState())
+        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80))
+        closeButton.backgroundColor = UIColor.clear
         closeButton.addTarget(self, action: #selector(self.removeBubbleForce), for: .touchUpInside)
-        closeButton.setTitleColor(UIColor.darkGray, for: UIControlState())
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.layer.borderWidth = 0.7
-        closeButton.layer.borderColor = UIColor.darkGray.cgColor
-        closeButton.layer.cornerRadius = 3.0
-        v.addSubview(closeButton)
         
+        textViewBackgroundView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 120, width: UIScreen.main.bounds.width, height: 41)
+        textViewBackgroundView.backgroundColor = UIColor.white
+        closeButton.addSubview(textViewBackgroundView)
         
-        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70))
-        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 15))
-        v.addConstraint(NSLayoutConstraint(item: closeButton, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 10))
+        let topSeparatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
+        topSeparatorView.backgroundColor = UIColor.lightGray
+        textViewBackgroundView.addSubview(topSeparatorView)
         
-        textView.text = ""
         textView.delegate = self
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.layer.cornerRadius = 5.0
-        textView.layer.borderColor = UIColor.darkGray.cgColor
-        textView.layer.borderWidth = 0.7
-        v.addSubview(textView)
+        textView.layer.cornerRadius = 14
+        textView.layer.borderColor = UIColor.lightGray.cgColor
+        textView.layer.borderWidth = 1
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.textContainerInset = UIEdgeInsetsMake(4, 6, 4, 6)
+        textView.scrollIndicatorInsets = UIEdgeInsetsMake(6, 6, 6, 6)
+        textView.frame = CGRect(x: 16, y: 5, width: UIScreen.main.bounds.width - 32, height: 32)
+        textViewBackgroundView.addSubview(textView)
         
-        v.addConstraint(NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: -15))
-        v.addConstraint(NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 15))
-        v.addConstraint(NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 60))
-        v.addConstraint(NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: v, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: -10))
+        print(UIFont.familyNames)
         
-        bubble.contentView = v
+        textPlaceholder()
+        
+        bubble.contentView = closeButton
         
         win.addSubview(bubble)
         prevOrient = UIDeviceOrientation.faceUp
+        
+        textView.becomeFirstResponder()
+    }
+    
+    fileprivate func textPlaceholder() {
+        textView.text = textPlaceholderString
+        textView.textColor = UIColor.lightGray
+        textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        
+        textView.isEmpty = true
+        
+        updateTextHeight()
     }
     
     open func textViewDidBeginEditing(_ textView: UITextView) {
@@ -363,8 +353,72 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         }
     }
     
-    func send(){
-        if bubble.screenShot != nil{
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            send()
+            return false
+        }
+        
+        return true
+    }
+    
+    public func textViewDidChange(_ textView: UITextView) {
+        if textView.text  == "" {
+            textPlaceholder()
+        } else if self.textView.isEmpty && textView.text != "" {
+            let textPlaceholderStringCount = textPlaceholderString.characters.count
+            textView.text = textView.text.substring(to: textView.text.index(textView.text.endIndex, offsetBy: -textPlaceholderStringCount))
+            textView.textColor = UIColor.black
+            
+            self.textView.isEmpty = false
+            
+            textView.selectedTextRange = textView.textRange(from: textView.endOfDocument, to: textView.endOfDocument)
+        }
+        
+        updateTextHeight()
+    }
+    
+    fileprivate func updateTextHeight() {
+        let textViewHeight = textView.sizeThatFits(CGSize(width: textView.frame.width, height: CGFloat(FLT_MAX))).height
+        let textViewClampedHeight = max(28, min(96, textViewHeight))
+        
+        let heightDiff = textViewClampedHeight - textView.frame.height
+        
+        textView.isScrollEnabled = textViewClampedHeight == 96
+        
+        if textView.frame.height != textViewClampedHeight {
+            UIView.animate(withDuration: 0.3) {
+                self.textView.frame = CGRect(x: self.textView.frame.origin.x, y: 5, width: self.textView.frame.width, height: textViewClampedHeight)
+                self.textViewBackgroundView.frame = CGRect(x: 0, y: self.textViewBackgroundView.frame.origin.y - heightDiff, width: UIScreen.main.bounds.width, height: textViewClampedHeight + 9)
+            }
+        }
+    }
+    
+    func keyboardWillChangeFrame(_ notification: Notification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration: TimeInterval = firstKeyboardTime ? 0 : (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
+            let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            
+            var yOffset: CGFloat = 80
+            
+            if (endFrame?.origin.y)! < UIScreen.main.bounds.height {
+                yOffset = endFrame!.size.height + 80
+            }
+            
+            UIView.animate(withDuration: duration, delay: 0, options: animationCurve, animations: {
+                self.textViewBackgroundView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - yOffset - self.textViewBackgroundView.frame.height, width: UIScreen.main.bounds.width, height: self.textViewBackgroundView.frame.height)
+            }, completion: nil)
+            
+            firstKeyboardTime = false
+        }
+    }
+    
+    func send() {
+        if bubble.screenShot != nil {
             showActivityIndicator()
             CallApi().sendData(bubble.screenShot!, comment: textView.text) { (success, errorCode, msg) in
                 if success {
@@ -408,7 +462,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     
     var prevOrient: UIDeviceOrientation = UIDeviceOrientation.faceUp
     
-    @objc fileprivate func removeBubbleForce (){
+    @objc fileprivate func removeBubbleForce () {
         removeBubble(true)
     }
     open func removeBubble(_ force: Bool = false){

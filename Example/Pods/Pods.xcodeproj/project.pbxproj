@@ -12,6 +12,11 @@
 		080EF2531949A7995D64F392ACBF9C9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
 		16957DA0CD3CBA634495B1782BFDA96C /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F6C0DAC1DB50CB700DFB2F9 /* OnboardingFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */; };
+		1F9B41AC1DB6524A004454A9 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B41AB1DB6524A004454A9 /* CustomTextView.swift */; };
+		1F9B41AD1DB661C3004454A9 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */; };
+		1F9B41AF1DB661C7004454A9 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */; };
+		1F9B41B01DB663C4004454A9 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */; };
+		1F9B41B11DB663C8004454A9 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */; };
 		220F45B4A3AE7D278520DB6E1EA825B3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D7F91FC0AF459AEC0CC7D6369FBBD /* Global.swift */; };
 		2AAC3066F754AF2B212CDD2EC318DD1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0978CC1A16F134FF47F944268CD4E40 /* Foundation.framework */; };
 		32A7CCE6AE52F3006C062EE160A8D585 /* BubbleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325D1323F5BC1F420DA8AA31621420F8 /* BubbleControl.swift */; };
@@ -27,7 +32,6 @@
 		4A3729FC1DB53518000D284B /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3729EE1DB4E226000D284B /* AlertView.xib */; };
 		4A6D386A1DB0EC8B007B7B77 /* OnboardingFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */; };
 		4A6D386F1DB0EEB9007B7B77 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */; };
-		4A6D38701DB0EEB9007B7B77 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */; };
 		4A6D38711DB0EEB9007B7B77 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */; };
 		4F6C3DA9F0AFA40453C8DCFE73BE4A82 /* CallApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD37D40944C18FE8F8EC42E7395F3DD /* CallApi.swift */; };
 		7636FB6E84B1A6BF83210EAB0E1C884D /* Nariko.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */; };
@@ -90,6 +94,7 @@
 		1830EAAE8525290328F1119A661D3D75 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D035FE42580EE264138659B408467B7 /* SwiftHTTP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-prefix.pch"; sourceTree = "<group>"; };
 		1E41052B8F158D91AED620C76E82A041 /* Pods-Nariko_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Nariko_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1F9B41AB1DB6524A004454A9 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		2BE84BEA23634C381FA0E1F00F09380B /* Pods-Nariko_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Nariko_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		2C0045C308FE3B0F9C019D3314809639 /* Pods-Nariko_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Nariko_Tests.modulemap"; sourceTree = "<group>"; };
 		3255813236E6B1072D04E44C3759725C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -105,9 +110,9 @@
 		4A3729F51DB4E445000D284B /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertView.swift; path = Views/AlertView.swift; sourceTree = "<group>"; };
 		4A3729F91DB4F282000D284B /* DynamicSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeView.swift; sourceTree = "<group>"; };
 		4A6D38691DB0EC8B007B7B77 /* OnboardingFirst.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnboardingFirst.xib; path = Xibs/OnboardingFirst.xib; sourceTree = "<group>"; };
-		4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
-		4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
-		4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
+		4A6D386C1DB0EEB9007B7B77 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.otf"; path = "../../Nariko/Montserrat-Light.otf"; sourceTree = SOURCE_ROOT; };
+		4A6D386D1DB0EEB9007B7B77 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.otf"; path = "../../Nariko/Montserrat-Regular.otf"; sourceTree = SOURCE_ROOT; };
+		4A6D386E1DB0EEB9007B7B77 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-UltraLight.otf"; path = "../../Nariko/Montserrat-UltraLight.otf"; sourceTree = SOURCE_ROOT; };
 		4A8D9FAA47F61549A5125AA7CB2F72DC /* Pods-Nariko_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Nariko_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		4A9274CDEC7EC95E287711DB1C850D8A /* Nariko.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Nariko.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		59843889E7A747193B9EBE1CFFA5CF32 /* Pods-Nariko_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Nariko_Example-dummy.m"; sourceTree = "<group>"; };
@@ -271,6 +276,7 @@
 		4A3729F01DB4E3F6000D284B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F9B41AB1DB6524A004454A9 /* CustomTextView.swift */,
 				4A3729F91DB4F282000D284B /* DynamicSizeView.swift */,
 				4A3729F11DB4E418000D284B /* OnboardingFirst.swift */,
 				4A3729F31DB4E42A000D284B /* OnboardingSecond.swift */,
@@ -594,7 +600,7 @@
 				4A6D386A1DB0EC8B007B7B77 /* OnboardingFirst.xib in Resources */,
 				4A3729ED1DB4DCF3000D284B /* OnboardingSecond.xib in Resources */,
 				4A6D386F1DB0EEB9007B7B77 /* Montserrat-Light.otf in Resources */,
-				4A6D38701DB0EEB9007B7B77 /* Montserrat-Regular.otf in Resources */,
+				1F9B41B01DB663C4004454A9 /* Montserrat-Regular.otf in Resources */,
 				4A6D38711DB0EEB9007B7B77 /* Montserrat-UltraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,9 +609,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9B41AD1DB661C3004454A9 /* Montserrat-Light.otf in Resources */,
 				412C8D6CE50F706F750F2573C2F2DD73 /* Images.xcassets in Resources */,
+				1F9B41AF1DB661C7004454A9 /* Montserrat-UltraLight.otf in Resources */,
 				4A3729FC1DB53518000D284B /* AlertView.xib in Resources */,
 				1F6C0DAC1DB50CB700DFB2F9 /* OnboardingFirst.xib in Resources */,
+				1F9B41B11DB663C8004454A9 /* Montserrat-Regular.otf in Resources */,
 				4A3729FB1DB53515000D284B /* OnboardingSecond.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9B41AC1DB6524A004454A9 /* CustomTextView.swift in Sources */,
 				32A7CCE6AE52F3006C062EE160A8D585 /* BubbleControl.swift in Sources */,
 				4293BD793D67565990C166ED66301DC5 /* BubbleLongPressGestureRecognizer.swift in Sources */,
 				4A3729F21DB4E418000D284B /* OnboardingFirst.swift in Sources */,
