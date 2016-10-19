@@ -172,7 +172,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         }
     }
     
-   @objc fileprivate func close(){
+   @objc fileprivate func close() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {() -> Void in
             self.narikoAlertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             self.alertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -253,7 +253,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         
         win.endEditing(true)
         print(UIApplication.shared.statusBarOrientation.rawValue)
-        bubble = BubbleControl(win: win, size: CGSize(width: 80, height: 80))
+        bubble = BubbleControl(win: win, size: CGSize(width: 130, height: 80))
         bubble.tag = 3333
         
         let podBundle = Bundle(for: NarikoTool.self)
@@ -266,17 +266,14 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             self.bubble.contentView!.bottom = win.bottom
             if (self.bubble.center.x > win.center.x) {
                 self.bubble.contentView!.left = win.right
-                self.bubble.contentView!.spring({ () -> Void in
-                    self.bubble.contentView!.right = win.right
-                    }, completion: nil)
+                self.bubble.contentView!.right = win.right
             } else {
                 self.bubble.contentView!.right = win.left
-                self.bubble.contentView!.spring({ () -> Void in
-                    self.bubble.contentView!.left = win.left
-                    }, completion: nil)
+                self.bubble.contentView!.left = win.left
             }
         }
-        var max: CGFloat?
+        
+        /*var max: CGFloat?
         if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) {
             if UIDevice.current.userInterfaceIdiom == .pad {
                 max = win.h - 500
@@ -290,17 +287,12 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             } else {
                 max = win.h - 180
             }
-        }
+        }*/
         
         firstKeyboardTime = true
         
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80))
-        closeButton.backgroundColor = UIColor.clear
-        closeButton.addTarget(self, action: #selector(self.removeBubbleForce), for: .touchUpInside)
-        
-        textViewBackgroundView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 120, width: UIScreen.main.bounds.width, height: 41)
+        textViewBackgroundView.frame = CGRect(x: 0, y: 0, width: win.w, height: 41)
         textViewBackgroundView.backgroundColor = UIColor.white
-        closeButton.addSubview(textViewBackgroundView)
         
         let topSeparatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
         topSeparatorView.backgroundColor = UIColor.lightGray
@@ -313,19 +305,15 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.textContainerInset = UIEdgeInsetsMake(4, 6, 4, 6)
         textView.scrollIndicatorInsets = UIEdgeInsetsMake(6, 6, 6, 6)
+        textView.returnKeyType = .send
         textView.frame = CGRect(x: 16, y: 5, width: UIScreen.main.bounds.width - 32, height: 32)
         textViewBackgroundView.addSubview(textView)
-        
-        print(UIFont.familyNames)
-        
         textPlaceholder()
         
-        bubble.contentView = closeButton
+        bubble.contentView = textViewBackgroundView
         
         win.addSubview(bubble)
         prevOrient = UIDeviceOrientation.faceUp
-        
-        textView.becomeFirstResponder()
     }
     
     fileprivate func textPlaceholder() {
@@ -336,21 +324,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         textView.isEmpty = true
         
         updateTextHeight()
-    }
-    
-    open func textViewDidBeginEditing(_ textView: UITextView) {
-        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation){
-            bubble.moveY(20.0)
-            bubble.contentView?.moveY(20.0+bubble.size.height)
-        } else {
-            if UIDevice.current.userInterfaceIdiom == .pad{
-                bubble.moveY(-bubble.size.height)
-                bubble.contentView?.moveY(20.0)
-            } else {
-                bubble.moveY(-bubble.size.height)
-                bubble.contentView?.moveY(0.0)
-            }
-        }
     }
     
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -391,6 +364,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             UIView.animate(withDuration: 0.3) {
                 self.textView.frame = CGRect(x: self.textView.frame.origin.x, y: 5, width: self.textView.frame.width, height: textViewClampedHeight)
                 self.textViewBackgroundView.frame = CGRect(x: 0, y: self.textViewBackgroundView.frame.origin.y - heightDiff, width: UIScreen.main.bounds.width, height: textViewClampedHeight + 9)
+                self.bubble.frame = CGRect(x: self.bubble.x, y: self.bubble.y - heightDiff, width: self.bubble.size.width, height: self.bubble.size.height)
             }
         }
     }
@@ -398,23 +372,36 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     func keyboardWillChangeFrame(_ notification: Notification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration: TimeInterval = firstKeyboardTime ? 0 : (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
             let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
-            var yOffset: CGFloat = 80
+            var yOffset: CGFloat = 0
             
             if (endFrame?.origin.y)! < UIScreen.main.bounds.height {
-                yOffset = endFrame!.size.height + 80
+                yOffset = endFrame!.size.height
             }
             
-            UIView.animate(withDuration: duration, delay: 0, options: animationCurve, animations: {
-                self.textViewBackgroundView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - yOffset - self.textViewBackgroundView.frame.height, width: UIScreen.main.bounds.width, height: self.textViewBackgroundView.frame.height)
-            }, completion: nil)
+            if firstKeyboardTime {
+                setContentViewKeyboardFrame(yOffset)
+                bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
+                
+                firstKeyboardTime = false
+            } else {
+                UIView.animate(withDuration: duration, delay: 0, options: animationCurve, animations: {
+                    self.setContentViewKeyboardFrame(yOffset)
+                }, completion: nil)
+                
+                bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
+            }
             
-            firstKeyboardTime = false
+            self.bubble.moveX(UIScreen.main.bounds.width - self.bubble.size.width)
         }
+    }
+    
+    func setContentViewKeyboardFrame(_ yOffset: CGFloat) {
+        self.textViewBackgroundView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - yOffset - self.textViewBackgroundView.frame.height, width: UIScreen.main.bounds.width, height: self.textViewBackgroundView.frame.height)
     }
     
     func send() {
@@ -462,7 +449,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     
     var prevOrient: UIDeviceOrientation = UIDeviceOrientation.faceUp
     
-    @objc fileprivate func removeBubbleForce () {
+    open func removeBubbleForce() {
         removeBubble(true)
     }
     open func removeBubble(_ force: Bool = false){

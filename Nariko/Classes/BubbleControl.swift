@@ -14,6 +14,7 @@ private let BubbleControlMoveAnimationDuration: TimeInterval = 0.5
 private let BubbleControlSpringDamping: CGFloat = 0.6
 private let BubbleControlSpringVelocity: CGFloat = 0.6
 
+let closeButton = UIButton(frame: CGRect(x: 0, y: 20, width: 40, height: 40))
 
 // MARK: - UIView Extension
 
@@ -138,7 +139,6 @@ extension UIView {
     func moveY (_ y: CGFloat) {
         var moveRect = self.frame
         moveRect.origin.y = y
-        
         spring({ () -> Void in
             self.frame = moveRect
             }, completion: nil)
@@ -173,7 +173,7 @@ extension UIView {
     }
     
     
-    func setScale (_ s: CGFloat) {
+    func setScale(_ s: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
         transform = CATransform3DScale(transform, s, s, s)
@@ -181,14 +181,14 @@ extension UIView {
         self.layer.transform = transform
     }
     
-    func alphaTo (_ to: CGFloat) {
+    func alphaTo(_ to: CGFloat) {
         UIView.animate(withDuration: BubbleControlMoveAnimationDuration,
                                    animations: {
                                     self.alpha = to
         })
     }
     
-    func bubble () {
+    func bubble() {
         
         self.setScale(1.2)
         spring({ () -> Void in
@@ -301,21 +301,21 @@ class BubbleControl: UIControl {
         layer.cornerRadius = w/2
         
         // image view
-        imageView = UIImageView (frame: frame.insetBy(dx: 0, dy: 0))
+        imageView = UIImageView(frame:CGRect(x: 50, y: 0, width: size.width - 50, height: size.height))
+        imageView?.isUserInteractionEnabled = false
         imageView?.clipsToBounds = true
         
-        // circle border
-        let borderView = UIView (frame: frame)
-      //  borderView.layer.borderColor = UIColor.black.cgColor
-       // borderView.layer.borderWidth = 2
-        //borderView.layer.cornerRadius = w/2
-        //borderView.layer.masksToBounds = true
-        borderView.isUserInteractionEnabled = false
-        borderView.clipsToBounds = true
+        addSubview(imageView!)
         
-        borderView.addSubview(imageView!)
+        closeButton.setTitle("✕", for: .normal)
+        closeButton.titleLabel!.font = UIFont.systemFont(ofSize: 16)
+        closeButton.setTitleColor(UIColor.white, for: .normal)
+        closeButton.backgroundColor = UIColor.black
+        closeButton.layer.cornerRadius = 20
+        closeButton.addTarget(NarikoTool.sharedInstance, action: #selector(NarikoTool.removeBubbleForce), for: .touchUpInside)
+        closeButton.isHidden = true
         
-        addSubview(borderView)
+        addSubview(closeButton)
         
         // events
         addTarget(self, action: #selector(BubbleControl.touchDown), for: UIControlEvents.touchDown)
@@ -332,9 +332,9 @@ class BubbleControl: UIControl {
     
     // MARK: Snap To Edge
     
-    func snap () {
+    func snap() {
         
-        var targetX = WINDOW!.leftWithOffset(snapOffset)
+        var targetX = WINDOW!.leftWithOffset(snapOffset + 50)
         
         if center.x > WINDOW!.w/2 {
             targetX = WINDOW!.rightWithOffset(snapOffset) - w
@@ -344,7 +344,7 @@ class BubbleControl: UIControl {
         moveX(targetX)
     }
     
-    func snapInside () {
+    func snapInside() {
         print("snap inside !")
         if !toggle && bubbleState == .snap {
             snapOffset = snapOffsetMax
@@ -352,7 +352,7 @@ class BubbleControl: UIControl {
         }
     }
     
-    func setupSnapInsideTimer () {
+    func setupSnapInsideTimer() {
         if !snapsInside {
             return
         }
@@ -371,7 +371,7 @@ class BubbleControl: UIControl {
     }
     
     
-    func lockInWindowBounds () {
+    func lockInWindowBounds() {
         
         if top < 64 {
             var rect = frame
@@ -379,9 +379,9 @@ class BubbleControl: UIControl {
             frame = rect
         }
         
-        if left < 0 {
+        if left < -50 {
             var rect = frame
-            rect.origin.x = 0
+            rect.origin.x = -50
             frame = rect
         }
         
@@ -400,11 +400,11 @@ class BubbleControl: UIControl {
     
     // MARK: Events
     
-    func touchDown () {
+    func touchDown() {
         bubble()
     }
     
-    func touchUp () {
+    func touchUp() {
         if bubbleState == .snap {
             toggle = !toggle
         } else {
@@ -414,17 +414,19 @@ class BubbleControl: UIControl {
     }
     
     func touchDrag (_ sender: BubbleControl, event: UIEvent) {
-        bubbleState = .drag
-        
-        if toggle {
-            toggle = false
+        if closeButton.isHidden {
+            bubbleState = .drag
+            
+            if toggle {
+                toggle = false
+            }
+            
+            let touch = event.allTouches!.first!
+            let location = touch.location(in: WINDOW!)
+            
+            center = location
+            lockInWindowBounds()
         }
-        
-        let touch = event.allTouches!.first!
-        let location = touch.location(in: WINDOW!)
-        
-        center = location
-        lockInWindowBounds()
     }
     
     
@@ -439,7 +441,7 @@ class BubbleControl: UIControl {
     
     // MARK: Toggle
     
-    func openContentView () {
+    func openContentView() {
         if let v = contentView {
             screenShotMethod()
             let win = WINDOW!
@@ -451,7 +453,7 @@ class BubbleControl: UIControl {
             positionBeforeToggle = frame.origin
             
             if let anim = setOpenAnimation {
-                anim (v, win.subviews[0])
+                anim(v, win.subviews[0])
             } else {
                 v.bottom = win.bottom
             }
@@ -461,6 +463,9 @@ class BubbleControl: UIControl {
             } else {
                 moveY(v.top - h - snapOffset)
             }
+            
+            closeButton.isHidden = false
+            NarikoTool.sharedInstance.textView.becomeFirstResponder()
         }
     }
     
@@ -479,7 +484,7 @@ class BubbleControl: UIControl {
         self.isHidden = false
     }
     
-    func closeContentView () {
+    func closeContentView() {
         if let v = contentView {
             
             if let anim = setCloseAnimation {
@@ -493,8 +498,9 @@ class BubbleControl: UIControl {
                 if positionBeforeToggle != nil {
                     movePoint(positionBeforeToggle!)
                 }
-                
             }
         }
+        
+        closeButton.isHidden = true
     }
 }
