@@ -38,8 +38,7 @@ open class BubbleLongPressGestureRecognizer: UILongPressGestureRecognizer, UIGes
 extension BubbleLongPressGestureRecognizer {
     func tap(_ g: UILongPressGestureRecognizer) {
         if !isOnboarding{
-            print("long")
-            
+        
             switch g.state {
                 
             case .began:

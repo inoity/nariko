@@ -93,9 +93,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             isOnboarding = true
             let view = self.APPDELEGATE.window!!.rootViewController!.view
             
-            print("recog")
-            print(view?.gestureRecognizers)
-            
             backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
             backgroundView.frame = (view?.frame)!
             view?.addSubview(backgroundView)
@@ -211,13 +208,13 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     
     open func checkAuth(){
         let defaults = UserDefaults.standard
-        print(defaults.string(forKey: "nar_email"))
-        print(defaults.string(forKey: "nar_pass"))
+     //   print(defaults.string(forKey: "nar_email"))
+     //   print(defaults.string(forKey: "nar_pass"))
         
-        print(Bundle.main.bundleIdentifier)
+     //   print(Bundle.main.bundleIdentifier)
         
         if defaults.string(forKey: "nar_email") != nil && defaults.string(forKey: "nar_pass") != nil{
-            print("check auth")
+           
             CallApi().authRequest(["Email": defaults.string(forKey: "nar_email")! as AnyObject, "Password": defaults.string(forKey: "nar_pass")! as AnyObject, "BundleId": Bundle.main.bundleIdentifier! as AnyObject], callCompletion: { (success, errorCode, msg) in
                 if success{
                     self.apiKey = msg
@@ -272,22 +269,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                 self.bubble.contentView!.left = win.left
             }
         }
-        
-        /*var max: CGFloat?
-        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                max = win.h - 500
-            } else {
-                max = win.h - 350
-            }
-            
-        } else {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                max = win.h - 430
-            } else {
-                max = win.h - 180
-            }
-        }*/
         
         firstKeyboardTime = true
         
@@ -409,7 +390,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             showActivityIndicator()
             CallApi().sendData(bubble.screenShot!, comment: textView.text) { (success, errorCode, msg) in
                 if success {
-                    print("send success")
+                    
                     self.removeBubble(true)
                     self.hideActivityIndicator()
                     let view = self.APPDELEGATE.window!!.rootViewController!.view
@@ -454,9 +435,9 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     }
     open func removeBubble(_ force: Bool = false){
         
-        print(prevOrient.rawValue)
+      //  print(prevOrient.rawValue)
         if force {
-            print("remove")
+           
             if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
                 bubble.closeContentView()
                 viewWithTag.removeFromSuperview()
@@ -464,7 +445,6 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         } else {
             if (prevOrient.isPortrait && UIDevice.current.orientation.isLandscape) || (prevOrient.isLandscape && UIDevice.current.orientation.isPortrait) {
                 
-                print("remove")
                 if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
                     bubble.closeContentView()
                     viewWithTag.removeFromSuperview()
