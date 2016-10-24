@@ -153,7 +153,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                 
                 }, completion: { (finished) in
                     
-                    if finished{
+                    if finished {
                         self.narikoAlertView.removeFromSuperview()
                       
                         UserDefaults.standard.set(true, forKey: "appAlreadyLaunched")
@@ -172,7 +172,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                             self.backgroundView.alpha = 1
                             self.narikoAlertView.transform = CGAffineTransform.identity
                             }, completion: { (finished) in
-                                if finished{
+                                if finished {
                                     self.perform(#selector(self.close), with: nil, afterDelay: 3)
                                 }
                         })
@@ -215,13 +215,13 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         NotificationCenter.default.removeObserver(self)
     }
     
-    open func registerSettingsBundle(){
+    open func registerSettingsBundle() {
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
     }
     
     
-    open func checkAuth(){
+    open func checkAuth() {
         let defaults = UserDefaults.standard
      //   print(defaults.string(forKey: "nar_email"))
      //   print(defaults.string(forKey: "nar_pass"))
@@ -351,6 +351,12 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         updateTextHeight()
     }
     
+    public func textViewDidChangeSelection(_ textView: UITextView) {
+        if self.textView.isEmpty {
+            textView.selectedRange = NSMakeRange(0, 0)
+        }
+    }
+    
     fileprivate func updateTextHeight() {
         let textViewHeight = textView.sizeThatFits(CGSize(width: textView.frame.width, height: CGFloat(FLT_MAX))).height
         let textViewClampedHeight = max(28, min(96, textViewHeight))
@@ -384,7 +390,9 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             
             if firstKeyboardTime {
                 setContentViewKeyboardFrame(yOffset)
-                bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
+                if bubble != nil {
+                    bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
+                }
                 
                 firstKeyboardTime = false
             } else {
@@ -395,7 +403,9 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                 bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
             }
             
-            self.bubble.moveX(UIScreen.main.bounds.width - self.bubble.size.width)
+            if bubble != nil {
+                self.bubble.moveX(UIScreen.main.bounds.width - self.bubble.size.width)
+            }
         }
     }
     
