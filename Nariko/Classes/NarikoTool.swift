@@ -42,17 +42,26 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         container.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
         container.center = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
         
+
+        
         container.backgroundColor = UIColor(red: 234.0/255.0, green: 237.0/255.0, blue: 242.0/255.0, alpha: 0.5)
         
         loadingView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         loadingView.center = CGPoint(x: screenSize.width/2, y: (screenSize.height-50)/2)
         
-        loadingView.backgroundColor = UIColor.gray
+      //  loadingView.backgroundColor = UIColor.gray
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame.size = loadingView.layer.frame.size
+        gradientLayer.colors = [UIColor.gradTop.cgColor, UIColor.gradBottom.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        loadingView.layer.addSublayer(gradientLayer)
+        
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
         
         self.activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
-        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
         self.activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2);
         
         loadingView.addSubview(self.activityIndicator)
@@ -79,6 +88,9 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         
     }
     
+    
+    
+    
     public override init() {
         super.init()
         registerSettingsBundle()
@@ -88,18 +100,21 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         NotificationCenter.default.addObserver(self, selector: #selector(self.checkAuth), name: UserDefaults.didChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removeBubble), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        if UserDefaults.standard.string(forKey: "appAlreadyLaunched") == nil {
+        if UserDefaults.standard.string(forKey: "appAlreadyLaunched") != nil {
            
             isOnboarding = true
             let view = self.APPDELEGATE.window!!.rootViewController!.view
             
             backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            backgroundView.autoresizingMask =  [.flexibleWidth, .flexibleHeight]
+            
             backgroundView.frame = (view?.frame)!
             view?.addSubview(backgroundView)
             
             narikoAlertView = OnboardingFirst.instanceFromNib() as! OnboardingFirst
             narikoAlertView.frame = CGRect(x: 20, y: 40, width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 80)
             narikoAlertView.clipsToBounds = true
+          
             
             let longPressRecog = UILongPressGestureRecognizer()
             
@@ -143,7 +158,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                       
                         UserDefaults.standard.set(true, forKey: "appAlreadyLaunched")
                         self.narikoAlertView = OnboardingSecond.instanceFromNib() as! OnboardingSecond
-                        self.narikoAlertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: (view?.frame.height)! / 2 - 200, width: (view?.frame.width)! - 40, height: 400)
+                        self.narikoAlertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: ((view?.frame.height)! / 2) - (((view?.frame.height)! - 100)/2), width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 100)
                       
                         self.narikoAlertView.clipsToBounds = true
                         
@@ -281,8 +296,10 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         
         textView.delegate = self
         textView.layer.cornerRadius = 14
+        
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1
+        textView.autoresizingMask =  [.flexibleWidth]
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.textContainerInset = UIEdgeInsetsMake(4, 6, 4, 6)
         textView.scrollIndicatorInsets = UIEdgeInsetsMake(6, 6, 6, 6)
@@ -322,6 +339,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             textPlaceholder()
         } else if self.textView.isEmpty && textView.text != "" {
             let textPlaceholderStringCount = textPlaceholderString.characters.count
+            
             textView.text = textView.text.substring(to: textView.text.index(textView.text.endIndex, offsetBy: -textPlaceholderStringCount))
             textView.textColor = UIColor.black
             
@@ -395,7 +413,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                     self.hideActivityIndicator()
                     let view = self.APPDELEGATE.window!!.rootViewController!.view
                     self.alertView = AlertView.instanceFromNib() as! AlertView
-                    self.alertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: (view?.frame.height)! / 2 - 150, width: (view?.frame.width)! - 40, height: 300)
+                    self.alertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: ((view?.frame.height)! / 2) - (((view?.frame.height)! - 100)/2), width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 100)
                     self.alertView.clipsToBounds = true
                     self.alertView.updateUI(text1: "Your feedback has been submitted.", text2: "Thank you.")
                     
@@ -435,7 +453,8 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     }
     open func removeBubble(_ force: Bool = false){
         
-      //  print(prevOrient.rawValue)
+       
+        print(prevOrient.rawValue)
         if force {
            
             if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
