@@ -26,6 +26,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     var bubble: BubbleControl!
     var isAuth: Bool = false
     var WINDOW: UIWindow?
+    var needReopen: Bool = false
     
     var textView = CustomTextView(frame: CGRect.zero)
     var textViewBackgroundView = UIView(frame: CGRect.zero)
@@ -42,14 +43,14 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         container.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
         container.center = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
         
-
+        
         
         container.backgroundColor = UIColor(red: 234.0/255.0, green: 237.0/255.0, blue: 242.0/255.0, alpha: 0.5)
         
         loadingView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         loadingView.center = CGPoint(x: screenSize.width/2, y: (screenSize.height-50)/2)
         
-      //  loadingView.backgroundColor = UIColor.gray
+        //  loadingView.backgroundColor = UIColor.gray
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame.size = loadingView.layer.frame.size
@@ -100,8 +101,8 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         NotificationCenter.default.addObserver(self, selector: #selector(self.checkAuth), name: UserDefaults.didChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removeBubble), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        if UserDefaults.standard.string(forKey: "appAlreadyLaunched") != nil {
-           
+        if UserDefaults.standard.string(forKey: "appAlreadyLaunched") == nil {
+            
             isOnboarding = true
             let view = self.APPDELEGATE.window!!.rootViewController!.view
             
@@ -114,7 +115,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             narikoAlertView = OnboardingFirst.instanceFromNib() as! OnboardingFirst
             narikoAlertView.frame = CGRect(x: 20, y: 40, width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 80)
             narikoAlertView.clipsToBounds = true
-          
+            
             
             let longPressRecog = UILongPressGestureRecognizer()
             
@@ -155,11 +156,11 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                     
                     if finished {
                         self.narikoAlertView.removeFromSuperview()
-                      
+                        
                         UserDefaults.standard.set(true, forKey: "appAlreadyLaunched")
                         self.narikoAlertView = OnboardingSecond.instanceFromNib() as! OnboardingSecond
                         self.narikoAlertView.frame = CGRect(x: ((view?.frame.width)! / 2) - (((view?.frame.width)! - 40)/2), y: ((view?.frame.height)! / 2) - (((view?.frame.height)! - 100)/2), width: (view?.frame.width)! - 40, height: (view?.frame.height)! - 100)
-                      
+                        
                         self.narikoAlertView.clipsToBounds = true
                         
                         view?.addSubview(self.narikoAlertView)
@@ -173,6 +174,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                             self.narikoAlertView.transform = CGAffineTransform.identity
                             }, completion: { (finished) in
                                 if finished {
+                                    self.needReopen = false
                                     self.perform(#selector(self.close), with: nil, afterDelay: 3)
                                 }
                         })
@@ -184,7 +186,8 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         }
     }
     
-   @objc fileprivate func close() {
+    @objc fileprivate func close() {
+       
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {() -> Void in
             self.narikoAlertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             self.alertView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -194,7 +197,9 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                     self.backgroundView.removeFromSuperview()
                     self.narikoAlertView.removeFromSuperview()
                     self.alertView.removeFromSuperview()
-                    
+                    if self.needReopen{
+                        self.setupBubble()
+                    }
                 }
         })
     }
@@ -223,17 +228,17 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     
     open func checkAuth() {
         let defaults = UserDefaults.standard
-     //   print(defaults.string(forKey: "nar_email"))
-     //   print(defaults.string(forKey: "nar_pass"))
+        //   print(defaults.string(forKey: "nar_email"))
+        //   print(defaults.string(forKey: "nar_pass"))
         
-     //   print(Bundle.main.bundleIdentifier)
+        //   print(Bundle.main.bundleIdentifier)
         
         if defaults.string(forKey: "nar_email") != nil && defaults.string(forKey: "nar_pass") != nil{
-           
+            
             CallApi().authRequest(["Email": defaults.string(forKey: "nar_email")! as AnyObject, "Password": defaults.string(forKey: "nar_pass")! as AnyObject, "BundleId": Bundle.main.bundleIdentifier! as AnyObject], callCompletion: { (success, errorCode, msg) in
                 if success{
                     self.apiKey = msg
-                    print("OOOKKK")
+                   
                     self.isAuth = true
                 } else {
                     print(errorCode)
@@ -261,57 +266,59 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
     }
     
     open func setupBubble() {
-        let win = APPDELEGATE.window!!
-        
-        win.endEditing(true)
-        print(UIApplication.shared.statusBarOrientation.rawValue)
-        bubble = BubbleControl(win: win, size: CGSize(width: 130, height: 80))
-        bubble.tag = 3333
-        
-        let podBundle = Bundle(for: NarikoTool.self)
-        if let url = podBundle.url(forResource: "Nariko", withExtension: "bundle") {
-            let bundle = Bundle(url: url)
-            bubble.image = UIImage(named: "Nariko_logo_200", in: bundle, compatibleWith: nil)
-        }
-        
-        bubble.setOpenAnimation = { content, background in
-            self.bubble.contentView!.bottom = win.bottom
-            if (self.bubble.center.x > win.center.x) {
-                self.bubble.contentView!.left = win.right
-                self.bubble.contentView!.right = win.right
-            } else {
-                self.bubble.contentView!.right = win.left
-                self.bubble.contentView!.left = win.left
+        if APPDELEGATE.window!!.viewWithTag(3333) == nil{
+            let win = APPDELEGATE.window!!
+            
+            win.endEditing(true)
+            bubble = BubbleControl(win: win, size: CGSize(width: 130, height: 80))
+            bubble.tag = 3333
+            
+            let podBundle = Bundle(for: NarikoTool.self)
+            if let url = podBundle.url(forResource: "Nariko", withExtension: "bundle") {
+                let bundle = Bundle(url: url)
+                bubble.image = UIImage(named: "Nariko_logo_200", in: bundle, compatibleWith: nil)
             }
+            
+            bubble.setOpenAnimation = { content, background in
+                self.bubble.contentView!.bottom = win.bottom
+                if (self.bubble.center.x > win.center.x) {
+                    self.bubble.contentView!.left = win.right
+                    self.bubble.contentView!.right = win.right
+                } else {
+                    self.bubble.contentView!.right = win.left
+                    self.bubble.contentView!.left = win.left
+                }
+            }
+            
+            firstKeyboardTime = true
+            // firstRot = true
+            
+            textViewBackgroundView.frame = CGRect(x: 0, y: 0, width: win.w, height: 41)
+            textViewBackgroundView.backgroundColor = UIColor.white
+            
+            let topSeparatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
+            topSeparatorView.backgroundColor = UIColor.lightGray
+            textViewBackgroundView.addSubview(topSeparatorView)
+            
+            textView.delegate = self
+            textView.layer.cornerRadius = 14
+            
+            textView.layer.borderColor = UIColor.lightGray.cgColor
+            textView.layer.borderWidth = 1
+            textView.autoresizingMask =  [.flexibleWidth]
+            textView.font = UIFont.systemFont(ofSize: 16)
+            textView.textContainerInset = UIEdgeInsetsMake(4, 6, 4, 6)
+            textView.scrollIndicatorInsets = UIEdgeInsetsMake(6, 6, 6, 6)
+            textView.returnKeyType = .send
+            textView.frame = CGRect(x: 16, y: 5, width: UIScreen.main.bounds.width - 32, height: 32)
+            textViewBackgroundView.addSubview(textView)
+            textPlaceholder()
+            
+            bubble.contentView = textViewBackgroundView
+            
+            win.addSubview(bubble)
         }
-        
-        firstKeyboardTime = true
-        
-        textViewBackgroundView.frame = CGRect(x: 0, y: 0, width: win.w, height: 41)
-        textViewBackgroundView.backgroundColor = UIColor.white
-        
-        let topSeparatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
-        topSeparatorView.backgroundColor = UIColor.lightGray
-        textViewBackgroundView.addSubview(topSeparatorView)
-        
-        textView.delegate = self
-        textView.layer.cornerRadius = 14
-        
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        textView.layer.borderWidth = 1
-        textView.autoresizingMask =  [.flexibleWidth]
-        textView.font = UIFont.systemFont(ofSize: 16)
-        textView.textContainerInset = UIEdgeInsetsMake(4, 6, 4, 6)
-        textView.scrollIndicatorInsets = UIEdgeInsetsMake(6, 6, 6, 6)
-        textView.returnKeyType = .send
-        textView.frame = CGRect(x: 16, y: 5, width: UIScreen.main.bounds.width - 32, height: 32)
-        textViewBackgroundView.addSubview(textView)
-        textPlaceholder()
-        
-        bubble.contentView = textViewBackgroundView
-        
-        win.addSubview(bubble)
-        prevOrient = UIDeviceOrientation.faceUp
+        //  prevOrient = UIDeviceOrientation.portrait
     }
     
     fileprivate func textPlaceholder() {
@@ -398,9 +405,10 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             } else {
                 UIView.animate(withDuration: duration, delay: 0, options: animationCurve, animations: {
                     self.setContentViewKeyboardFrame(yOffset)
-                }, completion: nil)
-                
-                bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
+                    }, completion: nil)
+                if bubble != nil {
+                    bubble.moveY(UIScreen.main.bounds.height - yOffset - textViewBackgroundView.frame.height - bubble.size.height)
+                }
             }
             
             if bubble != nil {
@@ -418,8 +426,7 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
             showActivityIndicator()
             CallApi().sendData(bubble.screenShot!, comment: textView.text) { (success, errorCode, msg) in
                 if success {
-                    
-                    self.removeBubble(true)
+                    self.removeBubbleForce()
                     self.hideActivityIndicator()
                     let view = self.APPDELEGATE.window!!.rootViewController!.view
                     self.alertView = AlertView.instanceFromNib() as! AlertView
@@ -436,11 +443,12 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
                         
                         }, completion: { (finished) in
                             if finished{
+                                self.needReopen = true
                                 self.perform(#selector(self.close), with: nil, afterDelay: 3)
-                            
+                                
                             }
                     })
-
+                    
                 } else {
                     self.hideActivityIndicator()
                     let alert = UIAlertController(title: "Error", message: "The screenshot could not be sent!", preferredStyle: UIAlertControllerStyle.alert)
@@ -456,34 +464,30 @@ open class NarikoTool: UIResponder, UITextViewDelegate, UIGestureRecognizerDeleg
         }
     }
     
-    var prevOrient: UIDeviceOrientation = UIDeviceOrientation.faceUp
+    var prevOrient: UIDeviceOrientation = UIDeviceOrientation.unknown
+    var firstRot = true
     
     open func removeBubbleForce() {
-        removeBubble(true)
-    }
-    open func removeBubble(_ force: Bool = false){
         
-       
-        print(prevOrient.rawValue)
-        if force {
-           
+        if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
+            bubble.closeContentView()
+            viewWithTag.removeFromSuperview()
+        }
+    }
+    open func removeBubble(){
+        
+        if (prevOrient.isPortrait && UIDevice.current.orientation.isLandscape ) || (prevOrient.isLandscape && UIDevice.current.orientation.isPortrait) {
+            
             if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
                 bubble.closeContentView()
                 viewWithTag.removeFromSuperview()
+                self.perform(#selector(self.setupBubble), with: nil, afterDelay: 0.1)
             }
-        } else {
-            if (prevOrient.isPortrait && UIDevice.current.orientation.isLandscape) || (prevOrient.isLandscape && UIDevice.current.orientation.isPortrait) {
-                
-                if let viewWithTag = APPDELEGATE.window!!.viewWithTag(3333) {
-                    bubble.closeContentView()
-                    viewWithTag.removeFromSuperview()
-                }
-            }
-            if !UIDevice.current.orientation.isFlat{
-                if prevOrient != UIDevice.current.orientation {
-                    prevOrient = UIDevice.current.orientation
-                }
-            }
+        }
+        if !UIDevice.current.orientation.isFlat{
+            prevOrient = UIDevice.current.orientation
+            
         }
     }
 }
+

@@ -236,7 +236,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 22JLKPLTU8;
+						DevelopmentTeam = H3XS9JPF6Y;
 						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -523,7 +523,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 22JLKPLTU8;
+				DEVELOPMENT_TEAM = H3XS9JPF6Y;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Nariko/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
@@ -544,7 +544,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 22JLKPLTU8;
+				DEVELOPMENT_TEAM = H3XS9JPF6Y;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Nariko/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";

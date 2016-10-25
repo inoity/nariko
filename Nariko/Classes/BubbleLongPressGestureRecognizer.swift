@@ -43,7 +43,9 @@ extension BubbleLongPressGestureRecognizer {
                 
             case .began:
                 if NarikoTool.sharedInstance.isAuth {
+                    
                     NarikoTool.sharedInstance.setupBubble()
+                    
                 } else {
                     let alertController = UIAlertController (title: "Information", message: "Please login in the settings", preferredStyle: .alert)
                     

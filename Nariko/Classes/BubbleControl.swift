@@ -127,12 +127,12 @@ extension UIView {
     
     func spring (_ animations: @escaping ()->Void, completion:((Bool)->Void)?) {
         UIView.animate(withDuration: BubbleControlMoveAnimationDuration,
-                                   delay: 0,
-                                   usingSpringWithDamping: BubbleControlSpringDamping,
-                                   initialSpringVelocity: BubbleControlSpringVelocity,
-                                   options: UIViewAnimationOptions(),
-                                   animations: animations,
-                                   completion: completion)
+                       delay: 0,
+                       usingSpringWithDamping: BubbleControlSpringDamping,
+                       initialSpringVelocity: BubbleControlSpringVelocity,
+                       options: UIViewAnimationOptions(),
+                       animations: animations,
+                       completion: completion)
     }
     
     
@@ -183,8 +183,8 @@ extension UIView {
     
     func alphaTo(_ to: CGFloat) {
         UIView.animate(withDuration: BubbleControlMoveAnimationDuration,
-                                   animations: {
-                                    self.alpha = to
+                       animations: {
+                        self.alpha = to
         })
     }
     
@@ -364,10 +364,10 @@ class BubbleControl: UIControl {
         }
         
         snapInTimer = Timer.scheduledTimer(timeInterval: snapInInterval,
-                                                             target: self,
-                                                             selector: #selector(BubbleControl.snapInside),
-                                                             userInfo: nil,
-                                                             repeats: false)
+                                           target: self,
+                                           selector: #selector(BubbleControl.snapInside),
+                                           userInfo: nil,
+                                           repeats: false)
     }
     
     
@@ -405,6 +405,7 @@ class BubbleControl: UIControl {
     }
     
     func touchUp() {
+     
         if bubbleState == .snap {
             toggle = !toggle
         } else {
@@ -415,6 +416,7 @@ class BubbleControl: UIControl {
     
     func touchDrag (_ sender: BubbleControl, event: UIEvent) {
         if closeButton.isHidden {
+            
             bubbleState = .drag
             
             if toggle {
@@ -422,10 +424,17 @@ class BubbleControl: UIControl {
             }
             
             let touch = event.allTouches!.first!
-            let location = touch.location(in: WINDOW!)
             
-            center = location
-            lockInWindowBounds()
+            if touch.location(in: nil).x == touch.previousLocation(in: nil).x && touch.location(in: nil).y == touch.previousLocation(in: nil).y{
+                bubbleState = .snap
+            } else {
+                
+                let location = touch.location(in: WINDOW!)
+                
+                center = location
+                lockInWindowBounds()
+            }
+            
         }
     }
     
